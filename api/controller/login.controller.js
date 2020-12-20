@@ -2,6 +2,7 @@ const Database = require('../database/database_manager')
 const database = new Database;
 const fn = require('../modules/custom_function');
 const C = require('../modules/constante');
+require('dotenv').config();
 
 class Login {
 
@@ -38,6 +39,9 @@ class Login {
       database.select("utilisateur", "id_user, mot_de_passe, id_status, id_groupe", `nom_utilisateur = '${username}'`)
       .then((res) => {
         if (res.length == 0) reject(C.connexion.USER_INEXISTE);
+        // let source_password = data.mot_de_passe.split("(%%)");
+        // if (source_password[0] != process.env.TOKEN_KEY) reject("Unkown source connexion");
+        // data.mot_de_passe = source_password[1];
         let check_password = fn.matchPassword(data.mot_de_passe, res[0].mot_de_passe);
         if (!check_password) reject(C.connexion.PASSWORD_ERROR);
         let status = res[0].id_status;
@@ -64,6 +68,40 @@ class Login {
             break;
         }
       }).catch(err => reject(`Unable to get username : ${err}`));
+    })
+  }
+
+  authAsAcheteur(data) {
+    return new Promise((resolve, reject) => {
+      const email_acheteur = data.email_acheteur;
+      database.select("acheteur", "*", `id_acheteur = ${email_acheteur}`)
+      .then(res => {
+        if (res.length == 0) reject(C.connexion.USER_INEXISTE);
+        // let source_password = data.mot_de_passe.split("(%%)");
+        // if (source_password[0] != process.env.TOKEN_KEY) reject("Unkown source connexion");
+        // data.mot_de_passe = source_password[1];
+        let check_password = fn.matchPassword(data.mot_de_passe, res[0].mot_de_passe);
+        if (!check_password) reject(C.connexion.PASSWORD_ERROR);
+        let status = res[0].id_status;
+        switch (status) {
+          case C.status.COMPTE_IN:
+            reject(C.connexion.COMPTE_IN);
+            break;
+
+          case C.status.COMPTE_SUSP:
+            reject(C.connexion.COMPTE_SUSP);
+            break;
+
+          case C.status.COMPTE_KO:
+            reject(C.connexion.COMPTE_KO);
+            break;
+
+          case C.status.COMPTE_OK:
+            const token = fn.generateToken(res[0]);
+            resolve({ token, data: res[0] });
+            break;
+        }
+      }).catch(err => reject(err));
     })
   }
 }

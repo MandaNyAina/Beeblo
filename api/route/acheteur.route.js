@@ -1,17 +1,18 @@
 const route = require('express').Router();
-const Admin = require('../controller/admin.controller');
+const Acheteur = require('../controller/acheteur.controller');
 const token = require('../middleware/tokenValidator');
-const admin = new Admin;
+const acheteur = new Acheteur;
 const fn = require('../modules/custom_function');
 
-route.post("/add", token, (req, res) => {
-  admin.create(req.body)
+route.post("/add", (req, res) => {
+  acheteur.create(req.body)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
 route.post("/update/:id", token, (req, res) => {
-  admin.update(req.params.id, req.body)
+  acheteur.update(req.params.id, req.body)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
+
 
 module.exports = route;

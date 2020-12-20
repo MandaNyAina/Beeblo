@@ -3,6 +3,8 @@ const crypto = require('crypto'),
     bcrypt = require('bcrypt'),
     iv = crypto.randomBytes(16),
     jwt = require('jsonwebtoken');
+    
+require('dotenv').config();
 
 module.exports.getCurrentDateAndTime = () => {
     let now = new Date(),
