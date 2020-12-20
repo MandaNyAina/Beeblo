@@ -27,11 +27,15 @@ app.use(bodyParser.urlencoded({limit: '25mb', extended: true}));
 // route declare
 const acheteur = require('./route/acheteur.route'),
       admin = require('./route/admin.route'),
-      login = require('./route/login.route');
+      login = require('./route/login.route'),
+      produit = require('./route/produit.route'),
+      promotion = require('./route/promotion.route');
 
 app.use(`${prefix}/acheteur`, acheteur);
 app.use(`${prefix}/admin`, admin);
 app.use(`${prefix}/login`, login);
+app.use(`${prefix}/produit`, produit);
+app.use(`${prefix}/promotion`, promotion);
 
 // run server
 app.listen(process.env.PORT, () => {

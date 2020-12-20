@@ -1,8 +1,6 @@
-const Database = require('../database/database_manager')
+const Database = require('../database/database_manager');
+const { encrypt } = require('../modules/custom_function');
 const database = new Database;
-const fn = require('../modules/custom_function');
-const C = require('../modules/constante');
-require('dotenv').config();
 
 class Beeblo {
 
@@ -10,9 +8,11 @@ class Beeblo {
     return new Promise((resolve, reject) => {
       database.select("beeblo").then((res) => {
         if (res.length == 0) {
+          if (data.smtp_password) data.smtp_password = encrypt(data.smtp_password);
           database.insert("beeblo", data)
           .then(res => resolve(res)).catch(err => reject(err));
         } else {
+          if (data.smtp_password) data.smtp_password = encrypt(data.smtp_password);
           database.update("beeblo", data)
           .then(res => resolve(res)).catch(err => reject(err));
         }

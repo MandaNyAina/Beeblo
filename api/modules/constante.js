@@ -30,3 +30,8 @@ module.exports.connexion = {
   COMPTE_KO : "Votre compte est bloqué",
   COMPTE_INTROUVABLE : "Compte introuvable"
 }
+
+module.exports.promotion = {
+  PROMOTION_PRODUIT : "Promotion sur un produit",
+  PROMOTION_ACHETEUR : "Promotion cadeau par code promotionnel"
+}

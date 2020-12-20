@@ -23,26 +23,26 @@ class Admin {
           prenom_administrateur: data.prenom_administrateur,
           id_login: user_login_id
         };
-        database.insert(admin_info).then(res => resolve(res)).catch(err => reject(err));
+        database.insert("adminitrateur", admin_info).then(res => resolve(res)).catch(err => reject(err));
       }).catch(err => `Unable to create account for admin : ${err}`)
     })
   }
 
-  update(id_user, data) {
+  update(id_administrateur, data) {
     return new Promise((resolve, reject) => {
-      database.update("utilisateur", data, `id_user = ${id_user}`)
+      database.update("administrateur", data, `id_administrateur = ${id_administrateur}`)
     })
   }
 
   get() {
     return new Promise((resolve, reject) => {
-      database.select("utilisateur").then(res => resolve(res)).catch(err => reject(err));
+      database.select("view_admin").then(res => resolve(res)).catch(err => reject(err));
     })
   }
 
-  getById(id_user) {
+  getById(id_administrateur) {
     return new Promise((resolve, reject) => {
-      database.select("utilisateur", "*", `id_user = ${id_user}`)
+      database.select("view_admin", "*", `id_administrateur = ${id_administrateur}`)
       .then(res => resolve(res[0])).catch(err => reject(err));
     })
   }

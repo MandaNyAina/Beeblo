@@ -7,12 +7,20 @@ const fn = require('../modules/custom_function');
 const acheteur = new Acheteur;
 
 route.post("/auth/asAdmin", (req, res) => {
-  login.authAsAdmin(req.body)
+  let data = {
+    nom_utilisateur: req.body.nom_utilisateur,
+    mot_de_passe: req.body.mot_de_passe
+  }
+  login.authAsAdmin(data)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ko(res, err));
 })
 
 route.post("/auth/asAcheteur", (req, res) => {
-  login.authAsAcheteur(req.body)
+  let data = {
+    nom_utilisateur: req.body.nom_utilisateur,
+    mot_de_passe: req.body.mot_de_passe
+  }
+  login.authAsAcheteur(data)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ko(res, err));
 })
 

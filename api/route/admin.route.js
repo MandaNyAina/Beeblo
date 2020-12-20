@@ -5,7 +5,14 @@ const admin = new Admin;
 const fn = require('../modules/custom_function');
 
 route.post("/add", token, (req, res) => {
-  admin.create(req.body)
+  let data = {
+    nom_administrateur: req.body.nom_administrateur,
+    prenom_administrateur: req.body.prenom_administrateur,
+    nom_utilisateur: req.body.nom_utilisateur,
+    mot_de_passe: req.body.mot_de_passe,
+    id_groupe: req.body.id_groupe
+  }
+  admin.create(data)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
@@ -20,7 +27,11 @@ route.get("/getById/:id", token, (req, res) => {
 })
 
 route.post("/update/:id", token, (req, res) => {
-  admin.update(req.params.id, req.body)
+  let data = {
+    nom_administrateur: req.body.nom_administrateur,
+    prenom_administrateur: req.body.prenom_administrateur
+  }
+  admin.update(req.params.id, data)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 

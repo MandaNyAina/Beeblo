@@ -11,7 +11,7 @@ class Login {
   create(data) {
     return new Promise((resolve, reject) => {
       data.mot_de_passe = fn.signPassword(data.mot_de_passe);
-      database.insert(data).then(
+      database.insert("utilisateur", data).then(
         res => {
           resolve(res);
         }

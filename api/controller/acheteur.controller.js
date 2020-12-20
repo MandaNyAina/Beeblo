@@ -14,7 +14,7 @@ class Acheteur {
       let check_user = database.select("acheteur", "id_acheteur", `email_acheteur = ${data.email_acheteur}`);
       if (!check_user.length) reject(C.connexion.USER_EXIST);
       data.mot_de_passe_acheteur = fn.signPassword(data.mot_de_passe_acheteur);
-      database.insert(data).then(res => resolve(res)).catch(err => reject(err));
+      database.insert("acheteur", data).then(res => resolve(res)).catch(err => reject(err));
     })
   }
 
