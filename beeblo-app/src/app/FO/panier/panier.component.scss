@@ -1,0 +1,223 @@
+@import '../../../styles.scss';
+
+h1 {
+  color: $primary;
+  margin: 0 !important;
+  margin-bottom: 2% !important;
+}
+
+.p-grid {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.detail {
+  border: 3px solid #a3a2a2;
+  margin-bottom: 5% !important;
+  font-size: 20px;
+}
+
+.image {
+  width: 80%;
+}
+
+.image-detail {
+  cursor: pointer;
+  background-color: #f2f2f2;
+  width: 70%;
+  display: inline-block;
+}
+
+.descri-detail {
+  display: inline-block;
+  width: 40%;
+}
+
+.descri {
+  width: 95%;
+  margin: auto;
+  padding: 4%;
+}
+
+.min-descri {
+  margin-bottom: 8%;
+}
+
+.supprime-panier {
+  float: right;
+  font-size: 44px;
+  cursor: pointer;
+}
+
+.info-detail {
+  width: 50px;
+  max-width: 150px;
+  height: 50px;
+  position: relative;
+  border: 1px solid #a3a2a2;
+  word-break: break-all !important;
+  box-sizing: border-box;
+}
+
+.info-detail-text {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  overflow: auto;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.info {
+  padding-top: 5%;
+}
+
+.total {
+  font-size: 20px;
+  // width: 30%;
+}
+
+.total-content {
+  border: 3px solid #a3a2a2;
+  box-sizing: border-box;
+  padding-top: 8%;
+}
+
+.total-info {
+  width: 90%;
+  margin: auto;
+}
+
+.pay-btn {
+  margin-top: 8%;
+  margin-bottom: 8%;
+  background-color: $success;
+  width: 60%;
+  height: 40px;
+  color: #ffffff;
+  border: 0;
+  transition: 0.5s all;
+}
+
+.pay-btn:hover {
+  background-color: #ffffff;
+  width: 60%;
+  height: 40px;
+  color: $success;
+  border: 1px solid $success;
+  cursor: pointer;
+  transition: 0.5s all;
+}
+
+.total-fright {
+  float: right;
+}
+
+.total-sous-info {
+  padding-top: 5%;
+}
+
+.pay_mode {
+  width: 100%;
+}
+
+.color-image {
+  display: inline-block;
+  margin-right: 3%;
+}
+
+.p-col-9 {
+  width: 70%;
+  margin-right: 2%;
+  padding-left: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+div.p-col.total {
+  padding: 0 !important;
+}
+
+.select-custom {
+  width: 100%;
+  height: 40px;
+  font-family: $primary-font;
+  border: 0px;
+  border-bottom: 2px solid $light;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 0px;
+  font-size: 20px;
+}
+
+button.form-style {
+  font-family: $primary-font;
+  background-color: $secondary;
+  color: $primary;
+  border: 0;
+  width: 15%;
+  font-size: 16px;
+  transition: 0.2s all;
+  font-weight: bold;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 1%;
+  padding-right: 1%;
+  margin-bottom: 3%;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+button.form-style:hover {
+  background-color: $primary;
+  cursor: pointer;
+  transition: 0.5s all;
+  color: #ffffff;;
+}
+
+@media only screen and (max-width: 900px) {
+  .color-image {
+    display: block;
+    margin-bottom: 10%;
+  }
+
+  .image-detail {
+    width: 100%;
+  }
+
+  .detail {
+    width: 100%;
+    margin-right: 0 !important;
+    margin-bottom: 8% !important;
+  }
+
+  .descri-detail {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .p-col-9 {
+    width: 100%;
+    margin-right: 3%;
+    padding: 0 !important;
+    margin-top: 2%;
+  }
+
+  .info {
+    display: inline-block;
+    margin-right: 5%;
+  }
+
+  .total-content {
+    margin-bottom: 5%;
+  }
+
+  div.p-col.image-detail.p-text-center {
+    flex-basis: auto !important;
+  }
+
+  button.form-style {
+    width: 50%;
+  }
+
+}

@@ -1,0 +1,83 @@
+@import '../../../styles.scss';
+
+.header {
+  background-color: $base-color;
+  height: 110px;
+  box-sizing: border-box;
+  // padding-top: 25px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-shadow: 3px 3px 50px 3px #14192e;
+}
+
+.wrapper {
+  margin: auto;
+  width: 85%;
+  color: $secondary;
+  text-align: center;
+}
+
+.main-menu {
+  padding-top: 5%;
+  width: 6%;
+}
+
+.main-menu:hover {
+  cursor: pointer;
+}
+
+.logo {
+  position: absolute; /* Important */
+  top: 0; /* Position Y halfway in */
+  left: 50%; /* Position X halfway in */
+  transform: translate(-50%,0%); /* Move it halfway back(x,y) */
+}
+
+.logo-img {
+  width: 20%;
+}
+
+
+ul.side-menu {
+  list-style: none;
+  font-size: 20px;
+  padding: 0;
+  line-height: 60px;
+}
+
+li.side-menu {
+  background-color: $primary;
+  color: #ffffff;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  transition: .5s all;
+}
+
+li.side-menu:hover {
+  background-color: $secondary;
+  margin-left: 20px;
+  transition: .5s all;
+  color: $primary;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    height: 12vh;
+  }
+
+  .logo {
+    width: 100%;
+    z-index: 1;
+  }
+
+  .menu {
+    z-index: 9999;
+  }
+
+  .main-menu {
+    padding-top: 10%;
+    width: 15%;
+  }
+}

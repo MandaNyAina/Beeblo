@@ -1,0 +1,141 @@
+@import '../../../styles.scss';
+
+div, button, input {
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+.p-grid {
+  margin-right: 0 !important;
+}
+
+table {
+  width: 100%;
+}
+
+.wrapper-article {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.filter {
+  background-color: #f2f2f2;
+}
+
+.filter-row {
+  width: 80%;
+  margin: auto;
+}
+
+.input-custom {
+  font-family: $primary-font;
+  color: $light;
+  height: 40px;
+  border-left: 1px $light solid;
+  border-top: 1px $light solid;
+  border-bottom: 1px $light solid;
+  padding-left: 10px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #ffffff;
+}
+
+.custom-input-btn {
+  border: 0;
+  border-right: 1px $light solid;
+  border-top: 1px $light solid;
+  border-bottom: 1px $light solid;
+  background-color: $light;
+  font-family: $primary-font;
+  font-weight: bold;
+  color: $black;
+}
+
+.p-inputgroup {
+  margin-top: 20%;
+}
+
+div.p-inputgroup.btn {
+  margin-top: 0 !important;
+  width: 150px;
+}
+
+.btn-panier {
+  color: $primary;
+  background-color: $secondary;
+  transition: 0.5s all;
+  width: 100%;
+  border: 0;
+  height: 35px;
+  font-family: $primary-font;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.btn-panier:hover {
+  color: #ffffff;
+  background-color: $primary;
+  transition: 0.5s all;
+  cursor: pointer;
+}
+
+.article-element {
+  margin-bottom: 8%;
+}
+
+.article-image {
+  margin-bottom: 5%;
+}
+
+.p-col-9 {
+  margin-bottom: 2%;
+}
+
+.page-number {
+  width: 50px;
+  max-width: 150px;
+  height: 50px;
+  position: relative;
+  border: 1px solid #a3a2a2;
+  word-break: break-all !important;
+  box-sizing: border-box;
+  margin-top: 2%;
+  transition: .5s all;
+}
+
+.page-number:hover {
+  color: $primary;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: .5s all;
+}
+
+.page-number-style {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  overflow: auto;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.active-pagination {
+  background-color: $light;
+  color: $primary;
+}
+
+@media only screen and (max-width: 900px) {
+  .p-col-3, .p-col-4, .p-col-9 {
+    width: 100%;
+  }
+
+  .p-col-9 {
+    margin-bottom: 5%;
+  }
+}

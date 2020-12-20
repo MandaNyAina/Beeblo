@@ -1,0 +1,63 @@
+<div class="wrapper-body">
+  <p-breadcrumb [model]="items"></p-breadcrumb>
+  <div class="p-grid p-mb-2">
+    <div class="p-col-7">
+      <img src="assets/img/default_image/default-{{idProduit}}.png" alt="product" />
+    </div>
+    <div class="p-col-5">
+      <h1 class="title">{{produit.title}}</h1>
+      <div class="info title">
+        <h3>{{currency}} {{produit.prix}}</h3>
+      </div>
+      <div class="info">
+        Couleur : <br>
+        <div *ngFor="let item of produit.couleur" class="info-detail color-image" [ngStyle] = "{'backgroundColor': item}"></div>
+      </div>
+      <div class="info">
+        Tailles : <br>
+        <div *ngFor="let item of produit.taille" class="color-image info-detail">
+          <div class=" info-detail-text">{{item}}</div>
+        </div>
+      </div>
+      <div>
+        <button class="btn-panier">Ajouter au panier</button>
+      </div>
+    </div>
+    <div *ngFor="let item of produit.images" class="p-col-2">
+      <img src="assets/img/default_image/{{item}}" alt="product" />
+    </div>
+  </div>
+  <h1 class="title">Description</h1>
+  <div class="p-mb-4" class="content">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    Dolorem quo quam iste officiis corrupti error facilis? Ex dolores ipsam culpa!
+    Dolorum aliquid sed non nam blanditiis incidunt corrupti? Explicabo, ullam.
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    Dolorem quo quam iste officiis corrupti error facilis? Ex dolores ipsam culpa!
+    Dolorum aliquid sed non nam blanditiis incidunt corrupti? Explicabo, ullam.Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    Dolorem quo quam iste officiis corrupti error facilis? Ex dolores ipsam culpa!
+    Dolorum aliquid sed non nam blanditiis incidunt corrupti? Explicabo, ullam.
+  </div>
+  <h1 class="title">Numéro de série</h1>
+  <div class="content">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    Dolorem quo quam iste officiis corrupti error facilis? Ex dolores ipsam culpa!
+    Dolorum aliquid sed non nam blanditiis incidunt corrupti? Explicabo, ullam.
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+  </div>
+  <div class="p-text-center c-primary p-mt-6 p-mb-6">
+    <h1 class="title">Vous pourrez aussi aimez</h1>
+    <div class="p-mt-5 p-text-center">
+      <p-carousel [value]="produit.similaire" [numVisible]="3" [numScroll]="1" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+        <ng-template let-item pTemplate="item">
+          <div (click)="openProduit(item.id)">
+            <img class="clear-bg" style="cursor: pointer;" width="300" src="assets/img/default_image/{{item.image}}" alt="img" />
+          </div>
+          <div class="p-mt-4" (click)="openProduit(item.id)">
+            {{ item.title }}
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+</div>

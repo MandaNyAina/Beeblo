@@ -1,0 +1,52 @@
+@import '../../../styles.scss';
+
+footer {
+  background-color: $base-color;
+  padding-top: 80px;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.wrapper {
+  margin: auto;
+  width: 80%;
+}
+
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+.reseau {
+  width: 25%;
+}
+
+.title-secondary {
+  color: $secondary;
+  font-size: 18px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 900px) {
+  .reseau {
+    width: 85%;
+  }
+
+  .title-secondary {
+    font-size: 14px;
+  }
+
+  .p-col {
+    font-size: 16px;
+  }
+}

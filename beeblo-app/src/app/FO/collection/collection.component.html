@@ -1,0 +1,72 @@
+<div class="wrapper-body">
+  <h1 class="c-primary">NOTRE COLLECTION</h1>
+</div>
+<div class="p-grid">
+  <div class="p-col-3"></div>
+  <div class="p-col-9 wrapper-article">
+    <table>
+      <tr>
+        <td align="left" class="p-text-bold p-text-left">Article 1-12 sur 213</td>
+        <td align="right">
+          <div class="p-inputgroup btn">
+            <input class="input-custom filtre-btn p-text-center" type="text" pInputText placeholder="Filtre">
+            <button type="button" pButton pRipple class="custom-input-btn"><i class="pi pi-angle-down" style="font-size: 20px;"></i></button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="p-grid">
+  <div class="p-col-3 filter">
+    <div class="filter-row">
+      <div class="p-inputgroup">
+        <input class="input-custom" type="text" pInputText placeholder="Rechercher ..">
+        <button type="button" pButton pRipple class="custom-input-btn">OK</button>
+      </div>
+      <h1 class="c-primary p-mt-6">FILTRES</h1>
+      <div class="p-inputgroup">
+        <select class="input-custom" type="text" pInputText>
+          <option>Catégorie</option>
+        </select>
+        <button type="button" pButton pRipple class="custom-input-btn"><i class="pi pi-angle-down" style="font-size: 20px;"></i></button>
+      </div>
+      <div class="p-inputgroup">
+        <input class="input-custom" type="text" pInputText placeholder="Tailles">
+        <button type="button" pButton pRipple class="custom-input-btn"><i class="pi pi-angle-down" style="font-size: 20px;"></i></button>
+      </div>
+      <div class="p-inputgroup">
+        <input class="input-custom" type="text" pInputText placeholder="Couleurs">
+        <button type="button" pButton pRipple class="custom-input-btn"><i class="pi pi-angle-down" style="font-size: 20px;"></i></button>
+      </div>
+      <div class="p-inputgroup">
+        <input class="input-custom" type="text" pInputText placeholder="Prix">
+        <button type="button" pButton pRipple class="custom-input-btn"><i class="pi pi-angle-down" style="font-size: 20px;"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="p-col-9 article wrapper-article">
+    <div class="p-grid">
+      <div class="p-col-4" *ngFor="let item of produit">
+        <div class="article-image p-text-center">
+          <img style="width: 100%;" src="assets/img/default_image/{{item.image}}" alt="img" />
+        </div>
+        <div class="article-element">
+          {{item.description}}
+        </div>
+        <div class="article-element">
+          {{currency}} {{item.prix}}
+        </div>
+        <div  class="article-element">
+          <button (click)="onAddPanier(item.id)" class="btn-panier">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+    <div class="pagination">
+      <div *ngFor="let item of page" class="page-number active-pagination">
+        <div class="page-number-style">{{item}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<p-toast></p-toast>

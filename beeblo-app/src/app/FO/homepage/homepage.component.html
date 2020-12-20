@@ -1,0 +1,29 @@
+<div class="slidebar">
+  <div class="p-grid">
+    <div class="p-col-6">
+      <img class="homme" src="assets/img/home/homme.png" alt="image_home" />
+    </div>
+    <div class="p-col-6 p-text-center home-guide-main">
+      <div class="home-guide">
+        <span class="home-title">Beeblo</span>
+        <button routerLink="/collection" class="home-btn">
+          DECOUVRIR <br> NOTRE COLLECTION
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<div class="p-mt-5 p-text-center">
+  <p-carousel [value]="listItems" [numVisible]="3" [numScroll]="1" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+    <ng-template let-item pTemplate="item">
+      <div (click)="openProduit(item.id)">
+        <img style="cursor: pointer;" width="300" src="assets/img/default_image/{{item.image}}" alt="img" />
+      </div>
+      <div class="p-mt-4" (click)="openProduit(item.id)">
+        {{ item.title }}
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>

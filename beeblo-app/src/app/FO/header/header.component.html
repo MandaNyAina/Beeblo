@@ -1,0 +1,23 @@
+<div class="header">
+  <div class="wrapper p-grid">
+    <div class="p-text-left p-col menu">
+      <img (click)="display = true" class="main-menu p-mt-2" src="assets/img/menu/menu.png" alt="menu">
+    </div>
+    <div class="logo p-mt-2">
+      <img routerLink="/homepage" class="logo-img" src="assets/img/logo/logo.png" alt="beeblo">
+    </div>
+    <div class="p-text-right p-col menu">
+      <img routerLink="/auth" class="main-menu p-mr-5" src="assets/img/menu/user.png" alt="user">
+      <img routerLink="/panier"  class="main-menu" src="assets/img/menu/panier.png" alt="panier">
+    </div>
+  </div>
+</div>
+<p-sidebar [(visible)]="display" position="left">
+  <h1 class="c-primary">Beeblo</h1>
+  <ul class="side-menu">
+    <li class="side-menu">Acceuil</li>
+    <li class="side-menu">Best seller</li>
+    <li class="side-menu">Notre collection</li>
+    <li class="side-menu">Promotion</li>
+  </ul>
+</p-sidebar>

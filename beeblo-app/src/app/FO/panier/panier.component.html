@@ -1,0 +1,92 @@
+<div class="wrapper-body">
+  <p-breadcrumb [model]="items"></p-breadcrumb>
+</div>
+<div *ngIf="info" class="p-text-bold p-text-center p-p-3 {{info.class}}">
+  {{info.message}}
+</div>
+<div class="wrapper-body">
+  <h1>MON PANIER</h1>
+  <div class="p-grid">
+    <div class="p-col-9">
+      <div *ngFor="let item of listProduit" class="p-grid detail">
+        <div (click)="openProduit(item.id)" class="p-col image-detail p-text-center">
+          <img class="image" src="assets/img/default_image/{{item.image}}" alt="image" />
+        </div>
+        <div class="p-col-4 descri-detail">
+          <div class="descri">
+            <div>
+              <div (click)="onDelete(item.id)" class="supprime-panier">
+                x
+              </div>
+              <h2 class="title">{{currency}} {{item.prix}}</h2>
+            </div>
+
+            <div class="min-descri">
+              {{item.decri}}
+            </div>
+            <div class="info">
+              Couleur : <br>
+              <div *ngFor="let c of item.color" class="info-detail color-image" [ngStyle] = "{backgroundColor : c }"></div>
+            </div>
+            <div class="info">
+              Taille :
+              <div class="info-detail">
+                <div class="info-detail-text">{{item.taille}}</div>
+              </div>
+            </div>
+            <div class="info">
+              Qté :
+              <div class="info-detail">
+                <div class="info-detail-text">{{item.quatinte}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-col total">
+      <div class="p-text-center">
+        <h1>TOTAL</h1>
+      </div>
+      <div class="total-content">
+        <div class="total-info">
+          <div class="p-text-center">
+            {{panierValeur.article}} articles
+          </div>
+          <div class="total-sous-info">
+            <span class="c-primary p-text-bold">SOUS-TOTAL</span>
+            <span class="total-fright">{{currency}} {{panierValeur.sous_total}}</span>
+          </div>
+          <div class="total-sous-info">
+            <span class="c-primary p-text-bold">LIVRAISON</span>
+            <span class="total-fright">
+              <i class="pi pi-info-circle c-light" style="font-size: 20px;" pTooltip="{{panierValeur.info_livraison}}" tooltipPosition="bottom"></i>
+            </span>
+          </div>
+          <div class="total-sous-info">
+            <select class="select-custom" name="" id="">
+              <option value="">Type de livraison</option>
+            </select>
+          </div>
+          <div class="total-sous-info">
+            <span class="c-primary p-text-bold">TOTAL</span>
+            <span class="total-fright">{{currency}} {{panierValeur.total}}</span>
+          </div>
+          <div class="total-sous-info p-text-center">
+            <button class="pay-btn p-text-bold">PAIEMENT</button>
+          </div>
+          <div class="total-sous-info">
+            Nous acceptons :
+          </div>
+          <div class="total-sous-info">
+            <img class="pay_mode" src="assets/img/paiement/paiment.png" alt="pay_mode">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="p-text-center">
+  <button routerLink="/collection" type="button" class="form-style">RETOURNER DANS LA BOUTIQUE</button>
+</div>
+<p-toast></p-toast>

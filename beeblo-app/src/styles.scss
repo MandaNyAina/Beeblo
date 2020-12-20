@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+@use "sass:meta";
+$base-color: #22273e;
+$primary: #1d2445;
+$secondary: #f9c04f;
+$warning: #e09a10;
+$success: #00aa5b;
+$danger: #cf3b42;
+$light: #878787;
+$black: #606060;
+
+@font-face {
+  font-family: 'APDE';
+  src: url(/assets/font/aristo_pro/zetafonts-aristotelica-pro-display-extralight.otf);
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(/assets/font/roboto/roboto-v20-latin-regular.eot);
+  src: url(/assets/font/roboto/roboto-v20-latin-regular.eot?#iefix) format('embedded-opentype'),
+       url(/assets/font/roboto/roboto-v20-latin-regular.woff2) format('woff2'),
+       url(/assets/font/roboto/roboto-v20-latin-regular.woff) format('woff'),
+       url(/assets/font/roboto/roboto-v20-latin-regular.ttf)  format('truetype'),
+       url(/assets/font/roboto/roboto-v20-latin-regular.svg) format('svg');
+}
+
+@font-face {
+  font-family: 'Arkania';
+  src: url(/assets/font/arkania/arkania-regular.ttf) format('truetype');
+}
+
+$primary-font: "APDE";
+$secondary-font: Roboto;
+
+:root {
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --light: #{$light};
+  --black: #{$black};
+  --consumed-by-js: $primary;
+}
+
+body {
+  color: $black;
+  font-family: $primary-font;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper-body {
+  padding-top: 3% !important;
+  margin: auto !important;
+  width: 95% !important;
+}
+
+.c-primary {
+  color: $primary;
+}
+
+.c-secondary {
+  color: $secondary;
+}
+
+.c-danger {
+  color: $danger;
+}
+
+.c-warning {
+  color: $warning;
+}
+
+.c-success {
+  color: $success;
+}
+
+.b-primary {
+  background-color: $primary;
+}
+
+.b-secondary {
+  background-color: $secondary;
+}
+
+.b-danger {
+  background-color: $danger;
+}
+
+.b-warning {
+  background-color: $warning;
+}
+
+.b-success {
+  background-color: $success;
+}

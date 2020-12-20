@@ -1,0 +1,107 @@
+@import '../../../styles.scss';
+
+.p-breadcrumb {
+  border: 0px solid #dee2e6 !important;
+}
+
+button {
+  font-family: $primary-font;
+}
+
+
+.login-blue {
+  margin-top: 8%;
+  width: 90%;
+  height: 90vh;
+  background-color: $primary;
+}
+
+.login-orange {
+  margin-top: -3%;
+  width: 60%;
+  height: 90vh;
+  background-color: $secondary;
+  position: absolute;
+  right: 0;
+  margin-right: 3%;
+  padding-top: 5%;
+}
+
+.connecte {
+  width: 90%;
+  margin: auto;
+  font-weight: bold;
+}
+
+.form-group {
+  padding-top: 8%;
+}
+
+.form-style {
+  background-color: $warning;
+  color: #dee2e6;
+  width: 100%;
+  height: 40px;
+  border: 0;
+  margin-top: 10px;
+}
+
+button.form-style {
+  width: 40%;
+  font-size: 16px;
+  transition: 0.2s all;
+  font-weight: bold;
+  color: $primary;
+}
+
+button.form-style:hover {
+  background-color: $primary;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.5s all;
+}
+
+.link-style {
+  color: $primary;
+  text-decoration: underline;
+  transition: 0.2s all;
+  cursor: pointer;
+}
+
+.cree_compte {
+  width: 40%;
+  margin-top: 2%;
+}
+
+.form-style.cree_compte_btn {
+  width: 20%;
+  margin-left: 15%;
+}
+
+.cree_compte_btn:hover {
+  border: 1px solid $warning;
+}
+
+@media only screen and (max-width: 600px) {
+  .login-blue {
+    display: none;
+  }
+
+  .login-orange {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    background-color: $secondary;
+    margin-top: 5%;
+    margin-right: 0;
+  }
+
+  button.form-style {
+    font-size: 12px;
+  }
+
+  .form-group {
+    padding-top: 7%;
+  }
+
+}

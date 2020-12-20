@@ -1,0 +1,85 @@
+@import '../../../styles.scss';
+
+.slidebar {
+  width: 100%;
+  background-color: $primary;
+}
+
+.homme {
+  width: 100%;
+  margin-bottom: -10px;
+}
+
+.p-grid {
+  margin-right: -0rem
+}
+
+.home-guide-main {
+  position: relative;
+}
+
+.home-guide {
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.home-title {
+  font-family: 'Arkania';
+  color: $secondary;
+  font-size: 375px;
+  text-shadow: -45px 25px 20px #00000070;
+}
+
+.home-btn {
+  font-family: $primary-font;
+  background-color: transparent;
+  border: 5px solid $secondary;
+  color: $secondary;
+  font-size: 24px;
+  padding: 20px;
+  width: 55%;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.home-btn:hover {
+  background-color: $secondary;
+  color: $primary;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+  .home-title {
+    color: $secondary;
+    font-size: 250px;
+  }
+
+  .home-btn {
+    background-color: transparent;
+    border: 3px solid $secondary;
+    color: $secondary;
+    font-size: 18px;
+    padding: 18px;
+    width: 70%;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .home-title {
+    color: $secondary;
+    font-size: 95px;
+  }
+
+  .home-btn {
+    background-color: transparent;
+    border: 2px solid $secondary;
+    color: $secondary;
+    font-size: 10px;
+    padding: 10px;
+    width: 65%;
+    font-weight: bold;
+  }
+}
