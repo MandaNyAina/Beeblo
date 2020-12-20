@@ -49,6 +49,19 @@ class Acheteur {
     })
   }
 
+  get() {
+    return new Promise((resolve, reject) => {
+      database.select("acheteur").then(res => resolve(res)).catch(err => reject(err));
+    })
+  }
+
+  getById(id_acheteur) {
+    return new Promise((resolve, reject) => {
+      database.select("acheteur", "*", `id_acheteur = ${id_acheteur}`)
+      .then(res => resolve(res[0])).catch(err => reject(err));
+    })
+  }
+
   disableAccount(id_acheteur) {
     return new Promise((resolve, reject) => {
       database.update("acheteur", {id_status: C.status.COMPTE_KO}, `id_acheteur = ${id_acheteur}`)
