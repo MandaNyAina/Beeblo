@@ -73,6 +73,14 @@ BEGIN
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE TRIGGER after_add_commande AFTER INSERT
+ON commande FOR EACH ROW
+BEGIN
+	UPDATE panier SET termine = 1 WHERE id_panier = NEW.id_panier;
+END //
+DELIMITER ;
+
 CREATE VIEW view_panier AS
 SELECT p.*, pt.* FROM panier AS p JOIN panier_produit AS pd ON pd.id_panier = p.id_panier JOIN produit AS pt ON pt.id_produit = pd.id_produit WHERE p.termine = 0;
 
@@ -89,12 +97,52 @@ LEFT JOIN promotion_produit AS pp ON pp.id_produit = p.id_produit
 LEFT JOIN promotion AS pr ON pr.id_promotion = pp.id_promotion AND pr.date_expiration_promotion > NOW();
 
 CREATE VIEW view_promotion AS
-SELECT p.*, pp.id_produit, pc.id_commande, (
+SELECT p.*,
+  (CASE WHEN (COUNT(pp.id_produit)) THEN true ELSE false END) AS promo_for_produit,
+  (CASE WHEN (COUNT(pc.id_commande)) THEN true ELSE false END) AS promo_for_commande,
+  (
     CASE
-    WHEN (pp.id_produit IS NULL AND pp.id_produit IS NULL) THEN true
-    ELSE false
+    WHEN (pp.id_produit IS NULL AND pc.id_commande IS NULL) THEN false
+    ELSE true
 	END
-) AS can_delete
+) AS used
 FROM promotion AS p
 LEFT JOIN promotion_produit AS pp ON pp.id_promotion = p.id_promotion
 LEFT JOIN promotion_commande AS pc ON pc.id_promotion = p.id_promotion;
+
+CREATE VIEW view_commande AS
+SELECT c.id_commande,
+			c.numero_commande,
+			c.date_commande,
+			p.id_panier id_panier,
+      p.id_acheteur,
+      c.id_status,
+      s.designation_status status,
+      mp.nom_moyen_paiement moyen_paiement,
+      (p.prix_total_panier - (p.prix_total_panier * (CASE WHEN (pr.id_promotion IS NULL) THEN 0 ELSE (pr.reduction_promotion / 100) END))) prix_commande,
+      (CASE WHEN (pr.id_promotion IS NULL) THEN false ELSE true END) has_promo,
+      pr.reduction_promotion,
+      pr.code_promotion
+FROM commande AS c
+LEFT JOIN promotion_commande AS pc ON pc.id_commande = c.id_commande
+LEFT JOIN promotion AS pr ON pr.id_promotion = pc.id_promotion
+LEFT JOIN panier AS p ON p.id_panier = c.id_panier
+LEFT JOIN status AS s ON s.id_status = c.id_status
+LEFT JOIN moyen_paiement AS mp ON mp.id_moyen_paiement = c.id_moyen_paiement;
+
+CREATE VIEW view_commande_produit AS
+SELECT vc.id_commande,
+			vc.numero_commande,
+      vc.prix_commande,
+      vp.id_produit,
+      vp.nom_produit,
+      vp.numero_produit,
+      vp.prix_produit,
+      pp.quantite,
+      vp.stock_produit,
+      vp.categorie,
+      vc.has_promo,
+      vc.code_promotion
+FROM view_commande AS vc
+LEFT JOIN panier_produit AS pp ON pp.id_panier = vc.id_panier
+LEFT JOIN view_produit AS vp ON vp.id_produit = pp.id_produit;

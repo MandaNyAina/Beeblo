@@ -60,4 +60,14 @@ route.post("/verifyCode", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
+route.get("/getAll/:type", token, (req, res) => {
+  promotion.get(req.params.type)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
+route.get("/getbyId/:id", token, (req, res) => {
+  promotion.getById(req.params.id)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
 module.exports = route;
