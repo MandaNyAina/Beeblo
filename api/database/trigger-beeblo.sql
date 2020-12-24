@@ -82,7 +82,9 @@ END //
 DELIMITER ;
 
 CREATE VIEW view_panier AS
-SELECT p.*, pt.* FROM panier AS p JOIN panier_produit AS pd ON pd.id_panier = p.id_panier JOIN produit AS pt ON pt.id_produit = pd.id_produit WHERE p.termine = 0;
+SELECT p.*, pt.* FROM panier AS p
+LEFT JOIN panier_produit AS pd ON pd.id_panier = p.id_panier
+LEFT JOIN produit AS pt ON pt.id_produit = pd.id_produit WHERE p.termine = 0;
 
 CREATE VIEW view_promotion_produit AS
 SELECT pr.*,  p.*, pp.est_active FROM promotion AS pr
@@ -146,3 +148,65 @@ SELECT vc.id_commande,
 FROM view_commande AS vc
 LEFT JOIN panier_produit AS pp ON pp.id_panier = vc.id_panier
 LEFT JOIN view_produit AS vp ON vp.id_produit = pp.id_produit;
+
+DELIMITER //
+CREATE TRIGGER after_update_commande AFTER UPDATE
+ON commande FOR EACH ROW
+BEGIN
+    DECLARE prix_commande FLOAT;
+    DECLARE id_acheteur  varchar(255);
+    DECLARE prix_tva FLOAT;
+    DECLARE prix_ht FLOAT;
+    DECLARE exist_facture INT;
+    SET exist_facture = (SELECT COUNT(facture.id_commande) FROM facture WHERE facture.id_commande = NEW.id_commande);
+    SET prix_commande = (SELECT wc.prix_commande FROM view_commande AS wc WHERE wc.id_commande = NEW.id_commande);
+    SET id_acheteur = (SELECT wc.id_acheteur FROM view_commande AS wc WHERE wc.id_commande = NEW.id_commande);
+    SET prix_tva = ((prix_commande * 20) / 100);
+    SET prix_ht = (prix_commande - prix_tva);
+	IF (NEW.id_status = 15 AND exist_facture = 0) THEN
+        INSERT INTO facture SET
+        facture.numero_facture = (SELECT CONCAT((SELECT UPPER(LEFT(MD5(RAND()), 5))) , (SELECT UNIX_TIMESTAMP(CURRENT_TIMESTAMP)))),
+        facture.prix_ht = prix_ht,
+        facture.prix_tva = prix_tva,
+        facture.prix_ttc = prix_commande,
+        facture.id_acheteur = id_acheteur,
+        facture.id_commande = NEW.id_commande;
+  ELSEIF NEW.id_status = 14 THEN
+    	UPDATE livraison SET livraison.id_status = 11;
+	END IF;
+END //
+DELIMITER ;
+
+CREATE VIEW view_facture AS
+SELECT
+	f.numero_facture, f.prix_ht, f.prix_tva, f.prix_ttc,
+    ac.numero_client_acheteur, ac.id_acheteur, ac.nom_acheteur, ac.prenom_acheteur, ac.email_acheteur, ac.adresse_acheteur, ac.code_postal, ac.pays_acheteur,
+    vcp.id_commande, vcp.numero_commande, vcp.prix_commande, vcp.has_promo promotion_commande, vcp.code_promotion, vcp.id_produit, vcp.nom_produit, vcp.categorie, vcp.prix_produit, vcp.quantite, wp.reduction_promotion promotion_produit
+FROM facture AS f
+LEFT JOIN acheteur AS ac ON ac.id_acheteur = f.id_acheteur
+LEFT JOIN view_commande_produit AS vcp ON vcp.id_commande = f.id_commande
+LEFT JOIN view_produit AS wp ON wp.id_produit = vcp.id_produit;
+
+CREATE VIEW view_categorie AS
+SELECT c.*, (CASE WHEN ((SELECT COUNT(*) FROM produit WHERE produit.id_categorie = c.id_categorie) != 0) THEN false ELSE true END) can_delete
+FROM categorie AS c
+
+CREATE VIEW view_livraison_commande AS
+SELECT
+l.*,
+a.nom_acheteur, a.prenom_acheteur, a.numero_client_acheteur, a.adresse_acheteur, a.code_postal, a.ville_acheteur, a.pays_acheteur,
+c.numero_commande, c.date_commande,
+vc.status, vc.prix_commande
+FROM livraison AS l
+JOIN acheteur AS a ON a.id_acheteur = l.id_acheteur
+JOIN commande AS c ON c.id_livraison = l.id_livraison
+JOIN view_commande AS vc ON vc.id_commande = c.id_commande
+JOIN status AS s ON s.id_status = l.id_status
+
+CREATE VIEW view_livraison AS
+SELECT
+l.*,
+a.nom_acheteur, a.prenom_acheteur, a.numero_client_acheteur, a.adresse_acheteur, a.code_postal, a.ville_acheteur, a.pays_acheteur
+FROM livraison AS l
+JOIN acheteur AS a ON a.id_acheteur = l.id_acheteur
+JOIN status AS s ON s.id_status = l.id_status

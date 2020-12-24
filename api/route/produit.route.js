@@ -44,8 +44,32 @@ route.get("/getAll/:page/:block", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
+route.get("/filterBy/:type", token, (req, res) => {
+  produit.filterGet(req.params.type, req.body.value)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
 route.get("/getById/:id", token, (req, res) => {
   produit.getById(req.params.id)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
+route.route("/category").post(token, (req, res) => {
+  produit.createCategory(req.body.nom_categorie)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+}).get(token, (req, res) => {
+  produit.getCategory()
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
+route.route("/category/:id").post(token, (req, res) => {
+  produit.updateCategory(req.params.id, req.body.nom_categorie)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+}).get(token, (req, res) => {
+  produit.getCategoryById(req.params.id)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+}).delete(token, (req, res) => {
+  produit.deleteCategorie(req.params.id)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 

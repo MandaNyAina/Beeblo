@@ -3,7 +3,7 @@ const crypto = require('crypto'),
     bcrypt = require('bcrypt'),
     iv = crypto.randomBytes(16),
     jwt = require('jsonwebtoken');
-    
+
 require('dotenv').config();
 
 module.exports.getCurrentDateAndTime = () => {
@@ -93,4 +93,8 @@ module.exports.response_ko = (res, err) => {
 module.exports.generateToken = (data) => {
   return jwt.sign({ exp: Math.floor(Date.now() / 1000) + (60 * 60), data},
           process.env.TOKEN_KEY);
+}
+
+module.exports.generateNumber = () => {
+  return this.generateString(5)+Date.now()
 }

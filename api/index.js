@@ -29,13 +29,21 @@ const acheteur = require('./route/acheteur.route'),
       admin = require('./route/admin.route'),
       login = require('./route/login.route'),
       produit = require('./route/produit.route'),
-      promotion = require('./route/promotion.route');
+      promotion = require('./route/promotion.route'),
+      livraison = require('./route/livraison.route'),
+      commandes = require('./route/commande.route'),
+      panier = require('./route/panier.route'),
+      beeblo = require('./route/beeblo.route');
 
 app.use(`${prefix}/acheteur`, acheteur);
 app.use(`${prefix}/admin`, admin);
+app.use(`${prefix}/beebloConfig`, beeblo)
 app.use(`${prefix}/login`, login);
 app.use(`${prefix}/produit`, produit);
 app.use(`${prefix}/promotion`, promotion);
+app.use(`${prefix}/livraison`, livraison);
+app.use(`${prefix}/commandes`, commandes);
+app.use(`${prefix}/panier`, panier)
 
 // run server
 app.listen(process.env.PORT, () => {
