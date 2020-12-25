@@ -37,7 +37,7 @@ const acheteur = require('./route/acheteur.route'),
 
 app.use(`${prefix}/acheteur`, acheteur);
 app.use(`${prefix}/admin`, admin);
-app.use(`${prefix}/beebloConfig`, beeblo)
+app.use(`${prefix}/siteConfig`, beeblo)
 app.use(`${prefix}/login`, login);
 app.use(`${prefix}/produit`, produit);
 app.use(`${prefix}/promotion`, promotion);

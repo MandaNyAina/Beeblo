@@ -1,0 +1,24 @@
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+
+// If you want to add something do it here
+@import "custom";
+
+.btn-primary {
+  border: 0 !important;
+  background-color: #1d2445 !important;
+}
+
+.bg-primary {
+  border: 0 !important;
+  background-color: #1d2445 !important;
+}
+
+.btn-primary:hover {
+  border: 0 !important;
+  color: #1d2445 !important;
+  background-color: #f9c04f !important;
+}
