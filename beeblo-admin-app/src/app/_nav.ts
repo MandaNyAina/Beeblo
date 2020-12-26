@@ -42,9 +42,31 @@ export const navItems: INavData[] = [
     icon: 'icon-layers'
   },
   {
+    name: 'Promotions',
+    url: '/promotion',
+    icon: 'icon-star',
+    children: [
+      {
+        name: 'Listes',
+        url: '/promotion/liste-promo',
+        icon: 'icon-list'
+      },
+      {
+        name: 'Consultation',
+        url: '/promotion/consultation',
+        icon: 'icon-screen-desktop'
+      },
+      {
+        name: 'Promotion produit',
+        url: '/promotion/produit',
+        icon: 'icon-check'
+      }
+    ]
+  },
+  {
     name: 'Categorie',
     url: '/categorie',
-    icon: 'icon-basket-loaded'
+    icon: 'icon-puzzle'
   },
   {
     name: 'Etat',
@@ -92,9 +114,31 @@ export const navItems: INavData[] = [
     name: 'Parametrage'
   },
   {
+    name: 'Aide & Faq',
+    url: '/beeblo-aide',
+    icon: 'icon-note'
+  },
+  {
     name: 'Information du site',
     url: '/beeblo-info',
     icon: 'icon-info'
+  },
+  {
+    name: 'Configuration site',
+    url: '/beeblo-config',
+    icon: 'icon-settings',
+    children: [
+      {
+        name: 'Gestion des menus',
+        url: '/beeblo-config/menu',
+        icon: 'icon-graph'
+      },
+      {
+        name: 'Gestion des filtres',
+        url: '/beeblo-config/filtre',
+        icon: 'icon-pie-chart'
+      }
+    ]
   },
   {
     name: 'E-mail du beeblo',

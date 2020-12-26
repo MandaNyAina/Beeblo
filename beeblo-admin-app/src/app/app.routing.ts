@@ -63,6 +63,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/produit/produit.module').then(m => m.ProduitModule)
       },
       {
+        path: 'promotion',
+        loadChildren: () => import('./views/promotion/promotion.module').then(m => m.PromotionModule)
+      },
+      {
         path: 'categorie',
         loadChildren: () => import('./views/categorie/categorie.module').then(m => m.CategorieModule)
       },
@@ -85,6 +89,14 @@ export const routes: Routes = [
       {
         path: 'transaction',
         loadChildren: () => import('./views/transaction/transaction.module').then(m => m.TransactionModule)
+      },
+      {
+        path: 'beeblo-aide',
+        loadChildren: () => import('./views/parametrage/beeblo-faq-aide/beeblo-faq-aide.module').then(m => m.BeebloFaqAideModule)
+      },
+      {
+        path: 'beeblo-config',
+        loadChildren: () => import('./views/parametrage/beeblo-config/beeblo-config.module').then(m => m.BeebloConfigModule)
       },
       {
         path: 'beeblo-info',
