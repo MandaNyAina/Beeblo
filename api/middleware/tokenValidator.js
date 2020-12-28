@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-module.exports.super_admin = (req, res, next) => {
+module.exports = (req, res, next) => {
     try {
         let header = req.headers.authorization.split(" ");
         let token = header[1];

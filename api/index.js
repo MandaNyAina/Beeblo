@@ -1,4 +1,5 @@
-const app = require('express')(),
+const express = require('express'),
+      app = express(),
       cors = require('cors'),
       bodyParser = require('body-parser'),
       db = require('./config/database'),
@@ -33,7 +34,10 @@ const acheteur = require('./route/acheteur.route'),
       livraison = require('./route/livraison.route'),
       commandes = require('./route/commande.route'),
       panier = require('./route/panier.route'),
-      beeblo = require('./route/beeblo.route');
+      beeblo = require('./route/beeblo.route'),
+      site = require('./route/site.route'),
+      aide = require('./route/aide.route'),
+      grant = require('./route/grant.route');
 
 app.use(`${prefix}/acheteur`, acheteur);
 app.use(`${prefix}/admin`, admin);
@@ -43,7 +47,13 @@ app.use(`${prefix}/produit`, produit);
 app.use(`${prefix}/promotion`, promotion);
 app.use(`${prefix}/livraison`, livraison);
 app.use(`${prefix}/commandes`, commandes);
-app.use(`${prefix}/panier`, panier)
+app.use(`${prefix}/panier`, panier);
+app.use(`${prefix}/site`, site);
+app.use(`${prefix}/aide`, aide);
+app.use(`${prefix}/grant`, grant);
+
+// static route
+app.use(`${prefix}/static`, express.static(__dirname + '/public'));
 
 // run server
 app.listen(process.env.PORT, () => {

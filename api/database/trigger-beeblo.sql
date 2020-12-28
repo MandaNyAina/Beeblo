@@ -194,6 +194,7 @@ FROM categorie AS c
 CREATE VIEW view_livraison_commande AS
 SELECT
 l.*,
+lt.type_livraison, lv.nom_livreur, lv.telephone_livreur, lv.email_livreur,
 a.nom_acheteur, a.prenom_acheteur, a.numero_client_acheteur, a.adresse_acheteur, a.code_postal, a.ville_acheteur, a.pays_acheteur,
 c.numero_commande, c.date_commande,
 vc.status, vc.prix_commande
@@ -201,12 +202,32 @@ FROM livraison AS l
 JOIN acheteur AS a ON a.id_acheteur = l.id_acheteur
 JOIN commande AS c ON c.id_livraison = l.id_livraison
 JOIN view_commande AS vc ON vc.id_commande = c.id_commande
-JOIN status AS s ON s.id_status = l.id_status
+JOIN livraison_type AS lt ON lt.id_type_livraison = l.id_type_livraison
+JOIN livreur AS lv ON lv.id_livreur = l.id_acheteur
+JOIN status AS s ON s.id_status = l.id_status;
 
 CREATE VIEW view_livraison AS
 SELECT
 l.*,
+lt.type_livraison, lv.nom_livreur, lv.telephone_livreur, lv.email_livreur,
 a.nom_acheteur, a.prenom_acheteur, a.numero_client_acheteur, a.adresse_acheteur, a.code_postal, a.ville_acheteur, a.pays_acheteur
 FROM livraison AS l
 JOIN acheteur AS a ON a.id_acheteur = l.id_acheteur
-JOIN status AS s ON s.id_status = l.id_status
+JOIN livraison_type AS lt ON lt.id_type_livraison = l.id_type_livraison
+JOIN livreur AS lv ON lv.id_livreur = l.id_acheteur
+JOIN status AS s ON s.id_status = l.id_status;
+
+CREATE VIEW view_type_livraison AS
+SELECT lt.*, (CASE WHEN (COUNT(l.id_livraison) > 0) THEN false ELSE true END) can_delete
+FROM livraison_type AS lt
+LEFT JOIN livraison AS l ON l.id_type_livraison = lt.id_type_livraison;
+
+CREATE VIEW view_livreur AS
+SELECT lv.*, (CASE WHEN (COUNT(l.id_livraison) > 0) THEN false ELSE true END) can_delete
+FROM livreur AS lv
+LEFT JOIN livraison AS l ON l.id_livreur = lv.id_livreur;
+
+CREATE VIEW view_groupe_grant AS
+SELECT guig.*, am.name, am.submenu, am.main_menu
+FROM groupe_user_grant_menu AS guig
+JOIN admin_menu AS am ON am.id_admin_menu = guig.id_menu_admin

@@ -6,9 +6,9 @@ require('dotenv').config();
 
 class Livraison {
 
-  create(data) {
+  create(table, data) {
     return new Promise((resolve, reject) => {
-      database.insert("livraison", data)
+      database.insert(table, data)
       .then(res => resolve(res)).catch(err => reject(err));
     })
   }
@@ -20,9 +20,9 @@ class Livraison {
     })
   }
 
-  get() {
+  get(table) {
     return new Promise((resolve, reject) => {
-      database.select("view_livraison")
+      database.select(table)
       .then(res => resolve(res)).catch(err => reject(err));
     })
   }
@@ -44,6 +44,34 @@ class Livraison {
   getLivraisonCommandeById(id_livraison) {
     return new Promise((resolve, reject) => {
       database.select("view_livraison_commande", "*", `id_livraison = ${id_livraison}`)
+      .then(res => resolve(res[0])).catch(err => reject(err));
+    })
+  }
+
+  changeStatusTypeLivraison(id_type_livraison, id_status) {
+    return new Promise((resolve, reject) => {
+      database.update("livraison_type", {id_status}, `id_type_livraison = ${id_type_livraison}`)
+      .then(res => resolve(res)).catch(err => reject(err));
+    })
+  }
+
+  getByIdTypeLivraison(id_type_livraison) {
+    return new Promise((resolve, reject) => {
+      database.select("view_type_livraison", "*", `id_type_livraison = ${id_type_livraison}`)
+      .then(res => resolve(res[0])).catch(err => reject(err));
+    })
+  }
+
+  changeStatusLivreur(id_livreur, id_status) {
+    return new Promise((resolve, reject) => {
+      database.update("livreur", {id_status}, `id_livreur = ${id_livreur}`)
+      .then(res => resolve(res)).catch(err => reject(err));
+    })
+  }
+
+  getByIdLivreur(id_livreur) {
+    return new Promise((resolve, reject) => {
+      database.select("view_livreur", "*", `id_livreur = ${id_livreur}`)
       .then(res => resolve(res[0])).catch(err => reject(err));
     })
   }

@@ -37,6 +37,14 @@ li:hover {
   font-weight: bold;
 }
 
+.footer-table {
+  width: 100%;
+}
+
+.logo-footer {
+  width: 10%;
+}
+
 @media only screen and (max-width: 900px) {
   .reseau {
     width: 85%;
@@ -48,5 +56,9 @@ li:hover {
 
   .p-col {
     font-size: 16px;
+  }
+
+  .footer-table {
+    font-size: 10px;
   }
 }
