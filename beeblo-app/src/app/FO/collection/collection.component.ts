@@ -10,6 +10,17 @@ export class CollectionComponent implements OnInit {
   currency: String;
   produit?: Array<any>;
   page: Array<number> = [];
+  categorie?: string = "Categorie";
+  taille: string = "Taille";
+  couleur: string = "Couleur";
+  prix: string = "Prix";
+
+  categories: string[];
+  tailles: string[];
+  couleurs: string[];
+  _prix: string[];
+
+
   constructor(
     private msg: MessagesService
   ) { }
@@ -44,6 +55,32 @@ export class CollectionComponent implements OnInit {
 
   onAddPanier(id) {
     this.msg.success("Ajouté au panier", `Produit ${id} ajouté au panier`)
+  }
+
+  buildAutoComplete(elements: any, str_search: string): string[] {
+    return elements.map(el => {
+      if (el.includes(str_search)) return el;
+    }).filter(value  => {return value != null;});
+  }
+
+  search(data, filtre_name) {
+    switch (filtre_name) {
+      case 'get_categorie':
+        this.categories = this.buildAutoComplete(['Cat 1', 'Cat 2' , 'Cat 3'], data.query)
+        break;
+
+      case 'get_taille':
+        this.tailles = this.buildAutoComplete(['S', 'M' , 'L', 'X'], data.query)
+        break;
+
+      case 'get_couleur':
+        this.tailles = this.buildAutoComplete(['Rouge', 'Vert'], data.query)
+        break;
+
+      case 'get_prix':
+        this.tailles = this.buildAutoComplete(['0 - 100', '100 - 200', '200 - 500'], data.query)
+        break;
+    }
   }
 
 }

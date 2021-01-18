@@ -12,4 +12,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
       this.primengConfig.ripple = true;
   }
+
+  onActivate() {
+    window.scroll(0,0);
+  }
 }

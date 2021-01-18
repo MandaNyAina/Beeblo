@@ -19,6 +19,7 @@ import {TooltipModule} from 'primeng/tooltip';
 import { FormsModule } from '@angular/forms';
 import {ToastModule} from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MessageService } from 'primeng/api';
     FormsModule,
     BreadcrumbModule,
     TooltipModule,
+    AutoCompleteModule,
     ToastModule
   ],
   providers: [MessageService],

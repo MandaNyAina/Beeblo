@@ -92,3 +92,36 @@ body {
 .b-success {
   background-color: $success;
 }
+
+.p-autocomplete {
+  width: 100% !important;
+  font-family: $primary-font !important;
+}
+
+.p-autocomplete-dd .p-autocomplete-dropdown {
+  background-color: $light;
+  color: $black;
+  border: 0px;
+  padding-bottom: 5%;
+}
+
+.p-autocomplete {
+  margin-bottom: 5%;
+}
+
+.p-button:enabled:hover {
+  background-color: $black !important;
+}
+
+.p-autocomplete-dd .p-autocomplete-input, .p-autocomplete-dd .p-autocomplete-multiple-container{
+  border: 1px solid $black !important;
+  font-size: 20px;
+  font-family: $primary-font;
+  font-weight: bold;
+  color: $light;
+}
+
+.p-inputtext:enabled:focus {
+  box-shadow: 0 0 0 0 #a6d5fa !important;
+  border-color: none;
+}

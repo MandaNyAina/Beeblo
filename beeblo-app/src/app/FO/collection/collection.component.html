@@ -25,24 +25,14 @@
         <button type="button" pButton pRipple class="custom-input-btn">OK</button>
       </div>
       <h1 class="c-primary p-mt-6">FILTRES</h1>
-      <div class="p-inputgroup">
-        <select class="input-custom" type="text" pInputText>
-          <option>Catégorie</option>
-        </select>
-        <button type="button" pButton pRipple class="custom-input-btn"><i class="pi pi-angle-down" style="font-size: 20px;"></i></button>
-      </div>
-      <div class="p-inputgroup">
-        <input class="input-custom" type="text" pInputText placeholder="Tailles">
-        <button type="button" pButton pRipple class="custom-input-btn"><i class="pi pi-angle-down" style="font-size: 20px;"></i></button>
-      </div>
-      <div class="p-inputgroup">
-        <input class="input-custom" type="text" pInputText placeholder="Couleurs">
-        <button type="button" pButton pRipple class="custom-input-btn"><i class="pi pi-angle-down" style="font-size: 20px;"></i></button>
-      </div>
-      <div class="p-inputgroup">
-        <input class="input-custom" type="text" pInputText placeholder="Prix">
-        <button type="button" pButton pRipple class="custom-input-btn"><i class="pi pi-angle-down" style="font-size: 20px;"></i></button>
-      </div>
+      <p-autoComplete [(ngModel)]="categorie" [suggestions]="categories" (completeMethod)="search($event, 'get_categorie')" [dropdown]="true">
+      </p-autoComplete>
+      <p-autoComplete [(ngModel)]="taille" [suggestions]="tailles" (completeMethod)="search($event, 'get_taille')" [dropdown]="true">
+      </p-autoComplete>
+      <p-autoComplete [(ngModel)]="couleur" [suggestions]="couleurs" (completeMethod)="search($event, 'get_couleur')" [dropdown]="true">
+      </p-autoComplete>
+      <p-autoComplete [(ngModel)]="prix" [suggestions]="_prix" (completeMethod)="search($event, 'get_prix')" [dropdown]="true">
+      </p-autoComplete>
     </div>
   </div>
   <div class="p-col-9 article wrapper-article">
