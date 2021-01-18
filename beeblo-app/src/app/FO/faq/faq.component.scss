@@ -1,0 +1,102 @@
+@import '../../../styles.scss';
+
+.condition-title {
+  text-align: center;
+  color: $primary;
+  border: 2px solid $primary;
+  width: 20%;
+  margin: auto;
+}
+
+input.ng-untouched.ng-pristine.ng-valid.p-inputtext.p-component {
+  width: 100%;
+}
+
+input.ng-pristine.ng-valid.p-inputtext.p-component.ng-touched {
+  width: 100%;
+}
+
+span.p-input-icon-right {
+  width: 100%;
+  margin-top: 3%;
+}
+
+.searchbar {
+  width: 70%;
+  margin: auto;
+}
+
+.searchbar-input {
+  color: $light;
+  font-style: italic;
+  text-align: center;
+  border: 0;
+  border-bottom: 1px solid $black;
+}
+
+.faq-content {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: $primary;
+  border-radius: 50%;
+  float: left;
+  margin-right: 10px;
+}
+
+.user {
+  padding-top: 10px;
+}
+
+.reponse {
+  width: 90%;
+  margin-left: 10%;
+}
+
+.page-number {
+  width: 50px;
+  max-width: 150px;
+  height: 50px;
+  position: relative;
+  border: 1px solid #a3a2a2;
+  word-break: break-all !important;
+  box-sizing: border-box;
+  margin-top: 2%;
+  transition: .5s all;
+}
+
+.page-number:hover {
+  color: $primary;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: .5s all;
+}
+
+.page-number-style {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  overflow: auto;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.active-pagination {
+  background-color: $light;
+  color: $primary;
+  margin: auto;
+  margin-bottom: 5%;
+}
+
+.faq-item, .faq-item-question {
+  margin-left: 50px;
+}
+
+.faq-item-question {
+  font-style: italic;
+}

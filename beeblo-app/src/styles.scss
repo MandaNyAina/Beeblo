@@ -8,6 +8,7 @@ $success: #00aa5b;
 $danger: #cf3b42;
 $light: #878787;
 $black: #606060;
+$light-secondary: #f2f3f7;
 
 @font-face {
   font-family: 'APDE';
@@ -45,6 +46,10 @@ body {
   font-family: $primary-font;
   margin: 0;
   padding: 0;
+}
+
+* {
+  outline: none;
 }
 
 .wrapper-body {
@@ -106,7 +111,7 @@ body {
 }
 
 .p-autocomplete {
-  margin-bottom: 5%;
+  margin-bottom: 10%;
 }
 
 .p-button:enabled:hover {
@@ -119,6 +124,7 @@ body {
   font-family: $primary-font;
   font-weight: bold;
   color: $light;
+  height: 40px;
 }
 
 .p-inputtext:enabled:focus {

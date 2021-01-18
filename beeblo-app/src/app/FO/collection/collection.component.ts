@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessagesService } from 'src/app/services/messages/messages.service';
 
 @Component({
@@ -22,7 +23,8 @@ export class CollectionComponent implements OnInit {
 
 
   constructor(
-    private msg: MessagesService
+    private msg: MessagesService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -55,6 +57,10 @@ export class CollectionComponent implements OnInit {
 
   onAddPanier(id) {
     this.msg.success("Ajouté au panier", `Produit ${id} ajouté au panier`)
+  }
+
+  openProduit(id) {
+    this.router.navigate(['produit', id]);
   }
 
   buildAutoComplete(elements: any, str_search: string): string[] {

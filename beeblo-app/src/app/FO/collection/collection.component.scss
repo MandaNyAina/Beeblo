@@ -73,7 +73,40 @@ div.p-inputgroup.btn {
   padding-bottom: 10px;
 }
 
+.btn-voir-fiche {
+  color: $primary;
+  background-color: #ffffff;
+  transition: 0.5s all;
+  width: 100%;
+  border: 2px solid $primary;
+  height: 35px;
+  font-family: $primary-font;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.btn-voir-fiche {
+  color: $primary;
+  background-color: #ffffff;
+  transition: 0.5s all;
+  width: 100%;
+  border: 2px solid $primary;
+  height: 35px;
+  font-family: $primary-font;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .btn-panier:hover {
+  color: #ffffff;
+  background-color: $primary;
+  transition: 0.5s all;
+  cursor: pointer;
+}
+
+.btn-voir-fiche:hover {
   color: #ffffff;
   background-color: $primary;
   transition: 0.5s all;

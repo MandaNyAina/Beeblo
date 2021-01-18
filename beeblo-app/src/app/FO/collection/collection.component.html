@@ -25,7 +25,7 @@
         <button type="button" pButton pRipple class="custom-input-btn">OK</button>
       </div>
       <h1 class="c-primary p-mt-6">FILTRES</h1>
-      <p-autoComplete [(ngModel)]="categorie" [suggestions]="categories" (completeMethod)="search($event, 'get_categorie')" [dropdown]="true">
+      <p-autoComplete class="auto-complete-custom" [(ngModel)]="categorie" [suggestions]="categories" (completeMethod)="search($event, 'get_categorie')" [dropdown]="true">
       </p-autoComplete>
       <p-autoComplete [(ngModel)]="taille" [suggestions]="tailles" (completeMethod)="search($event, 'get_taille')" [dropdown]="true">
       </p-autoComplete>
@@ -49,6 +49,9 @@
         </div>
         <div  class="article-element">
           <button (click)="onAddPanier(item.id)" class="btn-panier">Ajouter au panier</button>
+        </div>
+        <div  class="article-element">
+          <button (click)="openProduit(item.id)" class="btn-voir-fiche">Voir fiche produit</button>
         </div>
       </div>
     </div>

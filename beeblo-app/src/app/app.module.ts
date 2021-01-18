@@ -20,6 +20,10 @@ import { FormsModule } from '@angular/forms';
 import {ToastModule} from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import {AutoCompleteModule} from 'primeng/autocomplete';
+import { AproposComponent } from './FO/apropos/apropos.component';
+import { ConditionComponent } from './FO/condition/condition.component';
+import { FaqComponent } from './FO/faq/faq.component';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     ProduitComponent,
     CollectionComponent,
     PanierComponent,
-    AuthComponent   ],
+    AuthComponent,
+    AproposComponent,
+    ConditionComponent,
+    FaqComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,7 +50,8 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     BreadcrumbModule,
     TooltipModule,
     AutoCompleteModule,
-    ToastModule
+    ToastModule,
+    InputTextModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

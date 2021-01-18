@@ -1,0 +1,58 @@
+@import '../../../styles.scss';
+
+.apropos {
+  background-color: $light-secondary;
+}
+
+.apropos-title {
+  border: 1px solid $secondary;
+  color: $secondary;
+  font-size: 24px;
+  padding: 25px;
+  text-align: center;
+  font-weight: bold;
+  width: 50%;
+}
+
+.apropos-top {
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+div.p-grid {
+  margin: 0;
+}
+
+.img-apropos-top {
+  background-image: url('../../../assets/img/apropos/apropos1.png');
+  background-size: contain;
+  background-position-x: right;
+  background-repeat: no-repeat;
+}
+
+.img-apropos-bottom {
+  background-image: url('../../../assets/img/apropos/apropos2.png');
+  background-size: 100%;
+  padding: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.apropos-text-bottom {
+  background-color: #ffffff;
+  width: 40%;
+  padding: 4%;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.apropos-text {
+  margin-top: 10%;
+  font-size: 20px;
+  line-height: 20px;
+  background-color: #d4d6de;
+  border-radius: 25px;
+  -webkit-box-shadow: -1px 8px 150px 108px #1d244528;
+  -moz-box-shadow: -1px 8px 150px 108px #1d244528;
+  box-shadow: -1px 8px 150px 108px #1d244528;
+}
