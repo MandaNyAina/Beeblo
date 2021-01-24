@@ -102,7 +102,19 @@ export const navItems: INavData[] = [
   {
     name: 'Livraisons',
     url: '/livraison',
-    icon: 'icon-cursor'
+    icon: 'icon-cursor',
+    children: [
+      {
+        name: 'Liste',
+        url: '/livraison/liste',
+        icon: 'icon-list'
+      },
+      {
+        name: 'Livreur',
+        url: '/livraison/livreur',
+        icon: 'icon-user'
+      }
+    ]
   },
   {
     name: 'Transactions',

@@ -1,14 +1,34 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LivraisonComponent } from './livraison.component';
+import { ListeLivraisonComponent } from './liste-livraison/liste-livraison.component';
+import { LivreurComponent } from './livreur/livreur.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LivraisonComponent,
     data: {
-      title: 'Commandes'
-    }
+      title: 'Livraison'
+    },
+    children: [
+      {
+        path: '',
+        redirectTo: 'liste'
+      },
+      {
+        path: 'livreur',
+        component: LivreurComponent,
+        data: {
+          title: 'Liste'
+        }
+      },
+      {
+        path: 'liste',
+        component: ListeLivraisonComponent,
+        data: {
+          title: 'Livreur'
+        }
+      }
+    ]
   }
 ];
 
