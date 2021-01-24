@@ -5,6 +5,7 @@ import { AuthComponent } from './FO/auth/auth.component';
 import { CollectionComponent } from './FO/collection/collection.component';
 import { ConditionComponent } from './FO/condition/condition.component';
 import { FaqComponent } from './FO/faq/faq.component';
+import { HomeComponent } from './FO/home/home.component';
 import { HomepageComponent } from './FO/homepage/homepage.component';
 import { PanierComponent } from './FO/panier/panier.component';
 import { ProduitComponent } from './FO/produit/produit.component';
@@ -14,7 +15,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 const routes: Routes = [
   { path: "auth",  component: AuthComponent},
   { path: "", redirectTo:"homepage", pathMatch: "full" },
-  { path: "homepage", component: HomepageComponent },
+  // { path: "homepage", component: HomepageComponent },
+  { path: "homepage", component: HomeComponent },
   { path: "produit/:id", component: ProduitComponent },
   { path: "collection", component: CollectionComponent },
   { path: "panier", component: PanierComponent },

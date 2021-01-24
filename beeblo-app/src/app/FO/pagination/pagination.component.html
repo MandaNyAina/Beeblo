@@ -1,0 +1,3 @@
+<div *ngFor="let page of pages" class="pages">
+  <button [disabled]="page == '...'" (click)="onPagine(page)" class="page {{page == currentPage ? 'active' : ''}}">{{page}}</button>
+</div>

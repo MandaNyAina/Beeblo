@@ -24,6 +24,8 @@ import { AproposComponent } from './FO/apropos/apropos.component';
 import { ConditionComponent } from './FO/condition/condition.component';
 import { FaqComponent } from './FO/faq/faq.component';
 import {InputTextModule} from 'primeng/inputtext';
+import { HomeComponent } from './FO/home/home.component';
+import { PaginationComponent } from './FO/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +40,10 @@ import {InputTextModule} from 'primeng/inputtext';
     AuthComponent,
     AproposComponent,
     ConditionComponent,
-    FaqComponent
-  ],
+    FaqComponent,
+    HomeComponent,
+    PaginationComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

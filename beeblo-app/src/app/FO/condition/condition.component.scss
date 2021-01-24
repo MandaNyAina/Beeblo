@@ -35,3 +35,13 @@
   font-size: 20px;
   line-height: 20px;
 }
+
+@media only screen and (max-width: 900px) {
+  .condition-content-element {
+    width: 100%;
+  }
+
+  .condition-text-bottom {
+    width: 80%;
+  }
+}

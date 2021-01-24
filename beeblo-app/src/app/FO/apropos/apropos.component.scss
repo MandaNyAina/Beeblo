@@ -56,3 +56,26 @@ div.p-grid {
   -moz-box-shadow: -1px 8px 150px 108px #1d244528;
   box-shadow: -1px 8px 150px 108px #1d244528;
 }
+
+@media only screen and (max-width: 900px) {
+
+  .p-col-6 {
+    width: 100%;
+  }
+
+  .apropos-top {
+    margin: 5%;
+  }
+
+  .img-apropos-top {
+    display: none;
+  }
+
+  .apropos-text {
+    margin-top: 5%;
+  }
+
+  .apropos-text-bottom {
+    width: 80%;
+  }
+}

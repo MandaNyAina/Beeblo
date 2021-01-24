@@ -6,12 +6,10 @@
   <div class="p-col-9 wrapper-article">
     <table>
       <tr>
-        <td align="left" class="p-text-bold p-text-left">Article 1-12 sur 213</td>
-        <td align="right">
-          <div class="p-inputgroup btn">
-            <input class="input-custom filtre-btn p-text-center" type="text" pInputText placeholder="Filtre">
-            <button type="button" pButton pRipple class="custom-input-btn"><i class="pi pi-angle-down" style="font-size: 20px;"></i></button>
-          </div>
+        <td align="left" class="p-text-bold p-text-left">Article {{current_pagination}}</td>
+        <td align="center" class="filter-form">
+          <p-autoComplete class="auto-complete-custom" [(ngModel)]="filter" [suggestions]="filters" (completeMethod)="search($event, 'get_filter')" [dropdown]="true">
+          </p-autoComplete>
         </td>
       </tr>
     </table>
@@ -56,9 +54,7 @@
       </div>
     </div>
     <div class="pagination">
-      <div *ngFor="let item of page" class="page-number active-pagination">
-        <div class="page-number-style">{{item}}</div>
-      </div>
+      <app-pagination [block]="block_pagination" [length]="data_length" [max]="6" (setPage)="onChangePage($event)"></app-pagination>
     </div>
   </div>
 </div>

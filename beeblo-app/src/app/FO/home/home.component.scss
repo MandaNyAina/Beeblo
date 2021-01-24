@@ -1,0 +1,66 @@
+@import '../../../styles.scss';
+
+.title-home {
+  background-color: $secondary;
+  padding:5% 15%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.home {
+  font-weight: bold;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+  margin-top: 15%;
+}
+
+.home-table {
+  width: 100%;
+}
+
+.home-title-text {
+  font-family: 'Arkania';
+  color: $secondary;
+  font-size: 375px;
+  text-shadow: -45px 25px 20px #00000070;
+  font-weight: normal;
+}
+
+.home-btn {
+  text-align: center;
+  margin-top: 15%;
+  margin-bottom: 5%;
+}
+
+.home-btn-collection {
+  color: $secondary;
+  border: 2px $secondary solid;
+  padding: 20px 40px;
+  border-radius: 500px;
+  -webkit-border-radius: 500px;
+  font-weight: bold;
+  background-color: transparent;
+  transition: 0.5s all;
+  font-size: 20px;
+}
+
+.home-btn-collection:hover {
+  color: #ffffff;
+  border: 2px $primary solid;
+  cursor: pointer;
+  background-color: $primary;
+  transition: 0.5s all;
+}
+
+@media only screen and (max-width: 900px) {
+
+  .home {
+    width: 80%;
+  }
+
+  .home-title-text {
+    font-size: 250px;
+  }
+
+}

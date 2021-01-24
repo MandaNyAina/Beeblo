@@ -30,9 +30,14 @@ li:hover {
   width: 25%;
 }
 
+.social-img {
+  margin: 10px;
+  height: 35px;
+}
+
 .title-secondary {
   color: $secondary;
-  font-size: 18px;
+  font-size: 18px !important;
   margin-bottom: 5px;
   font-weight: bold;
 }
@@ -51,7 +56,7 @@ li:hover {
   }
 
   .title-secondary {
-    font-size: 14px;
+    font-size: 14px !important;
   }
 
   .p-col {

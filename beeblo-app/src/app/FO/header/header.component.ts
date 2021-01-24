@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   display: boolean = false;
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private route: Router) {
+    this.route.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.display = false;
+      }
+    });
   }
 
-  goto(e) {
-    console.log(e)
+  ngOnInit() {
   }
 
 }

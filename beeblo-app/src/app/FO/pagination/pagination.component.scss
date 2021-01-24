@@ -1,0 +1,29 @@
+@import '../../../styles.scss';
+
+.page {
+  background-color: #ffffff;
+  color: $primary;
+  width: min-content;
+  min-width: 50px;
+  text-align: center;
+  padding: 15px 0px;
+  margin-right: 5px;
+  cursor: pointer;
+  border: 1px solid #a3a2a2;
+}
+
+.active {
+  border: 1px solid #a3a2a2;
+  background-color: $light;
+  color: $primary;
+}
+
+.active:hover {
+  background-color: #a3a2a281;
+  cursor: pointer;
+  transition: .5s all;
+}
+
+.pages {
+  display: inline-block;
+}

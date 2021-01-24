@@ -46,16 +46,22 @@ body {
   font-family: $primary-font;
   margin: 0;
   padding: 0;
+  font-size: 20px;
+  line-height: 30px;
 }
 
 * {
   outline: none;
 }
 
+.p-component, .p-component * {
+  font-size: 16px !important;
+}
+
 .wrapper-body {
   padding-top: 3% !important;
   margin: auto !important;
-  width: 95% !important;
+  width: 90% !important;
 }
 
 .c-primary {
@@ -120,11 +126,15 @@ body {
 
 .p-autocomplete-dd .p-autocomplete-input, .p-autocomplete-dd .p-autocomplete-multiple-container{
   border: 1px solid $black !important;
-  font-size: 20px;
+  font-size: 18px !important;
   font-family: $primary-font;
   font-weight: bold;
   color: $light;
   height: 40px;
+}
+
+input.p-autocomplete-input.p-inputtext.p-component.ng-tns-c5-1.p-autocomplete-dd-input.ng-star-inserted {
+  text-align: center;
 }
 
 .p-inputtext:enabled:focus {

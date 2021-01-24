@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import {MenuItem} from 'primeng/api';
 
 @Component({
@@ -17,7 +17,14 @@ export class ProduitComponent implements OnInit {
   constructor(
     private activeRoute: ActivatedRoute,
     private route: Router
-  ) { }
+  ) {
+    this.route.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.ngOnInit();
+        window.scroll(0,0);
+      }
+    });
+  }
 
   ngOnInit() {
     this.idProduit = this.activeRoute.params['_value'].id;

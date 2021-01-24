@@ -40,8 +40,12 @@ table {
   padding-left: 10px;
   width: 100%;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px !important;
   background-color: #ffffff;
+}
+
+.filter-form {
+  width: 30%;
 }
 
 .custom-input-btn {
@@ -125,38 +129,10 @@ div.p-inputgroup.btn {
   margin-bottom: 2%;
 }
 
-.page-number {
-  width: 50px;
-  max-width: 150px;
-  height: 50px;
-  position: relative;
-  border: 1px solid #a3a2a2;
-  word-break: break-all !important;
-  box-sizing: border-box;
-  margin-top: 2%;
-  transition: .5s all;
-}
-
-.page-number:hover {
-  color: $primary;
-  background-color: #ffffff;
-  cursor: pointer;
-  transition: .5s all;
-}
-
-.page-number-style {
-  margin: auto;
-  position: absolute;
-  top: 50%;
-  left: 45%;
-  overflow: auto;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.active-pagination {
-  background-color: $light;
-  color: $primary;
+@media only screen and (max-width: 600px) {
+  .filter-form {
+    width: 40%;
+  }
 }
 
 @media only screen and (max-width: 900px) {

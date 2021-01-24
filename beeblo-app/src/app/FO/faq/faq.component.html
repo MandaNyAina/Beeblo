@@ -4,7 +4,7 @@
   </div>
   <div class="searchbar">
     <span class="p-input-icon-right">
-      <input class="searchbar-input" type="text" pInputText [(ngModel)]="question" placeholder="Posez une question">
+      <input (change)="onSearch($event)" class="searchbar-input" type="text" pInputText [(ngModel)]="question" placeholder="Posez une question">
       <i class="pi pi-search"></i>
     </span>
   </div>
@@ -33,10 +33,8 @@
         at in non nihil impedit, temporibus deserunt perspiciatis! Sunt, obcaecati consequuntur?</p>
       </div>
     </div>
-    <div>
-      <div class="page-number active-pagination">
-        <div class="page-number-style">1</div>
-      </div>
+    <div class="p-text-center p-mb-3">
+      <app-pagination [block]="12" [length]="100" [max]="6" (setPage)="onChangePage($event)"></app-pagination>
     </div>
   </div>
 </div>

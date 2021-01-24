@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FaqComponent implements OnInit {
   question: string;
+  data?: Array<any>;
+  page: number;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSearch($event) {
+    if ($event.type === 'change' && this.question) {
+      console.log(this.question);
+    }
+  }
+
+  onChangePage(event) {
+    this.page = event.page;
   }
 
 }

@@ -10,12 +10,19 @@ import { MessagesService } from 'src/app/services/messages/messages.service';
 export class CollectionComponent implements OnInit {
   currency: String;
   produit?: Array<any>;
-  page: Array<number> = [];
-  categorie?: string = "Categorie";
-  taille: string = "Taille";
-  couleur: string = "Couleur";
-  prix: string = "Prix";
 
+  page: number = 1;
+  data_length: number;
+  block_pagination: number;
+  current_pagination: string;
+
+  filter?: string = "Filtre";
+  categorie?: string = "Categorie";
+  taille?: string = "Taille";
+  couleur?: string = "Couleur";
+  prix?: string = "Prix";
+
+  filters: string[];
   categories: string[];
   tailles: string[];
   couleurs: string[];
@@ -30,6 +37,9 @@ export class CollectionComponent implements OnInit {
   ngOnInit() {
     this.currency = "€";
     this.getProduit();
+    this.block_pagination = 12;
+    this.data_length = Math.floor(this.produit.length / this.block_pagination);
+    this.current_pagination = `${this.page} - ${this.page * this.block_pagination} sur ${this.produit.length}`;
   }
 
   getProduit() {
@@ -47,11 +57,6 @@ export class CollectionComponent implements OnInit {
       { id: 11, image: "default-2.png", description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.", prix: 100 },
       { id: 12, image: "default-2.png", description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.", prix: 128 },
     ]
-    let i = 1;
-    while (i <= Math.floor(teste.length / 12)) {
-      this.page.push(i);
-      i++;
-    }
     this.produit = teste;
   }
 
@@ -80,13 +85,21 @@ export class CollectionComponent implements OnInit {
         break;
 
       case 'get_couleur':
-        this.tailles = this.buildAutoComplete(['Rouge', 'Vert'], data.query)
+        this.couleurs = this.buildAutoComplete(['Rouge', 'Vert'], data.query)
         break;
 
       case 'get_prix':
-        this.tailles = this.buildAutoComplete(['0 - 100', '100 - 200', '200 - 500'], data.query)
+        this._prix = this.buildAutoComplete(['0 - 100', '100 - 200', '200 - 500'], data.query)
+        break;
+
+      case 'get_filter':
+        this.filters = this.buildAutoComplete(['Par ordre croissant', 'Par ordre decroissant'], data.query)
         break;
     }
+  }
+
+  onChangePage(event) {
+    this.page = event.page;
   }
 
 }
