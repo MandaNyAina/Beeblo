@@ -20,9 +20,9 @@ class Beeblo {
     })
   }
 
-  get() {
+  get(rows) {
     return new Promise((resolve, reject) => {
-      database.select("beeblo", "*", "1 LIMIT 1").then(res => resolve(res[0])).catch(err => reject(err));
+      database.select("beeblo", rows, "1 LIMIT 1").then(res => resolve(res[0])).catch(err => reject(err));
     })
   }
 

@@ -5,7 +5,7 @@ const site = new Site;
 const fn = require('../modules/custom_function');
 const C = require('../modules/constante');
 
-route.post("/addMenu", token, (req, res) => {
+route.post("/addMenu", token.admin, (req, res) => {
   let data = {
     nom_menu: req.body.nom_menu,
     lien_menu: req.body.lien_menu,
@@ -16,7 +16,7 @@ route.post("/addMenu", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/updateMenu/:id", token, (req, res) => {
+route.post("/updateMenu/:id", token.admin, (req, res) => {
   let data = {
     nom_menu: req.body.nom_menu,
     lien_menu: req.body.lien_menu,
@@ -27,27 +27,27 @@ route.post("/updateMenu/:id", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.get("/getAllMenu", token, (req, res) => {
+route.get("/getAllMenu", token.admin, (req, res) => {
   site.get("menu")
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.get("/getMenu/:id", token, (req, res) => {
+route.get("/getMenu/:id", token.admin, (req, res) => {
   site.getById(req.params.id, "menu")
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.get("/checkMenu/:url", token, (req, res) => {
+route.get("/checkMenu/:url", token.admin, (req, res) => {
   site.activeMenu(req.params.url)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.delete("/deleteMenu/:id", token, (req, res) => {
+route.delete("/deleteMenu/:id", token.admin, (req, res) => {
   site.delete("menu", req.params.id)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/addFilter", token, (req, res) => {
+route.post("/addFilter", token.admin, (req, res) => {
   let data = {
     nom_filtre: req.body.nom_filtre,
     valeur_filtre: req.body.valeur_filtre,
@@ -67,7 +67,7 @@ route.get("/getFiltre/:id", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.delete("/deleteFiltre/:id", token, (req, res) => {
+route.delete("/deleteFiltre/:id", token.admin, (req, res) => {
   site.delete("filtre", req.params.id)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })

@@ -23,7 +23,7 @@ route.post("/updateStatus/:id", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.get("/getAll", token, (req, res) => {
+route.get("/getAll", token.admin, (req, res) => {
   livraison.get("livraison")
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
@@ -43,7 +43,7 @@ route.get("/getByCommande/:id", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/addType", token, (req, res) => {
+route.post("/addType", token.admin, (req, res) => {
   let data = {
     type_livraison: req.body.type_livraison,
     caracteristique_livraison: req.body.caracteristique_livraison,
@@ -54,22 +54,22 @@ route.post("/addType", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/updateStatusType/:id", token, (req, res) => {
+route.post("/updateStatusType/:id", token.admin, (req, res) => {
   livraison.changeStatusTypeLivraison(req.params.id, req.body.id_status)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.get("/getAllType", token, (req, res) => {
+route.get("/getAllType", token.admin, (req, res) => {
   livraison.get("view_type_livraison")
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.get("/getByIdType/:id", token, (req, res) => {
+route.get("/getByIdType/:id", token.admin, (req, res) => {
   livraison.getByIdTypeLivraison(req.params.id)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/addLivreur", token, (req, res) => {
+route.post("/addLivreur", token.admin, (req, res) => {
   let data = {
     nom_livreur: req.body.nom_livreur,
     description_livreur: req.body.description_livreur,
@@ -81,17 +81,17 @@ route.post("/addLivreur", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/updateStatusLivreur/:id", token, (req, res) => {
+route.post("/updateStatusLivreur/:id", token.admin, (req, res) => {
   livraison.changeStatusLivreur(req.params.id, req.body.id_status)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.get("/getAllType", token, (req, res) => {
+route.get("/getAllLivreur", token, (req, res) => {
   livraison.get("view_livreur")
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.get("/getByIdType/:id", token, (req, res) => {
+route.get("/getByIdLivreur/:id", token.admin, (req, res) => {
   livraison.getByIdLivreur(req.params.id)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })

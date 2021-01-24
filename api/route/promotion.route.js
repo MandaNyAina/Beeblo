@@ -4,7 +4,7 @@ const token = require('../middleware/tokenValidator');
 const promotion = new Promotion;
 const fn = require('../modules/custom_function');
 
-route.post("/add", token, (req, res) => {
+route.post("/add", token.admin, (req, res) => {
   let data = {
     reduction_promotion: req.body.reduction_promotion,
     date_expiration_promotion: req.body.date_expiration_promotion,
@@ -15,7 +15,7 @@ route.post("/add", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/update/:id", token, (req, res) => {
+route.post("/update/:id", token.admin, (req, res) => {
   let data = {
     reduction_promotion: req.body.reduction_promotion,
     date_expiration_promotion: req.body.date_expiration_promotion,
@@ -26,17 +26,17 @@ route.post("/update/:id", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.delete("/delete/:id", token, (req, res) => {
+route.delete("/delete/:id", token.admin, (req, res) => {
   promotion.delete(req.params.id)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/update/:id", token, (req, res) => {
+route.post("/update/:id", token.admin, (req, res) => {
   promotion.update(req.params.id, req.body)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/attachProduitPromo", token, (req, res) => {
+route.post("/attachProduitPromo", token.admin, (req, res) => {
   let data = {
     id_produit: req.body.id_produit,
     id_promotion: req.body.id_promotion,
@@ -46,7 +46,7 @@ route.post("/attachProduitPromo", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/attachCommandePromo", token, (req, res) => {
+route.post("/attachCommandePromo", token.admin, (req, res) => {
   let data = {
     id_commande: req.body.id_commande,
     id_promotion: req.body.id_promotion
@@ -55,12 +55,12 @@ route.post("/attachCommandePromo", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/verifyCode", token, (req, res) => {
+route.post("/verifyCode", (req, res) => {
   promotion.verifyCodePromo(req.body.code)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.get("/getAll/:type", token, (req, res) => {
+route.get("/getAll/:type", token.admin, (req, res) => {
   promotion.get(req.params.type)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })

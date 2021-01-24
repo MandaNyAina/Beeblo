@@ -4,7 +4,7 @@ const token = require('../middleware/tokenValidator');
 const admin = new Admin;
 const fn = require('../modules/custom_function');
 
-route.post("/add", token, (req, res) => {
+route.post("/add", token.admin, (req, res) => {
   let data = {
     nom_administrateur: req.body.nom_administrateur,
     prenom_administrateur: req.body.prenom_administrateur,
@@ -16,17 +16,17 @@ route.post("/add", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.get("/listAll", token, (req, res) => {
+route.get("/listAll", token.admin, (req, res) => {
   admin.get()
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.get("/getById/:id", token, (req, res) => {
+route.get("/getById/:id", token.admin, (req, res) => {
   admin.getById(req.params.id)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/update/:id", token, (req, res) => {
+route.post("/update/:id", token.admin, (req, res) => {
   let data = {
     nom_administrateur: req.body.nom_administrateur,
     prenom_administrateur: req.body.prenom_administrateur

@@ -16,7 +16,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage })
 
-route.post("/add", token, upload.array('image_produit'), (req, res) => {
+route.post("/add", token.admin, upload.array('image_produit'), (req, res) => {
   let image_produit = "";
   if (res.files.length > 0) {
     res.files.map(img => {
@@ -38,7 +38,7 @@ route.post("/add", token, upload.array('image_produit'), (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/update/:id", token, upload.array('image_produit'), (req, res) => {
+route.post("/update/:id", token.admin, upload.array('image_produit'), (req, res) => {
   let image_produit = "";
   if (res.files.length > 0) {
     res.files.map(img => {
@@ -60,7 +60,7 @@ route.post("/update/:id", token, upload.array('image_produit'), (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/setStatus/:id/:status", token, (req, res) => {
+route.post("/setStatus/:id/:status", token.admin, (req, res) => {
   produit.setStatus(req.params.id, req.params.status)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
@@ -80,7 +80,7 @@ route.get("/getById/:id", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.route("/category").post(token, (req, res) => {
+route.route("/category").post(token.admin, (req, res) => {
   produit.createCategory(req.body.nom_categorie)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 }).get(token, (req, res) => {
@@ -88,13 +88,13 @@ route.route("/category").post(token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.route("/category/:id").post(token, (req, res) => {
+route.route("/category/:id").post(token.admin, (req, res) => {
   produit.updateCategory(req.params.id, req.body.nom_categorie)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 }).get(token, (req, res) => {
   produit.getCategoryById(req.params.id)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
-}).delete(token, (req, res) => {
+}).delete(token.admin, (req, res) => {
   produit.deleteCategorie(req.params.id)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
