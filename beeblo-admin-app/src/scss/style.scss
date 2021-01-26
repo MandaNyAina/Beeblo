@@ -7,18 +7,53 @@
 // If you want to add something do it here
 @import "custom";
 
+$base-color: #22273e;
+$primary: #1d2445;
+$secondary: #f9c04f;
+$warning: #e09a10;
+$success: #00aa5b;
+$danger: #cf3b42;
+$light: #878787;
+$black: #606060;
+$light-secondary: #f2f3f7;
+
 .btn-primary {
   border: 0 !important;
-  background-color: #1d2445 !important;
+  background-color: $primary !important;
 }
 
 .bg-primary {
   border: 0 !important;
-  background-color: #1d2445 !important;
+  background-color: $primary !important;
 }
 
 .btn-primary:hover {
   border: 0 !important;
-  color: #1d2445 !important;
-  background-color: #f9c04f !important;
+  color: $primary !important;
+  background-color: $secondary !important;
+}
+
+.ql-toolbar.ql-snow {
+  background-color: $primary !important;
+}
+
+.ql-container.ql-snow {
+  background: #ffffff;
+}
+
+span.ql-picker-label {
+  color: #ffffff;
+}
+
+span.ql-picker-label:hover {
+  color: $secondary !important;
+}
+
+.ql-snow .ql-stroke {
+  stroke: white !important;
+}
+
+svg:hover {
+  background-color: $secondary !important;
+  border-radius: 5px;
 }

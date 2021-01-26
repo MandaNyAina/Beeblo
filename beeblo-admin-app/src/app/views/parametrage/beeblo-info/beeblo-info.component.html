@@ -1,5 +1,5 @@
 <div class="animated fadeIn">
-  <p>
-    beeblo-info works!
-  </p>
+  <form #form="ngForm" (submit)="test(form)">
+    <app-submit [label]="'Enregistrer'"></app-submit>
+  </form>
 </div>
