@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BeebloInfoComponent } from './beeblo-info.component';
 import { BeebloInfoRoutes } from './beeblo-info.routing';
 import { CustomModule } from '../../../modules/custom/custom.module';
-import { SubmitComponent } from '../../../modules/submit/submit.component';
+import { CrudTableComponent } from '../../../modules/crud-table/crud-table.component';
 
 @NgModule({
   imports: [
@@ -11,6 +11,6 @@ import { SubmitComponent } from '../../../modules/submit/submit.component';
     BeebloInfoRoutes,
     CustomModule
   ],
-  declarations: [BeebloInfoComponent, SubmitComponent]
+  declarations: [BeebloInfoComponent, CrudTableComponent]
 })
 export class BeebloInfoModule { }

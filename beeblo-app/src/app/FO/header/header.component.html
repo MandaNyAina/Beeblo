@@ -1,18 +1,19 @@
 <div class="header">
   <div class="wrapper p-grid">
-    <div class="p-text-left p-col menu">
-      <img (click)="display = true" class="main-menu p-mt-2" src="assets/img/menu/menu.png" alt="menu">
+    <div class="logo p-mt-4">
+      <span class="beeblo-header-title">Beeblo</span>
     </div>
-    <div class="logo p-mt-2">
+    <div class="p-text-left p-col menu p-mt-2">
       <img routerLink="/homepage" class="logo-img" src="assets/img/logo/logo.png" alt="beeblo">
     </div>
-    <div class="p-text-right p-col menu">
+    <div class="p-text-right p-col menu p-mt-2">
       <img routerLink="/auth" class="main-menu p-mr-5" src="assets/img/menu/user.png" alt="user">
-      <img routerLink="/panier"  class="main-menu" src="assets/img/menu/panier.png" alt="panier">
+      <img routerLink="/panier"  class="main-menu p-mr-5" src="assets/img/menu/panier.png" alt="panier">
+      <img (click)="display = true" class="main-menu p-mb-2" src="assets/img/menu/menu.png" alt="menu">
     </div>
   </div>
 </div>
-<p-sidebar [(visible)]="display" position="left">
+<p-sidebar [(visible)]="display" position="right">
   <h1 class="c-primary">Beeblo</h1>
   <ul class="side-menu">
     <li routerLink="/homepage" class="side-menu">Acceuil</li>

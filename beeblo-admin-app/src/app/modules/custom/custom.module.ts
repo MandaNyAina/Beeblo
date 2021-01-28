@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditorModule } from 'primeng/editor';
-import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
-import { SubmitComponent } from '../submit/submit.component';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { ToolbarModule } from 'primeng/toolbar';
+import { TableModule } from 'primeng/table';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   exports: [
     CommonModule,
     EditorModule,
     FormsModule,
-    InputTextModule
+    InputTextModule,
+    DynamicDialogModule,
+    ToolbarModule,
+    TableModule,
+    ButtonModule,
+    FileUploadModule
   ],
   declarations: []
 })
