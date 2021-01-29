@@ -6,14 +6,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./beeblo-info.component.scss'],
 })
 export class BeebloInfoComponent implements OnInit {
-  formData: string;
+  header: Array<any>;
   constructor() { }
 
   ngOnInit() {
-  }
-
-  test(e) {
-    console.log(e);
+    this.header = [
+      {
+        key: "name",
+        name: "Name",
+        filter: true
+      },
+      {
+        key: "first_name",
+        name: "First Name",
+        filter: true
+      },
+      {
+        key: "age",
+        name: "Age",
+        filter: false
+      }
+    ]
   }
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
   selector: 'app-crud-table',
@@ -13,20 +14,46 @@ import { Component, OnInit } from '@angular/core';
     `]
 })
 export class CrudTableComponent implements OnInit {
-  selectedProducts: Array<any>;
-  products: Array<any>;
+  @Input() title: string;
+  @Input() header: Array<any>;
+  @Input() data: any;
+  @Input() loading: boolean;
+
+  filterField: Array<any> = [];
+  selectedData: Array<any>;
   delete: any;
+  totalRecords: number;
+  cols: Array<any>;
+  searchValue: string;
+  
+  @Output() reloadTable = new EventEmitter();
+  @Output() onAdd = new EventEmitter();
+  @Output() onDelete = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
+    this.filterField.push(this.header.map(el => { return el.key }));
+  }
+
+  reloadData(e: LazyLoadEvent) {
+    this.reloadTable.emit(e);
   }
 
   openNew() {
-
+    this.onAdd.emit();
   }
 
-  deleteSelectedProducts() {
+  onSearch() {
+    let new_data = [];
+    this.data.filter(el => {
+      if (el.includes(this.searchValue)) new_data.push(el);
+    })
+    this.data = new_data;
+  }
 
+  deleteSelecteData() {
+    this.onDelete.emit(this.selectedData);
+    this.selectedData = null;
   }
 
 }
