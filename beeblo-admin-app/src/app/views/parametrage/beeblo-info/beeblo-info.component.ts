@@ -10,23 +10,6 @@ export class BeebloInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.header = [
-      {
-        key: "name",
-        name: "Name",
-        filter: true
-      },
-      {
-        key: "first_name",
-        name: "First Name",
-        filter: true
-      },
-      {
-        key: "age",
-        name: "Age",
-        filter: false
-      }
-    ]
   }
 
 }
