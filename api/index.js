@@ -21,7 +21,10 @@ try {
 }
 
 // middleware
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:4200',
+    methods: "POST, GET, DELETE"
+}));
 app.use(bodyParser.json({limit: '25mb'}));
 app.use(bodyParser.urlencoded({limit: '25mb', extended: true}));
 
@@ -53,7 +56,7 @@ app.use(`${prefix}/aide`, aide);
 app.use(`${prefix}/grant`, grant);
 
 // static route
-app.use(`${prefix}/static`, express.static(__dirname + '/public'));
+app.use(`${prefix}/produit`, express.static(__dirname + '/assets/produit'));
 
 // run server
 app.listen(process.env.PORT, () => {
