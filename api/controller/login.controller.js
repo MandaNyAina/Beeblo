@@ -26,9 +26,12 @@ class Login {
     })
   }
 
-  disableAccount(id_user) {
-    return new Promise((resolve, reject) => {
-      database.update('utilisateur', {id_status: C.status.COMPTE_KO}, `id_user = ${id_user}`)
+  chargeStatutAccount(id_user) {
+    return new Promise(async (resolve, reject) => {
+      let current_status = await database.select('utilisateur', 'id_status', `id_user = ${id_user}`);
+      current_status = current_status[0].id_status;
+      const id_status = current_status == C.status.COMPTE_OK ? C.status.COMPTE_KO : C.status.COMPTE_OK;
+      database.update('utilisateur', { id_status }, `id_user = ${id_user}`)
       .then(res => resolve(res)).catch(err => reject(err));
     })
   }
@@ -37,12 +40,12 @@ class Login {
     return new Promise((resolve, reject) => {
       const username = data.nom_utilisateur;
       database.select("utilisateur", "id_user, mot_de_passe, id_status, id_groupe", `nom_utilisateur = '${username}'`)
-      .then((res) => {
+      .then(async (res) => {
         if (res.length == 0) reject(C.connexion.USER_INEXISTE);
         let source_password = data.mot_de_passe.split("(%%)");
-        if (source_password[0] != "from_beeblo_app") reject("Unkown source connexion");
+        if (source_password[1] != "from_beeblo_app") reject("Unkown source connexion");
         data.mot_de_passe = source_password[1];
-        let check_password = fn.matchPassword(data.mot_de_passe, res[0].mot_de_passe);
+        let check_password = await fn.matchPassword(data.mot_de_passe, res[0].mot_de_passe);
         if (!check_password) reject(C.connexion.PASSWORD_ERROR);
         let status = res[0].id_status;
         switch (status) {
@@ -75,12 +78,12 @@ class Login {
     return new Promise((resolve, reject) => {
       const email_acheteur = data.email_acheteur;
       database.select("acheteur", "id_acheteur, nom_acheteur, prenom_acheteur, email_acheteur, numero_client_acheteur, adresse_acheteur, code_postal, ville_acheteur, pays_acheteur, etat_acheteur, date_inscription_acheteur, id_status", `id_acheteur = ${email_acheteur}`)
-      .then(res => {
+      .then(async res => {
         if (res.length == 0) reject(C.connexion.USER_INEXISTE);
         let source_password = data.mot_de_passe.split("(%%)");
-        if (source_password[0] != "from_beeblo_app") reject("Unkown source connexion");
+        if (source_password[1] != "from_beeblo_app") reject("Unkown source connexion");
         data.mot_de_passe = source_password[1];
-        let check_password = fn.matchPassword(data.mot_de_passe, res[0].mot_de_passe);
+        let check_password = await fn.matchPassword(data.mot_de_passe, res[0].mot_de_passe);
         if (!check_password) reject(C.connexion.PASSWORD_ERROR);
         let status = res[0].id_status;
         switch (status) {

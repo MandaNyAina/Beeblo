@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from '../../interface/user';
+import { MessagesService } from '../../services/message/message.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,12 +12,22 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   constructor(
-    private Route: Router
+    private Route: Router,
+    private _user : UserService,
+    private message: MessagesService
   ) {}
 
   onSubmit(f: NgForm) {
     if (f.valid) {
-      this.Route.navigate(['/dashboard']);
+      f.form.value.mot_de_passe = f.form.value.mot_de_passe + "(%%)from_beeblo_app";
+      this._user.login(f.form.value).subscribe((res) => {
+        let userConnected: User = res.data;
+        localStorage.setItem("user_data", JSON.stringify(userConnected));
+        localStorage.setItem("beeblo_admin_token", res.token);
+        this.Route.navigate(['/dashboard']);
+      }, (err) => {
+        this.message.error("Erreur", err.error);
+      })
     }
   }
 

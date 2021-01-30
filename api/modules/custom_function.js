@@ -87,7 +87,7 @@ module.exports.response_ok = (res, rep) => {
 }
 
 module.exports.response_ko = (res, err) => {
-  return res.status(401).json(rep)
+  return res.status(401).json(err)
 }
 
 module.exports.generateToken = (data) => {

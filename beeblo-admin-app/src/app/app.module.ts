@@ -41,6 +41,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { P403Component } from './views/error/403.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   imports: [
@@ -56,7 +59,9 @@ import { FormsModule } from '@angular/forms';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    HttpClientModule,
+    ToastModule
   ],
   declarations: [
     AppComponent,
@@ -69,7 +74,7 @@ import { FormsModule } from '@angular/forms';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
+  }, MessageService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

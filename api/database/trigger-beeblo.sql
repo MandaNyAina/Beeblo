@@ -228,6 +228,18 @@ FROM livreur AS lv
 LEFT JOIN livraison AS l ON l.id_livreur = lv.id_livreur;
 
 CREATE VIEW view_groupe_grant AS
-SELECT guig.*, am.name, am.submenu, am.main_menu
+SELECT guig.*,  am.name, am.url, am.icon, am.submenu, am.main_menu
 FROM groupe_user_grant_menu AS guig
 JOIN admin_menu AS am ON am.id_admin_menu = guig.id_menu_admin
+
+CREATE VIEW view_admin AS
+SELECT
+admin.*,
+login.nom_utilisateur,
+status.designation_status,
+login.id_groupe,
+groupe.nom_groupe
+FROM administrateur AS admin
+JOIN utilisateur AS login ON login.id_user = admin.id_login
+JOIN groupe ON groupe.id_groupe = login.id_groupe
+JOIN status ON status.id_status = login.id_status

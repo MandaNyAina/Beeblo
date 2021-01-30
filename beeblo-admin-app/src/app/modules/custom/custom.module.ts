@@ -19,7 +19,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     ToolbarModule,
     TableModule,
     ButtonModule,
-    FileUploadModule
+    FileUploadModule,
   ],
   declarations: []
 })

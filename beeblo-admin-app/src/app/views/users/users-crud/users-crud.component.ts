@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-users-crud',
@@ -7,32 +8,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersCrudComponent implements OnInit {
   header: Array<Object>;
-  constructor() { }
+  constructor(
+    private _user: UserService
+  ) { }
 
   ngOnInit() {
-    this.header = [
-      {
-        key: "id",
-        name: "Id",
-      },
-      {
-        key: "nom",
-        name: "Nom d'utilisateur",
-      },
-      {
-        key: "first_name",
-        name: "Prenom",
-      },
-      {
-        key: "status",
-        name: "Statut",
-      },
-      {
-        key: "groupe",
-        name: "Groupe",
-      },
+    // this.header = [
+    //   {
+    //     key: "id",
+    //     name: "Id",
+    //   },
+    //   {
+    //     key: "nom",
+    //     name: "Nom d'utilisateur",
+    //   },
+    //   {
+    //     key: "first_name",
+    //     name: "Prenom",
+    //   },
+    //   {
+    //     key: "status",
+    //     name: "Statut",
+    //   },
+    //   {
+    //     key: "groupe",
+    //     name: "Groupe",
+    //   },
 
-    ]
+    // ];
+
+    this._user._getAllUser().subscribe((res) => {
+      console.log(res);
+    }, (err) => {
+      console.log(err);
+    });
   }
 
 }

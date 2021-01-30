@@ -24,7 +24,7 @@ route.post("/auth/asAcheteur", (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ko(res, err));
 })
 
-route.post("/reset_password/admin/:id", token, (req, res) => {
+route.post("/reset_password/admin/:id", token.admin, (req, res) => {
   login.resetPassword(req.params.id, req.body.mot_de_passe)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ko(res, err));
 })
@@ -39,8 +39,8 @@ route.post("/reset_password/acheteur/:id", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ko(res, err));
 })
 
-route.post("/disable/admin/:id", token, (req, res) => {
-  login.disableAccount(req.params.id)
+route.post("/changeStatus/admin/:id", token.admin, (req, res) => {
+  login.chargeStatutAccount(req.params.id)
   .then(res => fn.response_ok(res, rep)).catch(err => fn.response_ko(res, err));
 })
 
