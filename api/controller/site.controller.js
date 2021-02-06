@@ -36,7 +36,7 @@ class Site {
   get(table) {
     return new Promise((resolve, reject) => {
       database.select(table)
-      then(res => resolve(res)).catch(err => reject(err));
+      .then(res => resolve(res)).catch(err => reject(err));
     })
   }
 
@@ -49,7 +49,7 @@ class Site {
 
   activeMenu(lien_menu) {
     return new Promise((resolve, reject) => {
-      database.select("menu", "*", `menu = '${link}'`)
+      database.select("menu", "*", `menu = '${lien_menu}'`)
       then(res => {
         let response = null;
         if (res[0].id_status == C.status.MENU_DESACTIVE || res[0].id_status == C.status.MENU_MAINTENANCE) response = res[0].id_status;

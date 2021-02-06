@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../../interface/user';
+import { MessagesService } from '../../../services/message/message.service';
 import { UserService } from '../../../services/user/user.service';
 
 @Component({
@@ -8,39 +10,51 @@ import { UserService } from '../../../services/user/user.service';
 })
 export class UsersCrudComponent implements OnInit {
   header: Array<Object>;
+  users: Array<User>;
+  loading: boolean = false;
+
   constructor(
-    private _user: UserService
+    private _user: UserService,
+    private message: MessagesService
   ) { }
 
   ngOnInit() {
-    // this.header = [
-    //   {
-    //     key: "id",
-    //     name: "Id",
-    //   },
-    //   {
-    //     key: "nom",
-    //     name: "Nom d'utilisateur",
-    //   },
-    //   {
-    //     key: "first_name",
-    //     name: "Prenom",
-    //   },
-    //   {
-    //     key: "status",
-    //     name: "Statut",
-    //   },
-    //   {
-    //     key: "groupe",
-    //     name: "Groupe",
-    //   },
+    this.header = [
+      {
+        key: "id_administrateur",
+        name: "Id",
+      },
+      {
+        key: "nom_administrateur",
+        name: "Nom d'utilisateur",
+      },
+      {
+        key: "prenom_administrateur",
+        name: "Prenom",
+      },
+      {
+        key: "designation_status",
+        name: "Statut",
+      },
+      {
+        key: "id_groupe",
+        name: "Groupe",
+      },
 
-    // ];
+    ];
 
-    this._user._getAllUser().subscribe((res) => {
-      console.log(res);
+    this.getAllUser()
+
+  }
+
+  getAllUser() {
+    this.loading = true;
+    this._user._getAllUser().subscribe(res => {
+      this.users = res;
+      this.loading = false;
     }, (err) => {
-      console.log(err);
+      this.message.error("Erreur", err.error);
+      this.loading = false;
     });
   }
 

@@ -1,5 +1,5 @@
 const Database = require('../database/database_manager');
-const { encrypt } = require('../modules/custom_function');
+const { encrypt, decrypt } = require('../modules/custom_function');
 const database = new Database;
 
 class Beeblo {
@@ -8,11 +8,9 @@ class Beeblo {
     return new Promise((resolve, reject) => {
       database.select("beeblo").then((res) => {
         if (res.length == 0) {
-          if (data.smtp_password) data.smtp_password = encrypt(data.smtp_password);
           database.insert("beeblo", data)
           .then(res => resolve(res)).catch(err => reject(err));
         } else {
-          if (data.smtp_password) data.smtp_password = encrypt(data.smtp_password);
           database.update("beeblo", data)
           .then(res => resolve(res)).catch(err => reject(err));
         }
@@ -22,7 +20,9 @@ class Beeblo {
 
   get(rows) {
     return new Promise((resolve, reject) => {
-      database.select("beeblo", rows, "1 LIMIT 1").then(res => resolve(res[0])).catch(err => reject(err));
+      database.select("beeblo", rows, "1 LIMIT 1").then(res => {
+        resolve(res[0]);
+      }).catch(err => reject(err));
     })
   }
 

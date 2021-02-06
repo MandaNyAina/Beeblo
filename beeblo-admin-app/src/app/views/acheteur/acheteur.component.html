@@ -1,4 +1,9 @@
 <div class="animated fadeIn">
-  acheteur
+  <app-crud-table
+    [title]="'Liste des acheteurs'"
+    [header]="header"
+    [data]="acheteur"
+    [loading]="loading">
+  </app-crud-table>
 </div>
 

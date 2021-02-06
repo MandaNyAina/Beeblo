@@ -65,6 +65,11 @@ route.post("/setStatus/:id/:status", token.admin, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
+route.get("/getAll", token.admin, (req, res) => {
+  produit.getAll()
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
 route.get("/getAll/:page/:block", token, (req, res) => {
   produit.get(req.params.page, req.params.block)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));

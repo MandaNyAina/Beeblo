@@ -1,5 +1,7 @@
 <div class="animated fadeIn">
-  <p>
-    beeblo-config-menu works!
-  </p>
+  <app-crud-table
+    [title]="'Liste des menus'"
+    [data]="menu"
+    [loading]="loading"
+    [header]="header"></app-crud-table>
 </div>

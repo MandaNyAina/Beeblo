@@ -17,6 +17,10 @@ $light: #878787;
 $black: #606060;
 $light-secondary: #f2f3f7;
 
+* {
+  outline: none;
+}
+
 .btn-primary {
   border: 0 !important;
   background-color: $primary !important;
@@ -56,4 +60,8 @@ span.ql-picker-label:hover {
 svg:hover {
   background-color: $secondary !important;
   border-radius: 5px;
+}
+
+.header-fixed .app-header {
+    z-index: 1 !important;
 }

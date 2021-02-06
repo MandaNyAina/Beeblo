@@ -1,3 +1,8 @@
 <div class="animated fadeIn">
-  user-crud
+  <app-crud-table
+    [title]="'Liste des utilisateurs'"
+    [header]="header"
+    [data]="users"
+    [loading]="loading">
+  </app-crud-table>
 </div>

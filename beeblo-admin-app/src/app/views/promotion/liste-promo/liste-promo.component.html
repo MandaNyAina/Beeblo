@@ -1,6 +1,19 @@
 <div class="animated fadeIn">
-  <p>
-    liste-promo works!
-  </p>
+  <div>
+    <select (change)="onChange()" [(ngModel)]="filtered" name="filter-statut" class="filter-select">
+      <option value="all">Tous</option>
+      <option value="unused">Non utilisé</option>
+      <option value="used_produit">Utilisé dans un produit</option>
+      <option value="used_commande">Utilisé dans une commande</option>
+    </select>
+  </div>
+  <div>
+    <app-crud-table
+      [title]="'Liste des promotions'"
+      [header]="header"
+      [data]="promotions"
+      [loading]="loading">
+    </app-crud-table>
+  </div>
 </div>
 

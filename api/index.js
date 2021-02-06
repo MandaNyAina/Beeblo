@@ -40,7 +40,8 @@ const acheteur = require('./route/acheteur.route'),
       beeblo = require('./route/beeblo.route'),
       site = require('./route/site.route'),
       aide = require('./route/aide.route'),
-      grant = require('./route/grant.route');
+      grant = require('./route/grant.route'),
+      dashboard = require('./route/dashboard.route');
 
 app.use(`${prefix}/acheteur`, acheteur);
 app.use(`${prefix}/admin`, admin);
@@ -54,6 +55,8 @@ app.use(`${prefix}/panier`, panier);
 app.use(`${prefix}/site`, site);
 app.use(`${prefix}/aide`, aide);
 app.use(`${prefix}/grant`, grant);
+app.use(`${prefix}/dashboard`, dashboard);
+
 
 // static route
 app.use(`${prefix}/produit`, express.static(__dirname + '/assets/produit'));

@@ -230,7 +230,7 @@ LEFT JOIN livraison AS l ON l.id_livreur = lv.id_livreur;
 CREATE VIEW view_groupe_grant AS
 SELECT guig.*,  am.name, am.url, am.icon, am.submenu, am.main_menu
 FROM groupe_user_grant_menu AS guig
-JOIN admin_menu AS am ON am.id_admin_menu = guig.id_menu_admin
+JOIN admin_menu AS am ON am.id_admin_menu = guig.id_menu_admin;
 
 CREATE VIEW view_admin AS
 SELECT
@@ -242,4 +242,17 @@ groupe.nom_groupe
 FROM administrateur AS admin
 JOIN utilisateur AS login ON login.id_user = admin.id_login
 JOIN groupe ON groupe.id_groupe = login.id_groupe
-JOIN status ON status.id_status = login.id_status
+JOIN status ON status.id_status = login.id_status;
+
+CREATE VIEW view_dashboard AS
+SELECT
+COUNT(*) AS nombre_acheteur,
+(SELECT COUNT(*) FROM produit) AS nombre_produit,
+(SELECT COUNT(*) FROM commande AS cmd WHERE cmd.id_status = 13)  AS nombre_commande,
+(SELECT COUNT(*) FROM livraison AS lv WHERE lv.id_status = 9) AS nombre_livraison
+FROM acheteur;
+
+CREATE VIEW view_acheteur AS
+SELECT 
+id_acheteur, nom_acheteur, prenom_acheteur, email_acheteur, numero_client_acheteur, adresse_acheteur, code_postal, ville_acheteur, pays_acheteur, etat_acheteur, date_inscription_acheteur, id_status 
+FROM acheteur 

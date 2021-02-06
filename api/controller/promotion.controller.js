@@ -74,11 +74,11 @@ class Promotion {
           where = "used = 1 AND promo_for_produit > 0";
           break;
 
-        case "used = 1 AND used_commande":
-          where = "promo_for_commande > 0";
+        case "used_commande":
+          where = "used = 1 AND promo_for_commande > 0";
           break;
       }
-      database.select("view_promotion", where).then(res =>resolve(res)).catch(err => reject(err));
+      database.select("view_promotion", "*", where).then(res =>resolve(res)).catch(err => reject(err));
     })
   }
 

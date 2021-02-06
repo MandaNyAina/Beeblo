@@ -4,11 +4,13 @@ import { PromotionRoutes } from './promotion.routing';
 import { ListePromoComponent } from './liste-promo/liste-promo.component';
 import { ConsultationPromoComponent } from './consultation-promo/consultation-promo.component';
 import { ProduitPromoComponent } from './produit-promo/produit-promo.component';
+import { CustomModule } from '../../modules/custom/custom.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    PromotionRoutes
+    PromotionRoutes,
+    CustomModule
   ],
   declarations: [ListePromoComponent, ConsultationPromoComponent, ProduitPromoComponent]
 })

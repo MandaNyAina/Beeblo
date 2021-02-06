@@ -41,7 +41,7 @@ export class UserService {
     return JSON.parse(localStorage.getItem("user_data"));
   }
 
-  public _getAllUser(): Observable<User> {
+  public _getAllUser(): Observable<User[]> {
     return this._httpService._get("admin/listAll");
   }
 

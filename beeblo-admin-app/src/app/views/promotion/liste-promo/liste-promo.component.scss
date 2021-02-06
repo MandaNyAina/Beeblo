@@ -1,0 +1,13 @@
+@import '../../../../scss/style.scss';
+
+.filter-select {
+  padding: 10px 4px;
+  text-align: center;
+  border: 1px solid $light;
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+
+option {
+  background: #8787871a !important;
+}

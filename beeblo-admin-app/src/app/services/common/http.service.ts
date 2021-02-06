@@ -16,11 +16,15 @@ export class HttpService {
   ) {
 
     let token = localStorage.getItem("beeblo_admin_token");
-    let authorization: string = (new Date()) + " " + token + " beebloAdminToken";
-    this.headerOptions = new HttpHeaders({
-      'Content-Type':'application/json; charset=utf-8',
-      'Authorization': authorization
-    });
+    let now = new Date;
+    let now_string = String(now.getFullYear())+String(now.getMonth())+String(now.getDate());
+    let authorization: string = (now_string + " " + token + " beebloAdminToken");
+    this.headerOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':'application/json; charset=utf-8',
+        'Authorization': authorization
+      })
+    };
 
   }
 

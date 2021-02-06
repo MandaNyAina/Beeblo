@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Promotion } from '../../../interface/promotion';
+import { MessagesService } from '../../../services/message/message.service';
+import { ProduitService } from '../../../services/produit/produit.service';
 
 @Component({
   selector: 'app-liste-promo',
@@ -6,10 +9,54 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./liste-promo.component.scss']
 })
 export class ListePromoComponent implements OnInit {
+  header: Array<Object>;
+  promotions: Array<Promotion>
+  loading: boolean = false;
+  filtered?: string = "all";
 
-  constructor() { }
+  constructor(
+    private _produit: ProduitService,
+    private message: MessagesService
+  ) { }
 
   ngOnInit() {
+    this.getAll();
+    this.header = [
+      {
+        key: "reduction_promotion",
+        name: "Valeur (en %)"
+      },
+      {
+        key: "type_promotion",
+        name: "Type de promotion"
+      },
+      {
+        key: "date_expiration_promotion",
+        name: "Date d'expiration"
+      },
+      {
+        key: "used",
+        name: "Utilisé"
+      }
+    ];
+
+    this.getAll();
+  }
+
+  getAll() {
+    this._produit.getPromo("all").subscribe(res => {
+      this.promotions = res;
+    }, err => {
+      this.message.error("Erreur", err.error)
+    })
+  }
+
+  onChange() {
+    this._produit.getPromo(this.filtered).subscribe(res => {
+      this.promotions = res;
+    }, err => {
+      this.message.error("Erreur", err.error)
+    })
   }
 
 }

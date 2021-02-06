@@ -1,6 +1,28 @@
 <div class="animated fadeIn">
-  <p>
-    beeblo-email works!
-  </p>
+  <form (ngSubmit) = "save()">
+
+    <div class="form-group">
+      <label for="smtp_host">SMTP Host</label>
+      <input [(ngModel)]="smtp_host" type="text" name="smtp_host" id="smtp_host" class="form-control" placeholder="">
+    </div>
+
+    <div class="form-group">
+      <label for="smtp_port">SMTP port</label>
+      <input [(ngModel)]="smtp_port" type="text" name="smtp_port" id="smtp_port" class="form-control" placeholder="">
+    </div>
+
+    <div class="form-group">
+      <label for="smtp_email">Adresse du mail</label>
+      <input [(ngModel)]="smtp_email" type="text" name="smtp_email" id="smtp_email" class="form-control" placeholder="">
+    </div>
+
+    <div class="form-group">
+      <label for="smtp_password">Mot de passe du mail</label>
+      <input [(ngModel)]="smtp_password" type="password" name="smtp_password" id="smtp_password" class="form-control" placeholder="">
+    </div>
+
+    <app-submit [label]="'Enregistrer'"></app-submit>
+
+  </form>
 </div>
 

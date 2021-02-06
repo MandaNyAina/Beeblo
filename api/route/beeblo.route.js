@@ -27,7 +27,7 @@ route.route("/siteInfo").post(token.admin, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 }).get((req, res) => {
   beeblo.get(`
-  raison_social_beeblo, contact_phone_beeblo, contact_email_beeblo apropos_beeblo1,
+  raison_social_beeblo, contact_phone_beeblo, contact_email_beeblo, apropos_beeblo1,
   apropos_beeblo2, home_title, home_beeblo1, home_beeblo2, home_beeblo3, condition_utilisation_beeblo1,
   condition_utilisation_beeblo2, condition_utilisation_beeblo3, mention_legale_beeblo,
   condition_vente, siege_beeblo, site_beeblo`

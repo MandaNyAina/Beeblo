@@ -23,6 +23,12 @@ class Produit {
     })
   }
 
+  getAll() {
+    return new Promise((resolve, reject) => {
+      database.select("view_produit").then(res => resolve(res)).catch(err => reject(err));
+    })
+  }
+
   get(page, block = 12) {
     return new Promise((resolve, reject) => {
       let begin = (page == 1 ? 0 : page - 1) * block;

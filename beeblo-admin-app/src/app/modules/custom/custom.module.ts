@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditorModule } from 'primeng/editor';
 import { FormsModule } from '@angular/forms';
@@ -8,8 +8,25 @@ import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { FileUploadModule } from 'primeng/fileupload';
+import { SubmitComponent } from '../submit/submit.component';
+import { EditorComponent } from '../editor/editor.component';
+import { CrudTableComponent } from '../crud-table/crud-table.component';
+import { DefaultPipe } from '../../pipe/default.pipe';
+import { StatusPipe } from '../../pipe/status.pipe';
+import { BooleanPipe } from '../../pipe/boolean.pipe';
 
 @NgModule({
+  imports: [
+    CommonModule,
+    EditorModule,
+    FormsModule,
+    InputTextModule,
+    DynamicDialogModule,
+    ToolbarModule,
+    TableModule,
+    ButtonModule,
+    FileUploadModule
+  ],
   exports: [
     CommonModule,
     EditorModule,
@@ -20,7 +37,13 @@ import { FileUploadModule } from 'primeng/fileupload';
     TableModule,
     ButtonModule,
     FileUploadModule,
+    SubmitComponent,
+    EditorComponent,
+    CrudTableComponent,
+    DefaultPipe,
+    StatusPipe,
+    BooleanPipe
   ],
-  declarations: []
+  declarations: [SubmitComponent, EditorComponent, CrudTableComponent, DefaultPipe, StatusPipe, BooleanPipe]
 })
 export class CustomModule { }

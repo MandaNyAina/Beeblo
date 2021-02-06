@@ -5,7 +5,7 @@ const site = new Site;
 const fn = require('../modules/custom_function');
 const C = require('../modules/constante');
 
-route.post("/addMenu", token.admin, (req, res) => {
+route.post("/add", token.admin, (req, res) => {
   let data = {
     nom_menu: req.body.nom_menu,
     lien_menu: req.body.lien_menu,

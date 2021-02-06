@@ -9,8 +9,8 @@ class Login {
   constructor() {}
 
   create(data) {
-    return new Promise((resolve, reject) => {
-      data.mot_de_passe = fn.signPassword(data.mot_de_passe);
+    return new Promise(async (resolve, reject) => {
+      data.mot_de_passe = await fn.signPassword(data.mot_de_passe);
       database.insert("utilisateur", data).then(
         res => {
           resolve(res);
@@ -21,17 +21,17 @@ class Login {
 
   resetPassword(id_user, new_password) {
     return new Promise((resolve, reject) => {
-      database.update('utilisateur', {mot_de_passe: fn.signPassword(new_password)}, `id_user = ${id_user}`)
+      database.update('utilisateur', {mot_de_passe: fn.signPassword(new_password)}, `id_user = '${id_user}'`)
       .then(res => resolve(res)).catch(err => reject(err));
     })
   }
 
   chargeStatutAccount(id_user) {
     return new Promise(async (resolve, reject) => {
-      let current_status = await database.select('utilisateur', 'id_status', `id_user = ${id_user}`);
+      let current_status = await database.select('utilisateur', 'id_status', `id_user = '${id_user}'`);
       current_status = current_status[0].id_status;
       const id_status = current_status == C.status.COMPTE_OK ? C.status.COMPTE_KO : C.status.COMPTE_OK;
-      database.update('utilisateur', { id_status }, `id_user = ${id_user}`)
+      database.update('utilisateur', { id_status }, `id_user = '${id_user}'`)
       .then(res => resolve(res)).catch(err => reject(err));
     })
   }
@@ -44,7 +44,7 @@ class Login {
         if (res.length == 0) reject(C.connexion.USER_INEXISTE);
         let source_password = data.mot_de_passe.split("(%%)");
         if (source_password[1] != "from_beeblo_app") reject("Unkown source connexion");
-        data.mot_de_passe = source_password[1];
+        data.mot_de_passe = source_password[0];
         let check_password = await fn.matchPassword(data.mot_de_passe, res[0].mot_de_passe);
         if (!check_password) reject(C.connexion.PASSWORD_ERROR);
         let status = res[0].id_status;
@@ -62,7 +62,7 @@ class Login {
             break;
 
           case C.status.COMPTE_OK:
-            database.select("view_admin", "*", `id_login = ${res[0].id_user}`)
+            database.select("view_admin", "*", `id_login = '${res[0].id_user}'`)
             .then((res) => {
               if (res.length == 0) reject("User admin info not created");
               const token = fn.generateToken(res[0])
@@ -82,7 +82,7 @@ class Login {
         if (res.length == 0) reject(C.connexion.USER_INEXISTE);
         let source_password = data.mot_de_passe.split("(%%)");
         if (source_password[1] != "from_beeblo_app") reject("Unkown source connexion");
-        data.mot_de_passe = source_password[1];
+        data.mot_de_passe = source_password[0];
         let check_password = await fn.matchPassword(data.mot_de_passe, res[0].mot_de_passe);
         if (!check_password) reject(C.connexion.PASSWORD_ERROR);
         let status = res[0].id_status;

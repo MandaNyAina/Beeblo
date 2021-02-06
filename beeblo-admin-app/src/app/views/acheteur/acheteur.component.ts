@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Acheteur } from '../../interface/acheteur';
+import { AcheteurService } from '../../services/acheteur/acheteur.service';
+import { MessagesService } from '../../services/message/message.service';
 
 @Component({
   selector: 'app-acheteur',
@@ -7,36 +10,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcheteurComponent implements OnInit {
   header: Array<Object> = [];
-  constructor() { }
+  acheteur: Array<Acheteur>;
+  loading: boolean = false;
+
+  constructor(
+    private _acheteur: AcheteurService,
+    private message: MessagesService
+  ) { }
 
   ngOnInit() {
     this.header = [
       {
-        key: "num",
+        key: "numero_client_acheteur",
         name: "Numero client",
       },
       {
-        key: "name",
+        key: "nom_acheteur",
         name: "Nom",
       },
       {
-        key: "first_name",
+        key: "prenom_acheteur",
         name: "Prenom",
       },
       {
-        key: "email",
+        key: "email_acheteur",
         name: "Email",
       },
       {
-        key: "etat",
+        key: "etat_acheteur",
         name: "Statut",
-      },
-      {
-        key: "date_ins",
-        name: "Date inscription",
-      },
-
+      }
     ]
+
+    this.getAllAcheteur();
+
+  }
+
+  getAllAcheteur() {
+    this.loading = true;
+    this._acheteur.getAll().subscribe(res => {
+      this.acheteur = res;
+      this.loading = false;
+    }, err => {
+      this.message.error("Erreur", err.error);
+      this.loading = false;
+    })
   }
 
 }

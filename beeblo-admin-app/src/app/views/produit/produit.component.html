@@ -1,6 +1,9 @@
 <div class="animated fadeIn">
-  <p>
-    produit works!
-  </p>
+  <app-crud-table
+    [title]="'Liste des produits'"
+    [header]="header"
+    [data]="produits"
+    [loading]="loading">
+  </app-crud-table>
 </div>
 

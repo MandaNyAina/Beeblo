@@ -22,11 +22,12 @@ class Mailing {
           secure: true,
           auth: {
             user: smtp.smtp_email,
-            pass:  decrypt(smtp.smtp_password)
+            pass:  smtp.smtp_password
           }
         });
+
         this.transporter.verify((err) => {
-          if (err) throw("Error on serveur mail");
+          if (err) console.log("Error on serveur mail");
         })
       }
     }).catch(err => console.log(err));

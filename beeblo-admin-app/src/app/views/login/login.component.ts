@@ -15,7 +15,9 @@ export class LoginComponent {
     private Route: Router,
     private _user : UserService,
     private message: MessagesService
-  ) {}
+  ) {
+    if (this._user.isAuthenticated()) this.Route.navigate(['/dashboard']);
+  }
 
   onSubmit(f: NgForm) {
     if (f.valid) {
@@ -32,6 +34,6 @@ export class LoginComponent {
   }
 
   validatorForm(form: any, ngFrom: NgForm) {
-    return ngFrom.form.controls[form].invalid && (ngFrom.submitted || ngFrom.form.controls[form].dirty);
+    return ngFrom.form.controls[form]?.invalid && (ngFrom.submitted || ngFrom.form.controls[form].dirty);
   }
 }

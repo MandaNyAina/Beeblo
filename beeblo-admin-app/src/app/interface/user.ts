@@ -2,7 +2,7 @@ export interface User {
   id_administrateur: number,
   nom_administrateur: string,
   prenom_administrateur: string,
-  id_login: number,
+  id_login: string,
   nom_utilisateur: string,
   designation_status: string,
   id_groupe: number,

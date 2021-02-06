@@ -1,5 +1,32 @@
 <div class="animated fadeIn">
-  <p>
-    beeblo-reseau works!
-  </p>
+  <form (ngSubmit) = "save()">
+
+    <div class="form-group">
+      <label for="link_facebook">Facebook</label>
+      <input [(ngModel)]="link_facebook" type="text" name="link_facebook" id="link_facebook" class="form-control" placeholder="">
+    </div>
+
+    <div class="form-group">
+      <label for="link_tumblr">Tumblr</label>
+      <input [(ngModel)]="link_tumblr" type="text" name="link_tumblr" id="link_tumblr" class="form-control" placeholder="">
+    </div>
+
+    <div class="form-group">
+      <label for="link_tweet">Twitter</label>
+      <input [(ngModel)]="link_tweet" type="text" name="link_tweet" id="link_tweet" class="form-control" placeholder="">
+    </div>
+
+    <div class="form-group">
+      <label for="link_pinterest">Pinterest</label>
+      <input [(ngModel)]="link_pinterest" type="text" name="link_pinterest" id="link_pinterest" class="form-control" placeholder="">
+    </div>
+
+    <div class="form-group">
+      <label for="link_instagram">Instagram</label>
+      <input [(ngModel)]="link_instagram" type="text" name="link_instagram" id="link_instagram" class="form-control" placeholder="">
+    </div>
+
+    <app-submit [label]="'Enregistrer'"></app-submit>
+
+  </form>
 </div>
