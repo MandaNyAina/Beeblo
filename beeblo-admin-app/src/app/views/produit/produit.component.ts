@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Header } from '../../interface/header';
 import { Produit } from '../../interface/produit';
 import { MessagesService } from '../../services/message/message.service';
 import { ProduitService } from '../../services/produit/produit.service';
@@ -9,7 +10,7 @@ import { ProduitService } from '../../services/produit/produit.service';
   styleUrls: ['./produit.component.scss']
 })
 export class ProduitComponent implements OnInit {
-  header: Array<Object>;
+  header: Array<Header>;
   produits: Array<Produit>;
   loading: boolean = false;
 

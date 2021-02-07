@@ -27,7 +27,7 @@ class Mailing {
         });
 
         this.transporter.verify((err) => {
-          if (err) console.log("Error on serveur mail");
+          if (err) console.log("Error on serveur mail "+err);
         })
       }
     }).catch(err => console.log(err));

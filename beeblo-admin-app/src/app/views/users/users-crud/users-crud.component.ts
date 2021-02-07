@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Header } from '../../../interface/header';
 import { User } from '../../../interface/user';
 import { MessagesService } from '../../../services/message/message.service';
 import { UserService } from '../../../services/user/user.service';
@@ -9,7 +10,7 @@ import { UserService } from '../../../services/user/user.service';
   styleUrls: ['./users-crud.component.scss']
 })
 export class UsersCrudComponent implements OnInit {
-  header: Array<Object>;
+  header: Array<Header>;
   users: Array<User>;
   loading: boolean = false;
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Acheteur } from '../../interface/acheteur';
+import { Header } from '../../interface/header';
 import { AcheteurService } from '../../services/acheteur/acheteur.service';
 import { MessagesService } from '../../services/message/message.service';
 
@@ -9,7 +10,7 @@ import { MessagesService } from '../../services/message/message.service';
   styleUrls: ['./acheteur.component.scss']
 })
 export class AcheteurComponent implements OnInit {
-  header: Array<Object> = [];
+  header: Array<Header>;
   acheteur: Array<Acheteur>;
   loading: boolean = false;
 

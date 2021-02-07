@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Categorie } from '../../interface/categorie';
 import { Produit } from '../../interface/produit';
 import { Promotion } from '../../interface/promotion';
 import { HttpService } from '../common/http.service';
@@ -45,6 +46,28 @@ export class ProduitService {
 
   public getByIdPromo(id_produit: number): Observable<Promotion> {
     return this._http._get(`promotion/getById/${id_produit}`);
+  }
+
+  // categorie
+
+  public addCategorie(data: Categorie): Observable<any> {
+    return this._http._post(`produit/category`, data);
+  }
+
+  public getCategories(): Observable<Categorie[]> {
+    return this._http._get(`produit/category`);
+  }
+
+  public updateCategorie(id_categorie: number, data: Categorie): Observable<any> {
+    return this._http._post(`produit/category/${id_categorie}`, data);
+  }
+
+  public getCategorieById(id_categorie: number): Observable<Categorie> {
+    return this._http._get(`produit/category/${id_categorie}`);
+  }
+
+  public deleteCategorie(id_categorie: number): Observable<any> {
+    return this._http._delete(`produit/category/${id_categorie}`);
   }
 
 }

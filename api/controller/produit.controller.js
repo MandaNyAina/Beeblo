@@ -92,7 +92,7 @@ class Produit {
   getCategory() {
     return new Promise((resolve, reject) => {
       database.select("view_categorie")
-      .then(res => resolve(res[0])).catch(err => reject(err));
+      .then(res => resolve(res)).catch(err => reject(err));
     })
   }
 

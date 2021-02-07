@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Header } from '../../../interface/header';
 import { Promotion } from '../../../interface/promotion';
 import { MessagesService } from '../../../services/message/message.service';
 import { ProduitService } from '../../../services/produit/produit.service';
@@ -9,7 +10,7 @@ import { ProduitService } from '../../../services/produit/produit.service';
   styleUrls: ['./liste-promo.component.scss']
 })
 export class ListePromoComponent implements OnInit {
-  header: Array<Object>;
+  header: Array<Header>;
   promotions: Array<Promotion>
   loading: boolean = false;
   filtered?: string = "all";
