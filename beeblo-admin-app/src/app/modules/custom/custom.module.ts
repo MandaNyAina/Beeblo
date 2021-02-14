@@ -14,6 +14,8 @@ import { CrudTableComponent } from '../crud-table/crud-table.component';
 import { DefaultPipe } from '../../pipe/default.pipe';
 import { StatusPipe } from '../../pipe/status.pipe';
 import { BooleanPipe } from '../../pipe/boolean.pipe';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
 
 @NgModule({
   imports: [
@@ -25,7 +27,9 @@ import { BooleanPipe } from '../../pipe/boolean.pipe';
     ToolbarModule,
     TableModule,
     ButtonModule,
-    FileUploadModule
+    FileUploadModule,
+    ConfirmDialogModule,
+    ConfirmPopupModule
   ],
   exports: [
     CommonModule,
@@ -42,7 +46,9 @@ import { BooleanPipe } from '../../pipe/boolean.pipe';
     CrudTableComponent,
     DefaultPipe,
     StatusPipe,
-    BooleanPipe
+    BooleanPipe,
+    ConfirmDialogModule,
+    ConfirmPopupModule
   ],
   declarations: [SubmitComponent, EditorComponent, CrudTableComponent, DefaultPipe, StatusPipe, BooleanPipe]
 })

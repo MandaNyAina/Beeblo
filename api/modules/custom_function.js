@@ -39,7 +39,7 @@ module.exports.decrypt = (value) => {
 
 module.exports.generateString = (length) => {
     let result = '',
-        characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.',
+        characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
         charactersLength = characters.length;
     for (var i = 0; i < length; i++) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -96,5 +96,5 @@ module.exports.generateToken = (data) => {
 }
 
 module.exports.generateNumber = () => {
-  return this.generateString(5)+Date.now()
+  return this.generateString(5).toUpperCase()+Date.now()
 }

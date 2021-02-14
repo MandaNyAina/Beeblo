@@ -43,7 +43,7 @@ import { P403Component } from './views/error/403.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {ToastModule} from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @NgModule({
   imports: [
@@ -74,7 +74,7 @@ import { MessageService } from 'primeng/api';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }, MessageService],
+  }, MessageService, ConfirmationService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -11,16 +11,16 @@ class Acheteur {
 
   create(data) {
     return new Promise(async (resolve, reject) => {
-      let check_user = database.select("acheteur", "id_acheteur", `email_acheteur = ${data.email_acheteur}`);
-      if (!check_user.length) reject(C.connexion.USER_EXIST);
-      data.mot_de_passe_acheteur = fn.signPassword(data.mot_de_passe_acheteur);
+      let check_user = await database.select("acheteur", "id_acheteur", `email_acheteur = '${data.email_acheteur}'`);
+      if (check_user.length) reject(C.connexion.USER_EXIST);
+      data.mot_de_passe_acheteur = await fn.signPassword(data.mot_de_passe_acheteur);
       database.insert("acheteur", data).then(res => resolve(res)).catch(err => reject(err));
     })
   }
 
   changePassword(id_acheteur, new_password) {
-    return new Promise((resolve, reject) => {
-      database.update("acheteur", {mot_de_passe_acheteur: fn.signPassword(new_password)}, `id_acheteur = ${id_acheteur}`)
+    return new Promise(async (resolve, reject) => {
+      database.update("acheteur", {mot_de_passe_acheteur: await fn.signPassword(new_password)}, `id_acheteur = ${id_acheteur}`)
       .then(res => resolve(res)).catch(err => reject(err));
     })
   }
@@ -65,6 +65,41 @@ class Acheteur {
   disableAccount(id_acheteur) {
     return new Promise((resolve, reject) => {
       database.update("acheteur", {id_status: C.status.COMPTE_KO}, `id_acheteur = ${id_acheteur}`)
+      .then(res => resolve(res)).catch(err => reject(err));
+    })
+  }
+
+  addTypeAcheteur(data) {
+    return new Promise((resolve, reject) => {
+      database.insert("type_acheteur", data)
+      .then(res => resolve(res)).catch(err => reject(err));
+    })
+  }
+
+  getAllTypeAcheteur() {
+    return new Promise((resolve, reject) => {
+      database.select("type_acheteur")
+      .then(res => resolve(res)).catch(err => reject(err));
+    })
+  }
+
+  getByIdTypeAcheteur(id_type_client) {
+    return new Promise((resolve, reject) => {
+      database.select("type_acheteur", "*", `id_type_acheteur = ${id_type_client}`)
+      .then(res => resolve(res[0])).catch(err => reject(err));
+    })
+  }
+
+  updateTypeAcheteur(id_type_client, data) {
+    return new Promise((resolve, reject) => {
+      database.update("type_acheteur", data, `id_type_acheteur = ${id_type_client}`)
+      .then(res => resolve(res)).catch(err => reject(err));
+    })
+  }
+
+  deleteTypeAcheteur(id_type_client) {
+    return new Promise((resolve, reject) => {
+      database.delete("type_acheteur", `id_type_acheteur = ${id_type_client}`)
       .then(res => resolve(res)).catch(err => reject(err));
     })
   }

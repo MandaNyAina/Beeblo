@@ -3,6 +3,7 @@ const Produit = require('../controller/produit.controller');
 const token = require('../middleware/tokenValidator');
 const produit = new Produit;
 const fn = require('../modules/custom_function');
+const C = require('../modules/constante');
 const multer = require('multer');
 
 var storage = multer.diskStorage({
@@ -16,43 +17,46 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage })
 
-route.post("/add", token.admin, upload.array('image_produit'), (req, res) => {
+route.post("/add", (req, res) => {
   let image_produit = "";
-  if (res.files.length > 0) {
-    res.files.map(img => {
-      image_produit += `${img.name},`;
-    })
-    image_produit.slice(0, -1);
-  }
+  // if (res.files.length > 0) {
+  //   res.files.map(img => {
+  //     image_produit += `${img.name},`;
+  //   })
+  //   image_produit.slice(0, -1);
+  // }
   let data = {
     nom_produit: req.body.nom_produit,
-    prix_produit: req.body.prix_produit,
-    numero_produit: req.body.numero_produit,
+    numero_produit: fn.generateNumber(),
     stock_produit: req.body.stock_produit,
-    image_produit: image_produit,
+    image_produit,
+    prix: req.body.prix,
     description_produit: req.body.description_produit,
-    id_status: req.body.id_status,
-    id_categorie: req.body.id_categorie
+    caracteristique: req.body.caracteristique,
+    id_categorie: req.body.id_categorie,
+    id_status: req.body.stock_produit > 0 ? C.status.PRODUIT_STOCK_OK : C.status.PRODUIT_STOCK_KO
   }
   produit.create(data)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/update/:id", token.admin, upload.array('image_produit'), (req, res) => {
+route.post("/update/:id", token.admin, (req, res) => {
   let image_produit = "";
-  if (res.files.length > 0) {
-    res.files.map(img => {
-      image_produit += `${img.name},`;
-    })
-    image_produit.slice(0, -1);
-  }
+  // if (res.files.length > 0) {
+  //   res.files.map(img => {
+  //     image_produit += `${img.name},`;
+  //   })
+  //   image_produit.slice(0, -1);
+  // }
   let data = {
     nom_produit: req.body.nom_produit,
-    prix_produit: req.body.prix_produit,
-    numero_produit: req.body.numero_produit,
+    numero_produit: fn.generateNumber(),
     stock_produit: req.body.stock_produit,
+    image_produit,
+    prix: req.body.prix,
     description_produit: req.body.description_produit,
-    id_status: req.body.id_status,
+    couleur: req.body.couleur,
+    id_taille: req.body.id_taille,
     id_categorie: req.body.id_categorie
   }
   if (image_produit != "") data.image_produit = image_produit;
@@ -86,15 +90,23 @@ route.get("/getById/:id", token, (req, res) => {
 })
 
 route.route("/category").post(token.admin, (req, res) => {
-  produit.createCategory(req.body.nom_categorie)
+  let data = {
+    nom_categorie: req.body.nom_categorie,
+    id_status: C.status.CATEGORIE_ACTIVE
+  }
+  produit.createCategory(data)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
-}).get(token, (req, res) => {
+}).get((req, res) => {
   produit.getCategory()
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
 route.route("/category/:id").post(token.admin, (req, res) => {
-  produit.updateCategory(req.params.id, req.body.nom_categorie)
+  let data = {
+    nom_categorie: req.body.nom_categorie,
+    id_status: req.body.id_status
+  }
+  produit.updateCategory(req.params.id, data)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 }).get(token, (req, res) => {
   produit.getCategoryById(req.params.id)
@@ -103,5 +115,6 @@ route.route("/category/:id").post(token.admin, (req, res) => {
   produit.deleteCategorie(req.params.id)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
+
 
 module.exports = route;

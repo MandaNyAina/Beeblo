@@ -16,7 +16,8 @@ route.post("/add", (req, res) => {
     ville_acheteur: req.body.ville_acheteur,
     pays_acheteur: req.body.pays_acheteur,
     etat_acheteur: req.body.etat_acheteur,
-    id_status: req.body.id_status
+    id_status: req.body.id_status,
+    id_type_acheteur: req.body.id_type_acheteur
   }
   acheteur.create(data)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
@@ -43,9 +44,39 @@ route.post("/update/:id", token, (req, res) => {
     ville_acheteur: req.body.ville_acheteur,
     pays_acheteur: req.body.pays_acheteur,
     etat_acheteur: req.body.etat_acheteur,
-    id_status: req.body.id_status
+    id_status: req.body.id_status,
+    id_type_acheteur: req.body.id_type_acheteur
   }
   acheteur.update(req.params.id, data)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
+route.post("/typeClient/add", token.admin, (req, res) => {
+  let data = {
+    libelle_type_acheteur: req.body.libelle_type_acheteur
+  }
+  acheteur.addTypeAcheteur(data)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
+route.post("/typeClient/update/:id_type_acheteur", token.admin, (req, res) => {
+  let data = {
+    libelle_type_acheteur: req.body.libelle_type_acheteur
+  }
+  acheteur.updateTypeAcheteur(req.params.id_type_acheteur ,data)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
+route.get("/typeClient", token.admin, (req, res) => {
+  acheteur.getAllTypeAcheteur()
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
+route.route("/typeClient/:id_type_acheteur").get(token.admin, (req, res) => {
+  acheteur.getByIdTypeAcheteur(req.params.id_type_acheteur)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+}).delete(token.admin, (req, res) => {
+  acheteur.deleteTypeAcheteur(req.params.id_type_acheteur)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 

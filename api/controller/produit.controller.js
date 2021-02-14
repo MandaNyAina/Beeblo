@@ -4,8 +4,18 @@ const database = new Database;
 class Produit {
 
   create(data) {
-    return new Promise((resolve, reject) => {
-      database.insert("produit", data).then(res => resolve(res)).catch(err => reject(err));
+    return new Promise(async (resolve, reject) => {
+      data.prix.map(async prix => {
+        await this.setProduitPrix({
+          id_type_acheteur: prix.id_type_acheteur,
+          numero_produit: data.numero_produit,
+          montant_produit: prix.montant_produit
+        });
+      })
+      delete data['prix'];
+      database.insert("produit", data).then(res => {
+        resolve(res);
+      }).catch(err => reject(err));
     })
   }
 
@@ -46,6 +56,13 @@ class Produit {
         }
       })
       .catch(err => reject(err));
+    })
+  }
+
+  setProduitPrix(data) {
+    return new Promise((resolve, reject) => {
+      database.insert("prix_produit", data)
+      .then(res => resolve(res)).catch(err => reject(err));
     })
   }
 

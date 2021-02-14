@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { LazyLoadEvent } from 'primeng/api';
+import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
+import { Header } from '../../interface/header';
 
 @Component({
   selector: 'app-crud-table',
@@ -8,25 +9,34 @@ import { LazyLoadEvent } from 'primeng/api';
 })
 export class CrudTableComponent implements OnInit {
   @Input() title: string;
-  @Input() header: Array<any>;
+  @Input() header: Array<Header>;
   @Input() data: Array<any>;
   @Input() loading: boolean;
 
   filterField: Array<any> = [];
+  globalFilter: Array<String>;
   selectedData: Array<any>;
   delete: any;
   totalRecords: number;
   cols: Array<any>;
   searchValue: string;
+  isDialog: boolean = false;
 
   @Output() reloadTable = new EventEmitter();
   @Output() onAdd = new EventEmitter();
-  @Output() onDelete = new EventEmitter();
-  constructor() {
+  @Output() onEdit = new EventEmitter();
+  @Output() onDeleteSelected = new EventEmitter();
+  @Output() onDeleteLine = new EventEmitter();
+  constructor(
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService
+  ) {
   }
 
   ngOnInit() {
-    this.filterField = this.header.map(el => { return {key: el.key, pipe: el.pipe ? el.pipe : "default"} });
+    this.filterField = this.header.map(el => { return {key: el.key } });
+    this.globalFilter = this.header.map(el => { return `${el.key}` });
+
   }
 
   reloadData(e: LazyLoadEvent) {
@@ -35,7 +45,10 @@ export class CrudTableComponent implements OnInit {
 
   openNew() {
     this.onAdd.emit();
+  }
 
+  onEditLine(data: Object) {
+    this.onEdit.emit(data);
   }
 
   onSearch() {
@@ -46,9 +59,41 @@ export class CrudTableComponent implements OnInit {
     this.data = new_data;
   }
 
+  deleteOnRow(data: Object) {
+
+    this.confirmationService.confirm({
+      message: 'Etes-vous sur de supprimer l\'element selectionne ?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+          this.onDeleteLine.emit(data);
+          this.selectedData = null;
+          this.messageService.add({severity:'success', summary: 'Succes', detail: 'Element supprime', life: 3000});
+          this.isDialog = false;
+      },
+      reject: () => {
+        this.isDialog = false;
+      }
+    });
+  }
+
+
   deleteSelecteData() {
-    this.onDelete.emit(this.selectedData);
-    this.selectedData = null;
+    this.confirmationService.confirm({
+      message: 'Etes-vous sur de supprimer l\'element selectionne ?',
+      header: 'Attention',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+          this.onDeleteSelected.emit(this.selectedData);
+          this.selectedData = null;
+          this.messageService.add({severity:'success', summary: 'Succes', detail: 'Element supprime', life: 3000});
+          this.isDialog = false;
+      },
+      reject: () => {
+        this.isDialog = false;
+      }
+    });
+
   }
 
 }

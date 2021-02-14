@@ -76,14 +76,14 @@ class Login {
 
   authAsAcheteur(data) {
     return new Promise((resolve, reject) => {
-      const email_acheteur = data.email_acheteur;
-      database.select("acheteur", "id_acheteur, nom_acheteur, prenom_acheteur, email_acheteur, numero_client_acheteur, adresse_acheteur, code_postal, ville_acheteur, pays_acheteur, etat_acheteur, date_inscription_acheteur, id_status", `id_acheteur = ${email_acheteur}`)
+      const email_acheteur = data.nom_utilisateur;
+      database.select("acheteur", "*", `email_acheteur = '${email_acheteur}'`)
       .then(async res => {
         if (res.length == 0) reject(C.connexion.USER_INEXISTE);
         let source_password = data.mot_de_passe.split("(%%)");
         if (source_password[1] != "from_beeblo_app") reject("Unkown source connexion");
         data.mot_de_passe = source_password[0];
-        let check_password = await fn.matchPassword(data.mot_de_passe, res[0].mot_de_passe);
+        let check_password = await fn.matchPassword(data.mot_de_passe, res[0].mot_de_passe_acheteur);
         if (!check_password) reject(C.connexion.PASSWORD_ERROR);
         let status = res[0].id_status;
         switch (status) {
@@ -100,8 +100,10 @@ class Login {
             break;
 
           case C.status.COMPTE_OK:
-            const token = fn.generateToken(res[0]);
-            resolve({ token, data: res[0] });
+            data = res[0];
+            delete data['mot_de_passe_acheteur'];
+            const token = fn.generateToken(data);
+            resolve({ token, data });
             break;
         }
       }).catch(err => reject(err));

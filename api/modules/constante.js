@@ -21,7 +21,11 @@ module.exports.status = {
   LIVREUR_INDISPO: 20,
   LIVREUR_DESACTIVE: 21,
   TYPE_LIVRAISON_ACTIVE: 22,
-  TYPE_LIVRAISON_DESACTIVE: 23
+  TYPE_LIVRAISON_DESACTIVE: 23,
+  CATEGORIE_ACTIVE: 24,
+  CATEGORIE_DESACTIVE: 25,
+  CARACTERISTIQUE_ACTIVE: 26,
+  CARACTERISTIQUE_DESACTIVE: 27,
 }
 
 module.exports.groups = {
@@ -31,7 +35,7 @@ module.exports.groups = {
 
 module.exports.connexion = {
   USER_EXIST : "L'utilisateur existe déjà",
-  USER_INEXISTE : "L'utilisateur n'exist pas",
+  USER_INEXISTE : "L'utilisateur n'existe pas",
   PASSWORD_ERROR : "Mot de passe incorrect",
   COMPTE_IN : "Votre compte est inactif",
   COMPTE_SUSP : "Votre compte est suspendu",

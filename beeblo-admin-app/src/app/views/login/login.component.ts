@@ -28,12 +28,13 @@ export class LoginComponent {
         localStorage.setItem("beeblo_admin_token", res.token);
         this.Route.navigate(['/dashboard']);
       }, (err) => {
-        this.message.error("Erreur", err.error);
+        let message: string = err.error instanceof ProgressEvent ? err.message : err.error;
+        this.message.error("Erreur", message);
       })
     }
   }
 
-  validatorForm(form: any, ngFrom: NgForm) {
+  validatorForm(form: any, ngFrom: NgForm): boolean {
     return ngFrom.form.controls[form]?.invalid && (ngFrom.submitted || ngFrom.form.controls[form].dirty);
   }
 }
