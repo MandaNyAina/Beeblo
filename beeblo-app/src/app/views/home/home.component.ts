@@ -24,6 +24,9 @@ export class HomeComponent implements OnInit {
                     elle offre le terreau idéal à ceux qui réfléchissent autrement.
                   </p>
                   <p>
+                    Abeille créatrice de sens
+                  </p>
+                  <p>
                     C'est dans cette vision que sont conçues les collections Beeblo : réinventer la
                     compréhension de racines culturelles multiples
                     pour retrouver une mode porteuse de sens et qui donne du sens à ceux qui la portent.
@@ -35,10 +38,16 @@ export class HomeComponent implements OnInit {
                     Et c'est pourquoi la marque assure que chaque pièce de mode qu'elle propose dégage
                     cette "créativité tranquille" que l'on retrouve à Fontainebleau et qui se
                     ressent dans tous les codes de Beeblo.
+                  </p>
+                  <p>
+                    L’élégance est dans les détails
                   </p>`,
       homeInfo3: `<p>
                     Laissez-vous inspirer par des vêtements et accessoires
                     qui dépassent les conceptions classiques établies par la mode conventionnelle.
+                  </p>
+                  <p>
+                    Beeblo, pour les abeilles insolites de la mode
                   </p>`
     }
 

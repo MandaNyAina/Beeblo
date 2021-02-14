@@ -12,11 +12,13 @@ export class CollectionComponent implements OnInit {
   produit?: Array<any>;
 
   page: number = 1;
+  page_name: string = "COLLECTION"
   data_length: number;
   block_pagination: number;
   current_pagination: string;
 
   filter?: string = "Filtre";
+  filtered_init: string = "all";
   categorie?: string = "Categorie";
   taille?: string = "Taille";
   couleur?: string = "Couleur";
@@ -35,6 +37,22 @@ export class CollectionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    switch (this.router.url) {
+      case "/best-seller":
+        this.filtered_init = "best";
+        this.page_name = "BEST SELLER";
+        break;
+
+      case "/promotion":
+        this.filtered_init = "promotion";
+        this.page_name = "PROMOTION";
+        break;
+
+      case "/categorie":
+        this.filtered_init = "categorie";
+        this.page_name = "CATEGORIE";
+        break;
+    }
     this.currency = "€";
     this.getProduit();
     this.block_pagination = 12;
@@ -60,21 +78,22 @@ export class CollectionComponent implements OnInit {
     this.produit = teste;
   }
 
-  onAddPanier(id) {
+  onAddPanier(id: number) {
     this.msg.success("Ajouté au panier", `Produit ${id} ajouté au panier`)
   }
 
-  openProduit(id) {
+  openProduit(id: number) {
     this.router.navigate(['produit', id]);
   }
 
-  buildAutoComplete(elements: any, str_search: string): string[] {
+  buildAutoComplete(elements: Array<string>, str_search: string): string[] {
     return elements.map(el => {
       if (el.includes(str_search)) return el;
     }).filter(value  => {return value != null;});
   }
 
-  search(data, filtre_name) {
+  search(data: any, filtre_name: string) {
+
     switch (filtre_name) {
       case 'get_categorie':
         this.categories = this.buildAutoComplete(['Cat 1', 'Cat 2' , 'Cat 3'], data.query)
@@ -98,7 +117,7 @@ export class CollectionComponent implements OnInit {
     }
   }
 
-  onChangePage(event) {
+  onChangePage(event: any) {
     this.page = event.page;
   }
 

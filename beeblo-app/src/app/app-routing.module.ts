@@ -10,11 +10,6 @@ import { HomepageComponent } from './views/homepage/homepage.component';
 import { PanierComponent } from './views/panier/panier.component';
 import { ProduitComponent } from './views/produit/produit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { TermeConditionComponent } from './views/terme-condition/terme-condition.component';
-import { MentionLegaleComponent } from './views/mention-legale/mention-legale.component';
-import { CategorieComponent } from './views/categorie/categorie.component';
-import { BestSellerComponent } from './views/best-seller/best-seller.component';
-import { PromotionComponent } from './views/promotion/promotion.component';
 import { CodePromotionComponent } from './views/code-promotion/code-promotion.component';
 
 
@@ -24,14 +19,14 @@ const routes: Routes = [
   // { path: "homepage", component: HomepageComponent },
   { path: "homepage", component: HomeComponent },
   { path: "produit/:id", component: ProduitComponent },
-  { path: "best-seller", component: BestSellerComponent },
+  { path: "best-seller", component: CollectionComponent },
   { path: "collection", component: CollectionComponent },
-  { path: "categorie", component: CategorieComponent },
+  { path: "categorie", component: CollectionComponent },
   { path: "code-promo", component: CodePromotionComponent },
   { path: "panier", component: PanierComponent },
-  { path: "promotion", component: PromotionComponent },
-  { path: "terme-condition", component: TermeConditionComponent },
-  { path: "mention-legale", component: MentionLegaleComponent },
+  { path: "promotion", component: CollectionComponent },
+  { path: "terme-condition", component: ConditionComponent },
+  { path: "mention-legale", component: ConditionComponent },
   { path: "apropos", component: AproposComponent },
   { path: "condition", component: ConditionComponent },
   { path: "faq", component: FaqComponent },

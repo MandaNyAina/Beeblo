@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-condition',
@@ -9,9 +10,26 @@ export class ConditionComponent implements OnInit {
   conditionElement1: string;
   conditionElement2: string;
   conditionElement3: string;
-  constructor() { }
+
+  page_name: string = "NOS CONDITIONS D’UTILISATIONS";
+  filtered: string = "condition_vente";
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    switch (this.router.url) {
+      case "/mention-legale":
+        this.filtered = "mention";
+        this.page_name = "MENTION LEGALES";
+        break;
+
+      case "/terme-condition":
+        this.filtered = "terme_condition";
+        this.page_name = "TERME ET CONDITIONS DE VENTE";
+        break;
+
+    }
     this.getSiteInfo();
   }
 
