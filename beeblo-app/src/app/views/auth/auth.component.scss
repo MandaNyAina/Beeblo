@@ -8,23 +8,27 @@ button {
   font-family: $primary-font;
 }
 
+input {
+  font-size: 20px;
+}
 
 .login-blue {
   margin-top: 8%;
   width: 90%;
-  height: 95vh;
+  height: auto;
   background-color: $primary;
 }
 
 .login-orange {
   margin-top: -3%;
   width: 60%;
-  height: 95vh;
+  height: auto;
   background-color: $secondary;
   position: absolute;
   right: 0;
   margin-right: 5%;
   padding-top: 5%;
+  padding-bottom: 20px;
 }
 
 .connecte {
@@ -82,18 +86,31 @@ button.form-style:hover {
   border: 1px solid $warning;
 }
 
+.mobile_btn_cree_compte {
+  width: 40% !important;
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
   .login-blue {
     display: none;
   }
 
+  .mobile_btn_cree_compte {
+    width: 40% !important;
+    display: block;
+    margin-left: 0 !important;
+  }
+
+
   .login-orange {
     position: relative;
     width: 100%;
-    height: 70vh;
+    height: auto;
     background-color: $secondary;
     margin-top: 5%;
     margin-right: 0;
+    padding-bottom: 15px;
   }
 
   button.form-style {

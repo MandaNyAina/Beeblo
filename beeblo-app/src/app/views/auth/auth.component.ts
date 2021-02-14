@@ -18,4 +18,8 @@ export class AuthComponent implements OnInit {
     ];
   }
 
+  onResized(e: Event) {
+    console.log(e);
+  }
+
 }

@@ -1,7 +1,7 @@
 <div class="wrapper-body">
   <p-breadcrumb [model]="items"></p-breadcrumb>
   <div class="login-block p-mb-5">
-    <div class="login-orange">
+    <div class="login-orange" #getElementHeight (resized)="onResized($event)">
       <form class="connecte" #loginForm='ngForm'>
         <h1 class="p-text-center">Me connecter</h1>
         <div class="form-group">
@@ -13,14 +13,15 @@
           <input type="text" class="form-style"/>
         </div>
         <div class="form-group p-text-right">
-          <button type="button" class="form-style">JE M'INDENTIFIE</button>
+          <button type="button" class="form-style">JE M'INDENTIFIE</button> <br>
+          <button type="button" class="mobile_btn_cree_compte form-style cree_compte_btn">CRÉER MON COMPTE</button>
         </div>
         <div class="form-group">
           <span class="link-style p-text-left">Mot de passe oublié ?</span>
         </div>
       </form>
     </div>
-    <div class="login-blue">
+    <div class="login-blue" [ngStyle]="{'height': getElementHeight.offsetHeight+'px'}">
       <img class="cree_compte" src="assets/img/auth/cree_compte.png" alt="cree_compte_ici">
       <div>
         <button type="button" class="form-style cree_compte_btn">CRÉER MON COMPTE</button>
