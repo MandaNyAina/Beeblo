@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
+import { ResizedEvent } from 'angular-resize-event';
 
 @Component({
   selector: 'app-auth',
@@ -18,8 +19,8 @@ export class AuthComponent implements OnInit {
     ];
   }
 
-  onResized(e: Event) {
-    console.log(e);
+  onResized(e: ResizedEvent) {
+    // console.log(e);
   }
 
 }

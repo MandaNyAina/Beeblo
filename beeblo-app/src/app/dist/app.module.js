@@ -9,6 +9,7 @@ exports.__esModule = true;
 exports.AppModule = void 0;
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
+var angular_resize_event_1 = require("angular-resize-event");
 var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
 var footer_component_1 = require("./views/footer/footer.component");
@@ -34,6 +35,12 @@ var faq_component_1 = require("./views/faq/faq.component");
 var inputtext_1 = require("primeng/inputtext");
 var home_component_1 = require("./views/home/home.component");
 var pagination_component_1 = require("./views/pagination/pagination.component");
+var terme_condition_component_1 = require("./views/terme-condition/terme-condition.component");
+var mention_legale_component_1 = require("./views/mention-legale/mention-legale.component");
+var categorie_component_1 = require("./views/categorie/categorie.component");
+var promotion_component_1 = require("./views/promotion/promotion.component");
+var best_seller_component_1 = require("./views/best-seller/best-seller.component");
+var code_promotion_component_1 = require("./views/code-promotion/code-promotion.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -53,7 +60,13 @@ var AppModule = /** @class */ (function () {
                 condition_component_1.ConditionComponent,
                 faq_component_1.FaqComponent,
                 home_component_1.HomeComponent,
-                pagination_component_1.PaginationComponent
+                pagination_component_1.PaginationComponent,
+                terme_condition_component_1.TermeConditionComponent,
+                mention_legale_component_1.MentionLegaleComponent,
+                categorie_component_1.CategorieComponent,
+                promotion_component_1.PromotionComponent,
+                best_seller_component_1.BestSellerComponent,
+                code_promotion_component_1.CodePromotionComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -66,7 +79,8 @@ var AppModule = /** @class */ (function () {
                 tooltip_1.TooltipModule,
                 autocomplete_1.AutoCompleteModule,
                 toast_1.ToastModule,
-                inputtext_1.InputTextModule
+                inputtext_1.InputTextModule,
+                angular_resize_event_1.AngularResizedEventModule
             ],
             providers: [api_1.MessageService],
             bootstrap: [app_component_1.AppComponent]

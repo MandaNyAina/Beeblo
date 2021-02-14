@@ -4,12 +4,13 @@
   background-image: url('../../../assets/img/home/home-background.png');
   background-size: cover;
   background-color: white;
+  font-weight: bold;
 }
 
 .title-home {
   background-color: $secondary;
   padding:1% 15%;
-  text-align: center;
+  // text-align: center;
   font-weight: bold;
 }
 

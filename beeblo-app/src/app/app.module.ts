@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AngularResizedEventModule } from 'angular-resize-event';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,12 @@ import { FaqComponent } from './views/faq/faq.component';
 import {InputTextModule} from 'primeng/inputtext';
 import { HomeComponent } from './views/home/home.component';
 import { PaginationComponent } from './views/pagination/pagination.component';
+import { TermeConditionComponent } from './views/terme-condition/terme-condition.component';
+import { MentionLegaleComponent } from './views/mention-legale/mention-legale.component';
+import { CategorieComponent } from './views/categorie/categorie.component';
+import { PromotionComponent } from './views/promotion/promotion.component';
+import { BestSellerComponent } from './views/best-seller/best-seller.component';
+import { CodePromotionComponent } from './views/code-promotion/code-promotion.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +49,13 @@ import { PaginationComponent } from './views/pagination/pagination.component';
     ConditionComponent,
     FaqComponent,
     HomeComponent,
-    PaginationComponent
+    PaginationComponent,
+    TermeConditionComponent,
+    MentionLegaleComponent,
+    CategorieComponent,
+    PromotionComponent,
+    BestSellerComponent,
+    CodePromotionComponent
     ],
   imports: [
     BrowserModule,
@@ -55,7 +68,8 @@ import { PaginationComponent } from './views/pagination/pagination.component';
     TooltipModule,
     AutoCompleteModule,
     ToastModule,
-    InputTextModule
+    InputTextModule,
+    AngularResizedEventModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

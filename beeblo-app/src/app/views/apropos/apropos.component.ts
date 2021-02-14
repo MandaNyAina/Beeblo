@@ -16,20 +16,19 @@ export class AproposComponent implements OnInit {
 
   getSiteInfo() {
     let teste = {
-      aproposContent1: `<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptatem illo facere, nihil aperiam culpa eum quis consequatur explicabo optio
-      veritatis nemo laudantium modi cum ipsa numquam tempora suscipit architecto!
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut, quia non quae nam dolore reiciendis distinctio, recusandae esse animi blanditiis
-      consequatur vitae voluptatibus nihil dolor qui accusamus eum amet nostrum!</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptatem illo facere, nihil aperiam culpa eum quis consequatur explicabo optio
-      veritatis nemo laudantium modi cum ipsa numquam tempora suscipit architecto!
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut, quia non quae nam dolore reiciendis distinctio, recusandae esse animi blanditiis
-      consequatur vitae voluptatibus nihil dolor qui accusamus eum amet nostrum!</p>`,
+      aproposContent1: `<p>Notre Vision: Des collections qui réinventent leurs racines culturelles pour retrouver une mode porteuse de sens.
+      Beeblo se bat contre la standardisation, pour une mode plus créative et ancrée dans un univers. Des vêtements qui ont de l'identité, des références, et qui donnent un style plutôt que de représenter un style.
+      </p><p>Notre Mission: Révéler la richesse de personnalité de ceux pour qui les détails comptent.
+      Beeblo s'applique à faire émerger les aspérités et les exigences de la communauté Beeblo, pour qu'ils soient vus et reconnus comme les "yeux de la mode", ceux qui traquent et détectent les petits détails qui font toute la différence.
+      </p><p>
+      </p>`,
       aproposContent2: `
-      <p>Beeblo est un mesage d’universalité; la sobriété occidentale mélangée à une forte inspiration de l’art africain.
-      </p>
-      <p>Très fier de nos origines françaises et plus particulièrement bellifontaines, nous revendiquons une modernité urbaine proche de la nature. Nous sommes fiers de notre ville de rattachement, Fontainebleau, qui allie à la fois un développement économique ambitieux et responsable, un rayonnement mondial, et la préservation de l'environnement.
-      </p>
-      <p>Alors soyons responsables, soyons créatifs, soyons bellifontains, BeeBlo.</p>`
+      <p>Notre Promesse: Assurer que chaque pièce de mode dégage cette "créativité tranquille"
+      Beeblo veut rendre accessible le côté créatif de la mode.
+      "Toi aussi tu peux avoir ce petit truc en plus dans ta tenue,
+      sans passer pour un farfelu".</p><p> C'est une créativité qui, à l'image de Beeblo est
+      paisible, calme, assurée et charismatique.</p>
+      <p class='p-text-center'>Beeblo, pour les abeilles insolites de la mode</p>`
     }
 
     this.aproposContent1 = teste.aproposContent1;
