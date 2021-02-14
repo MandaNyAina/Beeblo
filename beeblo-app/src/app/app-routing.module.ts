@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AproposComponent } from './FO/apropos/apropos.component';
-import { AuthComponent } from './FO/auth/auth.component';
-import { CollectionComponent } from './FO/collection/collection.component';
-import { ConditionComponent } from './FO/condition/condition.component';
-import { FaqComponent } from './FO/faq/faq.component';
-import { HomeComponent } from './FO/home/home.component';
-import { HomepageComponent } from './FO/homepage/homepage.component';
-import { PanierComponent } from './FO/panier/panier.component';
-import { ProduitComponent } from './FO/produit/produit.component';
+import { AproposComponent } from './views/apropos/apropos.component';
+import { AuthComponent } from './views/auth/auth.component';
+import { CollectionComponent } from './views/collection/collection.component';
+import { ConditionComponent } from './views/condition/condition.component';
+import { FaqComponent } from './views/faq/faq.component';
+import { HomeComponent } from './views/home/home.component';
+import { HomepageComponent } from './views/homepage/homepage.component';
+import { PanierComponent } from './views/panier/panier.component';
+import { ProduitComponent } from './views/produit/produit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 
