@@ -1,10 +1,15 @@
 @import '../../../styles.scss';
 
+.img-footer-home {
+  width: 100%;
+  margin-bottom: -10px;
+}
+
 footer {
   background-image: url('../../../assets/img//footer/footer-backgroud.png');
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 80px;
+  padding-top: 60px;
   color: #ffffff;
   font-size: 20px;
 }

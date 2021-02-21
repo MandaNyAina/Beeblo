@@ -1,0 +1,64 @@
+<div class="wrapper-body">
+  <div class="creation-compte-block">
+    <h1 class="p-text-center">Je créé mon compte</h1>
+    <div>
+      <form #creationForm='ngForm' (ngSubmit)="onSubmitForm(creationForm)">
+        <div class="form-group">
+          Votre nom :
+          <input type="text" class="form-style"/>
+        </div>
+        <div class="form-group">
+          Votre prénom(s) :
+          <input type="text" class="form-style"/>
+        </div>
+        <div class="form-group">
+          Votre adresse email :
+          <input type="text" class="form-style"/>
+        </div>
+        <div class="form-group">
+          Votre numéro téléphone :
+          <input type="text" class="form-style"/>
+        </div>
+        <div class="form-group">
+          Votre Pays :
+          <select name="" id="" class="form-style">
+            <option>Selectionné un pays</option>
+            <option *ngFor="let pays of listOfPays" value="{{pays.numericCode}}">
+              {{pays.name}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          Votre adresse :
+          <input type="text" class="form-style"/>
+        </div>
+        <div class="form-group">
+          Votre code postal :
+          <input type="text" class="form-style"/>
+        </div>
+        <div class="form-group">
+          Votre ville :
+          <input type="text" class="form-style"/>
+        </div>
+        <div class="form-group">
+          <table>
+            <tr>
+              <td>Se connecter avec :</td>
+              <td>
+                <a href="https://www.facebook.com" target="_blank">
+                  <img class="logo-creation" src="assets/img/creation_compte/facebook.png" alt="facebook-beeblo" />
+                </a>
+                <a href="https://www.gmail.com" target="_blank">
+                  <img class="logo-creation" src="assets/img/creation_compte/gmail.png" alt="gmail-beeblo" />
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="form-group p-text-right">
+          <button type="submit" class="form-style">JE M'INDENTIFIE</button> <br>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -11,10 +11,13 @@ import { PanierComponent } from './views/panier/panier.component';
 import { ProduitComponent } from './views/produit/produit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CodePromotionComponent } from './views/code-promotion/code-promotion.component';
+import { CreationCompteComponent } from './views/creation-compte/creation-compte.component';
+import { FaqNewComponent } from './views/faq-new/faq-new.component';
 
 
 const routes: Routes = [
   { path: "auth",  component: AuthComponent},
+  { path: "creation-compte",  component: CreationCompteComponent},
   { path: "", redirectTo:"homepage", pathMatch: "full" },
   // { path: "homepage", component: HomepageComponent },
   { path: "homepage", component: HomeComponent },
@@ -29,7 +32,8 @@ const routes: Routes = [
   { path: "mention-legale", component: ConditionComponent },
   { path: "apropos", component: AproposComponent },
   { path: "condition", component: ConditionComponent },
-  { path: "faq", component: FaqComponent },
+  // { path: "faq", component: FaqComponent },
+  { path: "faq", component: FaqNewComponent },
   { path: "**", component: NotFoundComponent }
 ];
 

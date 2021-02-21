@@ -83,7 +83,7 @@ li.side-menu:hover {
   }
 
   .logo-img {
-    width: 38% !important;
+    width: 75px !important;
   }
 
   .p-mr-5 {
@@ -103,10 +103,6 @@ li.side-menu:hover {
 @media only screen and (max-width: 900px) {
   .menu {
     z-index: 9999;
-  }
-
-  .logo-img {
-    width: 125px;
   }
 
   .logo {

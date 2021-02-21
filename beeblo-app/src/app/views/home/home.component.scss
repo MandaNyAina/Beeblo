@@ -1,10 +1,15 @@
 @import '../../../styles.scss';
 
+p {
+  text-align: justify;
+}
+
 .home-main {
   background-image: url('../../../assets/img/home/home-background.png');
   background-size: cover;
   background-color: white;
   font-weight: bold;
+  margin-bottom: -20%;
 }
 
 .title-home {
@@ -41,14 +46,9 @@
 }
 
 .home-btn {
-  text-align: center;
   padding-top: 15%;
   padding-bottom: 15%;
   width: 100%;
-  background-image: url('../../../assets/img/home/home-footer.png');
-  background-size: 100%;
-  background-position: bottom;
-  background-repeat: no-repeat;
 }
 
 .home-btn-collection {
@@ -56,11 +56,14 @@
   border: 2px $secondary solid;
   padding: 20px 40px;
   border-radius: 500px;
-  -webkit-border-radius: 500px;
   font-weight: bold;
   background-color: transparent;
   transition: 0.5s all;
   font-size: 20px;
+  position: absolute;
+  margin: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .home-btn-collection:hover {
@@ -69,6 +72,7 @@
   cursor: pointer;
   background-color: $secondary;
   transition: 0.5s all;
+  letter-spacing: 3px;
 }
 
 @media only screen and (max-width: 900px) {

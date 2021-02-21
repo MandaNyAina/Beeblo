@@ -8,11 +8,18 @@ $success: #00aa5b;
 $danger: #cf3b42;
 $light: #878787;
 $black: #606060;
+$light-transparent: #898ea1;
+$warning-transparent: #fbd17d;
 $light-secondary: #f2f3f7;
 
 @font-face {
   font-family: 'APDE';
   src: url(/assets/font/aristo_pro/zetafonts-aristotelica-pro-display-extralight.otf);
+}
+
+@font-face {
+  font-family: 'APDECND';
+  src: url(/assets/font/aristo_pro/zetafonts-aristotelicapro-cndtext-extralight.otf);
 }
 
 @font-face {
@@ -32,6 +39,7 @@ $light-secondary: #f2f3f7;
 
 $primary-font: "APDE";
 $secondary-font: Roboto;
+$apdecnd: 'APDECND';
 
 :root {
   --primary: #{$primary};

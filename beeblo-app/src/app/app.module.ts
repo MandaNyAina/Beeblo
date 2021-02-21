@@ -29,6 +29,8 @@ import { HomeComponent } from './views/home/home.component';
 import { PaginationComponent } from './views/pagination/pagination.component';
 import { CategorieComponent } from './views/categorie/categorie.component';
 import { CodePromotionComponent } from './views/code-promotion/code-promotion.component';
+import { CreationCompteComponent } from './views/creation-compte/creation-compte.component';
+import { FaqNewComponent } from './views/faq-new/faq-new.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { CodePromotionComponent } from './views/code-promotion/code-promotion.co
     HomeComponent,
     PaginationComponent,
     CategorieComponent,
-    CodePromotionComponent
+    CodePromotionComponent,
+    CreationCompteComponent,
+    FaqNewComponent
     ],
   imports: [
     BrowserModule,

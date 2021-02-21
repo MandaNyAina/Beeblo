@@ -1,0 +1,41 @@
+@import '../../../styles.scss';
+
+.code-promo-main {
+  background-image: url('../../../assets/img/home/home-background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-weight: bold;
+  margin-bottom: -20%;
+  text-align: center;
+  padding-top: 2%;
+  padding-bottom: 25%;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.autre-boutique-img {
+  width: 50%;
+}
+
+.code-promo-block {
+  background-color: #181e3ae0;
+  padding: 50px;
+}
+
+.number-purcent {
+  width: 55%;
+}
+
+.code-block {
+  background-color: $secondary;
+  padding: 10px 0;
+  width: 250px;
+  margin: auto;
+  color: $primary;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.each-block {
+  margin-top: 30px;
+}
