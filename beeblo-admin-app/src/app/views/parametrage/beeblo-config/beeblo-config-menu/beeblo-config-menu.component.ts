@@ -25,19 +25,23 @@ export class BeebloConfigMenuComponent implements OnInit {
     this.header = [
       {
         key: "nom_menu",
-        name: "Nom menu"
+        name: "Nom menu",
+        width: 100
       },
       {
         key: "lien_menu",
-        name: "Lien"
+        name: "Lien",
+        width: 100
       },
       {
         key: "in_sidebar",
-        name: "Dans le sidebar"
+        name: "Dans le sidebar",
+        width: 100
       },
       {
         key: "id_status",
-        name: "Statut"
+        name: "Statut",
+        width: 100
       }
     ];
   }

@@ -1,0 +1,24 @@
+@import '../../../../scss/style.scss';
+
+.submit {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.submit-buttom {
+  background-color: $primary;
+  color: #ffffff;
+  border: 0;
+  padding: 7px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s all;
+}
+
+.submit-buttom:hover {
+  background-color: $secondary;
+  color: $primary;
+  transition: 0.4s all;
+  box-shadow: 2px 2px 7px $secondary;
+}

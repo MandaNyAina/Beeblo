@@ -24,22 +24,27 @@ export class UsersCrudComponent implements OnInit {
       {
         key: "id_administrateur",
         name: "Id",
+        width: 100
       },
       {
         key: "nom_administrateur",
         name: "Nom d'utilisateur",
+        width: 100
       },
       {
         key: "prenom_administrateur",
         name: "Prenom",
+        width: 100
       },
       {
         key: "designation_status",
         name: "Statut",
+        width: 100
       },
       {
         key: "id_groupe",
         name: "Groupe",
+        width: 100
       },
 
     ];

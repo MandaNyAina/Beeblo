@@ -253,6 +253,8 @@ COUNT(*) AS nombre_acheteur,
 FROM acheteur;
 
 CREATE VIEW view_acheteur AS
-SELECT 
-id_acheteur, nom_acheteur, prenom_acheteur, email_acheteur, numero_client_acheteur, adresse_acheteur, code_postal, ville_acheteur, pays_acheteur, etat_acheteur, date_inscription_acheteur, id_status 
-FROM acheteur 
+SELECT
+id_acheteur, nom_acheteur, prenom_acheteur, email_acheteur, numero_client_acheteur, adresse_acheteur, code_postal, ville_acheteur, pays_acheteur, etat_acheteur, date_inscription_acheteur, id_status,
+type_acheteur.libelle_type_acheteur as type_acheteur, ac.id_type_acheteur
+FROM acheteur AS ac
+JOIN type_acheteur ON type_acheteur.id_type_acheteur = ac.id_type_acheteur;

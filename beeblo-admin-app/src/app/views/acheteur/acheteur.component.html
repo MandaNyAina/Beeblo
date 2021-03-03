@@ -3,7 +3,11 @@
     [title]="'Liste des acheteurs'"
     [header]="header"
     [data]="acheteur"
-    [loading]="loading">
+    [loading]="loading"
+    (onAdd)="onSetAcheteur('new')"
+    (onEdit)="onSetAcheteur('edit', $event)"
+    (onDeleteLine)="onDelete($event)"
+    (reloadTable)="reloadData()">
   </app-crud-table>
 </div>
 

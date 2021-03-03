@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
+import { Acheteur } from '../../interface/acheteur';
 import { Header } from '../../interface/header';
 
 @Component({
@@ -39,7 +40,7 @@ export class CrudTableComponent implements OnInit {
 
   }
 
-  reloadData(e: LazyLoadEvent) {
+  reloadData(e: LazyLoadEvent | string) {
     this.reloadTable.emit(e);
   }
 
@@ -47,19 +48,31 @@ export class CrudTableComponent implements OnInit {
     this.onAdd.emit();
   }
 
-  onEditLine(data: Object) {
+  onEditLine(data: Acheteur) {
     this.onEdit.emit(data);
   }
 
   onSearch() {
-    let new_data = [];
-    this.data.filter(el => {
-      if (el.includes(this.searchValue)) new_data.push(el);
-    })
-    this.data = new_data;
+    if (!this.searchValue) {
+      this.reloadData("")
+    } else {
+      const new_data = [];
+      this.data.filter(elements => {
+        Object.values(elements).filter((value: string) => {
+          if (typeof value == 'string') {
+            if (value.toLowerCase().includes(this.searchValue.toLowerCase())) {
+              if (!new_data.includes(elements)) new_data.push(elements);
+            }
+          }
+        })
+      });
+
+      this.data = new_data;
+
+    }
   }
 
-  deleteOnRow(data: Object) {
+  deleteOnRow(data: Acheteur) {
 
     this.confirmationService.confirm({
       message: 'Etes-vous sur de supprimer l\'element selectionne ?',
@@ -67,33 +80,12 @@ export class CrudTableComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
           this.onDeleteLine.emit(data);
-          this.selectedData = null;
-          this.messageService.add({severity:'success', summary: 'Succes', detail: 'Element supprime', life: 3000});
           this.isDialog = false;
       },
       reject: () => {
         this.isDialog = false;
       }
     });
-  }
-
-
-  deleteSelecteData() {
-    this.confirmationService.confirm({
-      message: 'Etes-vous sur de supprimer l\'element selectionne ?',
-      header: 'Attention',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-          this.onDeleteSelected.emit(this.selectedData);
-          this.selectedData = null;
-          this.messageService.add({severity:'success', summary: 'Succes', detail: 'Element supprime', life: 3000});
-          this.isDialog = false;
-      },
-      reject: () => {
-        this.isDialog = false;
-      }
-    });
-
   }
 
 }

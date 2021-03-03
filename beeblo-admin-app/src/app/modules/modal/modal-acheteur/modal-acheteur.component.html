@@ -1,0 +1,143 @@
+<div>
+  <form [formGroup]="acheteurForm" (ngSubmit)="saveAcheteur()">
+
+    <div *ngIf="data">
+      <label for="nom_acheteur">Activation du compte</label> <br>
+      <p-inputSwitch [(ngModel)]="checked" formControlName="id_status" ></p-inputSwitch>
+    </div>
+
+    <div class="form-group">
+      <label for="nom_acheteur">Nom</label>
+      <input aria-describedby="nom-help" class="form-control" formControlName="nom_acheteur" type="text" id="nom_acheteur">
+      <small
+          *ngIf="
+          acheteurForm.controls['nom_acheteur'].invalid &&
+          acheteurForm.controls['nom_acheteur'].touched
+          "
+          class="text-danger">
+          Nom obligatoire
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="prenom_acheteur">Prenom(s)</label>
+      <input class="form-control" formControlName="prenom_acheteur" type="text" id="prenom_acheteur">
+    </div>
+
+    <div class="form-group">
+      <label for="email_acheteur">Email</label>
+      <input class="form-control" formControlName="email_acheteur" type="email" id="email_acheteur" required>
+      <small
+          *ngIf="
+          acheteurForm.controls['email_acheteur'].invalid &&
+          acheteurForm.controls['email_acheteur'].touched
+          "
+          class="text-danger">
+          Email obligatoire et doit contenir un "@"
+      </small>
+    </div>
+
+    <div *ngIf="!data" class="form-group">
+      <label for="mot_de_passe_acheteur">Mot de passe</label>
+      <input class="form-control" formControlName="mot_de_passe_acheteur" type="password" id="mot_de_passe_acheteur">
+      <small
+          *ngIf="
+          acheteurForm.controls['mot_de_passe_acheteur'].invalid &&
+          acheteurForm.controls['mot_de_passe_acheteur'].touched
+          "
+          class="text-danger">
+          Mot de passe obligatoire
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="numero_client_acheteur">Telephone</label>
+      <input class="form-control" formControlName="numero_client_acheteur" type="text" id="numero_client_acheteur">
+      <small
+          *ngIf="
+          acheteurForm.controls['numero_client_acheteur'].invalid &&
+          acheteurForm.controls['numero_client_acheteur'].touched
+          "
+          class="text-danger">
+          Numero obligatoire
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="adresse_acheteur">Adresse</label>
+      <input class="form-control" formControlName="adresse_acheteur" type="text" id="adresse_acheteur">
+      <small
+          *ngIf="
+          acheteurForm.controls['adresse_acheteur'].invalid &&
+          acheteurForm.controls['adresse_acheteur'].touched
+          "
+          class="text-danger">
+          Adresse obligatoire
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="code_postal">Code postal</label>
+      <input class="form-control" formControlName="code_postal" type="text" id="code_postal">
+      <small
+          *ngIf="
+          acheteurForm.controls['code_postal'].invalid &&
+          acheteurForm.controls['code_postal'].touched
+          "
+          class="text-danger">
+          Code postal obligatoire
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="ville_acheteur">Ville</label>
+      <input class="form-control" formControlName="ville_acheteur" type="text" id="ville_acheteur">
+      <small
+          *ngIf="
+          acheteurForm.controls['ville_acheteur'].invalid &&
+          acheteurForm.controls['ville_acheteur'].touched
+          "
+          class="text-danger">
+          Ville obligatoire
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="pays_acheteur">Pays</label>
+      <input class="form-control" formControlName="pays_acheteur" type="text" id="pays_acheteur">
+      <small
+          *ngIf="
+          acheteurForm.controls['pays_acheteur'].invalid &&
+          acheteurForm.controls['pays_acheteur'].touched
+          "
+          class="text-danger">
+          Pays obligatoire
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="id_type_acheteur">Type acheteur</label>
+      <select class="form-control" formControlName="id_type_acheteur" id="id_type_acheteur">
+        <option></option>
+        <option *ngFor="let type of listTypeClient" value="{{type.id_type_acheteur}}">
+          {{type.libelle_type_acheteur}}
+        </option>
+      </select>
+      <small
+          *ngIf="
+          acheteurForm.controls['id_type_acheteur'].invalid &&
+          acheteurForm.controls['id_type_acheteur'].touched
+          "
+          class="text-danger">
+          Type client obligatoire
+      </small>
+    </div>
+
+    <div class="p-text-center">
+      <button (click)="resetPassword()" *ngIf="data"
+        type="button" class="submit submit-buttom">Réinitialisation mot de passe</button>
+      <app-submit [label]="'Enregistrer'" [position]="'center'"></app-submit>
+    </div>
+
+  </form>
+</div>

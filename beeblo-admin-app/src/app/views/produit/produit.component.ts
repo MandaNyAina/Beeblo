@@ -24,30 +24,37 @@ export class ProduitComponent implements OnInit {
       {
         key: "numero_produit",
         name: "Numero produit",
+        width: 100
       },
       {
         key: "nom_produit",
         name: "Nom du produit",
+        width: 100
       },
       {
         key: "prix_produit",
         name: "Prix",
+        width: 100
       },
       {
         key: "stock_produit",
         name: "Stock produit",
+        width: 100
       },
       {
         key: "categorie",
         name: "Categorie",
+        width: 100
       },
       {
         key: "status",
         name: "Statut",
+        width: 100
       },
       {
         key: "prix_reduction",
         name: "Prix reduction",
+        width: 100
       }
     ]
     this.getAll();

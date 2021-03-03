@@ -25,19 +25,23 @@ export class ListePromoComponent implements OnInit {
     this.header = [
       {
         key: "reduction_promotion",
-        name: "Valeur (en %)"
+        name: "Valeur (en %)",
+        width: 100
       },
       {
         key: "type_promotion",
-        name: "Type de promotion"
+        name: "Type de promotion",
+        width: 100
       },
       {
         key: "date_expiration_promotion",
-        name: "Date d'expiration"
+        name: "Date d'expiration",
+        width: 100
       },
       {
         key: "used",
-        name: "Utilisé"
+        name: "Utilisé",
+        width: 100
       }
     ];
 

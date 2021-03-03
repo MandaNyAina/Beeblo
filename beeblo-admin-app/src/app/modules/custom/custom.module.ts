@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditorModule } from 'primeng/editor';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,9 @@ import { StatusPipe } from '../../pipe/status.pipe';
 import { BooleanPipe } from '../../pipe/boolean.pipe';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
+import { ModalAcheteurComponent } from '../modal/modal-acheteur/modal-acheteur.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 @NgModule({
   imports: [
@@ -29,7 +32,8 @@ import {ConfirmPopupModule} from 'primeng/confirmpopup';
     ButtonModule,
     FileUploadModule,
     ConfirmDialogModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,
@@ -44,12 +48,22 @@ import {ConfirmPopupModule} from 'primeng/confirmpopup';
     SubmitComponent,
     EditorComponent,
     CrudTableComponent,
+    ModalAcheteurComponent,
     DefaultPipe,
     StatusPipe,
     BooleanPipe,
     ConfirmDialogModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    InputSwitchModule
   ],
-  declarations: [SubmitComponent, EditorComponent, CrudTableComponent, DefaultPipe, StatusPipe, BooleanPipe]
+  declarations: [
+    SubmitComponent,
+    EditorComponent,
+    CrudTableComponent,
+    ModalAcheteurComponent,
+    DefaultPipe,
+    StatusPipe,
+    BooleanPipe
+  ]
 })
 export class CustomModule { }

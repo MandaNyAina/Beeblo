@@ -11,10 +11,10 @@ export class HttpService {
   headerOptions?: any;
 
   constructor(
-    private http: HttpClient,
-    private message: MessagesService
-  ) {
+    private http: HttpClient
+  ) { }
 
+  private setHeader(): void {
     let token = localStorage.getItem("beeblo_admin_token");
     let now = new Date;
     let now_string = String(now.getFullYear())+String(now.getMonth())+String(now.getDate());
@@ -25,18 +25,20 @@ export class HttpService {
         'Authorization': authorization
       })
     };
-
   }
 
   public _get(endpoint: string): Observable<any> {
+    this.setHeader();
     return this.http.get(environment.apiUrl + endpoint, this.headerOptions);
   }
 
   public _post(endpoint: string, data: any): any {
+    this.setHeader();
     return this.http.post(environment.apiUrl + endpoint, data, this.headerOptions);
   }
 
   public _delete(endpoint: string): Observable<any> {
+    this.setHeader();
     return this.http.delete(environment.apiUrl + endpoint, this.headerOptions);
   }
 

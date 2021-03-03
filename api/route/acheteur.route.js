@@ -3,6 +3,7 @@ const Acheteur = require('../controller/acheteur.controller');
 const token = require('../middleware/tokenValidator');
 const acheteur = new Acheteur;
 const fn = require('../modules/custom_function');
+const C = require('../modules/constante');
 
 route.post("/add", (req, res) => {
   let data = {
@@ -15,8 +16,8 @@ route.post("/add", (req, res) => {
     code_postal: req.body.code_postal,
     ville_acheteur: req.body.ville_acheteur,
     pays_acheteur: req.body.pays_acheteur,
-    etat_acheteur: req.body.etat_acheteur,
-    id_status: req.body.id_status,
+    etat_acheteur: 1,
+    id_status: C.status.COMPTE_OK,
     id_type_acheteur: req.body.id_type_acheteur
   }
   acheteur.create(data)
@@ -43,7 +44,7 @@ route.post("/update/:id", token, (req, res) => {
     code_postal: req.body.code_postal,
     ville_acheteur: req.body.ville_acheteur,
     pays_acheteur: req.body.pays_acheteur,
-    etat_acheteur: req.body.etat_acheteur,
+    etat_acheteur: 1,
     id_status: req.body.id_status,
     id_type_acheteur: req.body.id_type_acheteur
   }
@@ -51,7 +52,17 @@ route.post("/update/:id", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/typeClient/add", token.admin, (req, res) => {
+route.post("/sendNewPassword/:email_acheteur", token, (req, res) => {
+  acheteur.sendNewPassword(req.params.email_acheteur)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
+route.delete("/deleteAcheteur/:id", token.admin, (req, res) => {
+  acheteur.deleteAccount(req.params.id)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
+route.post("/typeAcheteur/add", token.admin, (req, res) => {
   let data = {
     libelle_type_acheteur: req.body.libelle_type_acheteur
   }
@@ -59,7 +70,7 @@ route.post("/typeClient/add", token.admin, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.post("/typeClient/update/:id_type_acheteur", token.admin, (req, res) => {
+route.post("/typeAcheteur/update/:id_type_acheteur", token.admin, (req, res) => {
   let data = {
     libelle_type_acheteur: req.body.libelle_type_acheteur
   }
@@ -67,12 +78,12 @@ route.post("/typeClient/update/:id_type_acheteur", token.admin, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.get("/typeClient", token.admin, (req, res) => {
+route.get("/typeAcheteur", token.admin, (req, res) => {
   acheteur.getAllTypeAcheteur()
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.route("/typeClient/:id_type_acheteur").get(token.admin, (req, res) => {
+route.route("/typeAcheteur/:id_type_acheteur").get(token.admin, (req, res) => {
   acheteur.getByIdTypeAcheteur(req.params.id_type_acheteur)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 }).delete(token.admin, (req, res) => {

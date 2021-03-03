@@ -23,7 +23,8 @@ export class CategorieComponent implements OnInit {
     this.header = [
       {
         key: "nom_categorie",
-        name: "Nom du categorie"
+        name: "Nom du categorie",
+        width: 100
       }
     ];
 

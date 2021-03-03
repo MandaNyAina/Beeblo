@@ -40,10 +40,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { P403Component } from './views/error/403.component';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {ToastModule} from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
 
 @NgModule({
   imports: [
@@ -74,7 +75,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }, MessageService, ConfirmationService],
+  }, MessageService, ConfirmationService, DialogService, FormBuilder],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
