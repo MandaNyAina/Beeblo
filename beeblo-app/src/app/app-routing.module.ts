@@ -13,6 +13,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CodePromotionComponent } from './views/code-promotion/code-promotion.component';
 import { CreationCompteComponent } from './views/creation-compte/creation-compte.component';
 import { FaqNewComponent } from './views/faq-new/faq-new.component';
+import { NosDistributeurComponent } from './views/nos-distributeur/nos-distributeur.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: "categorie", component: CollectionComponent },
   { path: "code-promo", component: CodePromotionComponent },
   { path: "panier", component: PanierComponent },
+  { path: "nos-distributeur", component: NosDistributeurComponent },
   { path: "promotion", component: CollectionComponent },
   { path: "terme-condition", component: ConditionComponent },
   { path: "mention-legale", component: ConditionComponent },

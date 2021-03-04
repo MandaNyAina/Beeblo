@@ -1,0 +1,47 @@
+@import '../../../styles.scss';
+
+.img-footer-home {
+  width: 100%;
+  margin-bottom: -10px;
+  position: fixed;
+  bottom: 100px;
+  width: 100%;
+}
+
+footer {
+  background-image: url('../../../assets/img//footer/footer-backgroud.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  font-size: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.title-footer {
+  text-align: center;
+  color: $secondary;
+  font-size: 45px;
+  padding-bottom: 10px;
+}
+
+.wrapper {
+  margin: auto;
+  width: 80%;
+}
+
+.title-secondary {
+  color: $secondary;
+  font-size: 18px !important;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.footer-table {
+  width: 100%;
+}
+
+.logo-footer {
+  width: 10%;
+}

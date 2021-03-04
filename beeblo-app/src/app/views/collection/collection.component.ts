@@ -79,7 +79,8 @@ export class CollectionComponent implements OnInit {
   }
 
   onAddPanier(id: number) {
-    this.msg.success("Ajouté au panier", `Produit ${id} ajouté au panier`)
+    this.router.navigate(['nos-distributeur']);
+    // this.msg.success("Ajouté au panier", `Produit ${id} ajouté au panier`)
   }
 
   openProduit(id: number) {

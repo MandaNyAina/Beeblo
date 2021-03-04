@@ -31,6 +31,8 @@ import { CategorieComponent } from './views/categorie/categorie.component';
 import { CodePromotionComponent } from './views/code-promotion/code-promotion.component';
 import { CreationCompteComponent } from './views/creation-compte/creation-compte.component';
 import { FaqNewComponent } from './views/faq-new/faq-new.component';
+import { NosDistributeurComponent } from './views/nos-distributeur/nos-distributeur.component';
+import { FooterFixedComponent } from './views/footer-fixed/footer-fixed.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { FaqNewComponent } from './views/faq-new/faq-new.component';
     CategorieComponent,
     CodePromotionComponent,
     CreationCompteComponent,
+    NosDistributeurComponent,
+    FooterFixedComponent,
     FaqNewComponent
     ],
   imports: [
