@@ -3,7 +3,10 @@
     [title]="'Liste des categories'"
     [header]="header"
     [data]="categories"
-    [loading]="loading">
+    [loading]="loading"
+    (onAdd)="onSetCategorie('new')"
+    (onEdit)="onSetCategorie('edit', $event)"
+    (onDelete)="onDelete($event)"
+    (reloadTable)="getAllCategorie()">
   </app-crud-table>
 </div>
-

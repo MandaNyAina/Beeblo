@@ -26,8 +26,7 @@ export class CrudTableComponent implements OnInit {
   @Output() reloadTable = new EventEmitter();
   @Output() onAdd = new EventEmitter();
   @Output() onEdit = new EventEmitter();
-  @Output() onDeleteSelected = new EventEmitter();
-  @Output() onDeleteLine = new EventEmitter();
+  @Output() onDelete = new EventEmitter();
   constructor(
     private messageService: MessageService,
     private confirmationService: ConfirmationService
@@ -79,7 +78,7 @@ export class CrudTableComponent implements OnInit {
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-          this.onDeleteLine.emit(data);
+          this.onDelete.emit(data);
           this.isDialog = false;
       },
       reject: () => {

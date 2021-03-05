@@ -6,8 +6,8 @@
     [loading]="loading"
     (onAdd)="onSetAcheteur('new')"
     (onEdit)="onSetAcheteur('edit', $event)"
-    (onDeleteLine)="onDelete($event)"
-    (reloadTable)="reloadData()">
+    (onDelete)="onDelete($event)"
+    (reloadTable)="getAllAcheteur()">
   </app-crud-table>
 </div>
 

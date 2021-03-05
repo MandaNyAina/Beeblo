@@ -32,8 +32,32 @@ class Admin {
 
   update(id_administrateur, data) {
     return new Promise((resolve, reject) => {
-      database.update("administrateur", data, `id_administrateur = ${id_administrateur}`)
-      .then(res => resolve(res)).catch(err => reject(err));
+      const update_user = () => {
+        database.update("administrateur", data, `id_administrateur = ${id_administrateur}`)
+        .then(res => resolve(res)).catch(err => reject(err));
+      }
+
+      if (data.mot_de_passe) {
+        database.select('administrateur', 'id_login', `id_administrateur = ${id_administrateur}`)
+        .then(async (res) => {
+          if (res) {
+            const id_login =  res[0].id_login;
+            let mot_de_passe =  await fn.signPassword(data.mot_de_passe);
+            let save_mot_de_passe = await database.update("utilisateur" , { mot_de_passe }, `id_login = ${id_login}`);
+            if (save_mot_de_passe == 'updated') {
+              update_user();
+            } else {
+              reject('Erreuur lors de changement de mot de passe');
+            }
+          } else {
+            reject('Login introuvable');
+          }
+
+        }).catch(err => reject(err));
+      } else {
+        update_user();
+      }
+
     })
   }
 

@@ -67,10 +67,6 @@ export class AcheteurComponent implements OnInit {
     })
   }
 
-  reloadData() {
-    this.getAllAcheteur();
-  }
-
   onSetAcheteur(type: string, data: Acheteur = null) {
     const ref = this.dialogService.open(ModalAcheteurComponent, {
       header: type == 'edit' ? `Modifié ${data?.prenom_acheteur} ${data?.nom_acheteur} ` : `Ajouter un acheteur`,
@@ -79,7 +75,6 @@ export class AcheteurComponent implements OnInit {
     });
 
     ref.onClose.subscribe((res: string) => {
-      console.log(res);
 
       if (res == 'saved' || res == 'updated') {
         this.message.success('Succes', "Acheteur enregistrer avec succes");
@@ -93,7 +88,6 @@ export class AcheteurComponent implements OnInit {
   }
 
   onDelete(acheteur: Acheteur) {
-    console.log(acheteur);
 
     this._acheteur.deleteAccount(acheteur.id_acheteur).subscribe(res => {
       if (res == 'deleted') {

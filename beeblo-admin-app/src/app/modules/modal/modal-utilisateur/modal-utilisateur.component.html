@@ -1,3 +1,82 @@
-<p>
-  modal-utilisateur works!
-</p>
+<div>
+  <form [formGroup]="usersForm" (ngSubmit)="saveUser()">
+
+    <div *ngIf="data">
+      <label for="">Activation du compte</label> <br>
+      <p-inputSwitch (click)="disableAccount()" [(ngModel)]="checked" formControlName="id_status" ></p-inputSwitch>
+    </div>
+
+    <div class="form-group">
+      <label for="nom_administrateur">Nom</label>
+      <input aria-describedby="nom-help" class="form-control" formControlName="nom_administrateur" type="text" id="nom_administrateur">
+      <small
+          *ngIf="
+          usersForm.controls['nom_administrateur'].invalid &&
+          usersForm.controls['nom_administrateur'].touched
+          "
+          class="text-danger">
+          Nom obligatoire
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="prenom_administrateur">Prenom(s)</label>
+      <input class="form-control" formControlName="prenom_administrateur" type="text" id="prenom_administrateur">
+    </div>
+
+    <div class="form-group">
+      <label for="nom_utilisateur">Nom d'utilisateur</label>
+      <input class="form-control" formControlName="nom_utilisateur" type="email" id="nom_utilisateur" required>
+      <small
+          *ngIf="
+          usersForm.controls['nom_utilisateur'].invalid &&
+          usersForm.controls['nom_utilisateur'].touched
+          "
+          class="text-danger">
+          Nom d'utilsiateur obligatoire
+      </small>
+    </div>
+
+    <div  *ngIf="data" class="p-field-checkbox">
+      <input [(ngModel)]="isResetPassword" type="checkbox" formControlName="reset_password"
+        name="reset_password" id="reset_password" (change)="updateResetValidator()">
+      <label for="reset_password">Réinitialisation mot de passe ?</label>
+    </div>
+
+    <div *ngIf="!data || (data && isResetPassword)" class="form-group">
+      <label for="mot_de_passe">Mot de passe</label>
+      <input class="form-control" formControlName="mot_de_passe" type="password" id="mot_de_passe">
+      <small
+          *ngIf="
+          usersForm.controls['mot_de_passe'].invalid &&
+          usersForm.controls['mot_de_passe'].touched
+          "
+          class="text-danger">
+          Mot de passe obligatoire
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="id_groupe">Groupe utilisateur</label>
+      <select class="form-control" formControlName="id_groupe" id="id_groupe">
+        <option></option>
+        <option *ngFor="let type of listGroupUser" value="{{type.id_groupe}}">
+          {{type.nom_groupe}}
+        </option>
+      </select>
+      <small
+          *ngIf="
+          usersForm.controls['id_groupe'].invalid &&
+          usersForm.controls['id_groupe'].touched
+          "
+          class="text-danger">
+          Groupe obligatoire
+      </small>
+    </div>
+
+    <div class="p-text-center">
+      <app-submit [label]="'Enregistrer'" [position]="'center'"></app-submit>
+    </div>
+
+  </form>
+</div>

@@ -19,6 +19,9 @@ import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import { ModalAcheteurComponent } from '../modal/modal-acheteur/modal-acheteur.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {InputSwitchModule} from 'primeng/inputswitch';
+import { ModalUtilisateurComponent } from '../modal/modal-utilisateur/modal-utilisateur.component';
+import {AccordionModule} from 'primeng/accordion';
+import { ModalCategorieComponent } from '../modal/modal-categorie/modal-categorie.component';
 
 @NgModule({
   imports: [
@@ -49,18 +52,23 @@ import {InputSwitchModule} from 'primeng/inputswitch';
     EditorComponent,
     CrudTableComponent,
     ModalAcheteurComponent,
+    ModalUtilisateurComponent,
+    ModalCategorieComponent,
     DefaultPipe,
     StatusPipe,
     BooleanPipe,
     ConfirmDialogModule,
     ConfirmPopupModule,
-    InputSwitchModule
+    InputSwitchModule,
+    AccordionModule
   ],
   declarations: [
     SubmitComponent,
     EditorComponent,
     CrudTableComponent,
     ModalAcheteurComponent,
+    ModalUtilisateurComponent,
+    ModalCategorieComponent,
     DefaultPipe,
     StatusPipe,
     BooleanPipe

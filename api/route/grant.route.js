@@ -4,6 +4,27 @@ const token = require('../middleware/tokenValidator');
 const grant = new Granter;
 const fn = require('../modules/custom_function');
 
+route.post("/createGroup", token.admin, (req, res) => {
+  let data = {
+    nom_groupe: req.body.nom_groupe
+  }
+  grant.createGroupUser(data)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
+route.post("/updateGroupUser/:id_groupe", token.admin, (req, res) => {
+  let data = {
+    nom_groupe: req.body.nom_groupe
+  }
+  grant.updateGroupUser(req.params.id_groupe, data)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
+route.get("/getAllGroupUser", token.admin, (req, res) => {
+  grant.getAllGroupUser()
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
+})
+
 route.post("/setGrant", token.admin, (req, res) => {
   grant.setGroupUser(req.body.id_groupe, req.body.id_menu_admin)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));

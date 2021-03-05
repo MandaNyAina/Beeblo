@@ -27,7 +27,7 @@ route.get("/getAll", token, (req, res) => {
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })
 
-route.get("getById/:id", token, (req, res) => {
+route.get("/getById/:id", token, (req, res) => {
   commande.getById(req.params.id)
   .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ok(res, err));
 })

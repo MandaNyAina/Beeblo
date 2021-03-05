@@ -1,5 +1,7 @@
 <div class="animated fadeIn">
-  <p>
-    users-privileges works!
-  </p>
+  <p-accordion>
+    <p-accordionTab *ngFor="let menu of menuList" header="{{menu.name}}" [disabled]="!menu.children.length">
+      <p *ngFor="let children of menu.children"><input type='checkbox' id="menu.id_menu"/> {{children.name}}</p>
+    </p-accordionTab>
+  </p-accordion>
 </div>

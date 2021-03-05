@@ -26,7 +26,7 @@ class Login {
     })
   }
 
-  chargeStatutAccount(id_user) {
+  changeStatutAccount(id_user) {
     return new Promise(async (resolve, reject) => {
       let current_status = await database.select('utilisateur', 'id_status', `id_user = '${id_user}'`);
       current_status = current_status[0].id_status;

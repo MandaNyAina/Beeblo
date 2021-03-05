@@ -3,6 +3,10 @@
     [title]="'Liste des utilisateurs'"
     [header]="header"
     [data]="users"
-    [loading]="loading">
+    [loading]="loading"
+    (onAdd)="onSetUser('add')"
+    (onEdit)="onSetUser('edit', $event)"
+    (onDelete)="onDelete($event)"
+    (reloadTable)="getAllUser()">
   </app-crud-table>
 </div>

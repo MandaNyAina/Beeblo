@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from 'primeng/dynamicdialog';
 import { Header } from '../../../interface/header';
 import { User } from '../../../interface/user';
+import { ModalUtilisateurComponent } from '../../../modules/modal/modal-utilisateur/modal-utilisateur.component';
 import { MessagesService } from '../../../services/message/message.service';
 import { UserService } from '../../../services/user/user.service';
 
@@ -16,7 +18,8 @@ export class UsersCrudComponent implements OnInit {
 
   constructor(
     private _user: UserService,
-    private message: MessagesService
+    private message: MessagesService,
+    public dialogService: DialogService
   ) { }
 
   ngOnInit() {
@@ -49,19 +52,44 @@ export class UsersCrudComponent implements OnInit {
 
     ];
 
-    this.getAllUser()
+    this.getAllUser();
 
   }
 
   getAllUser() {
     this.loading = true;
-    this._user._getAllUser().subscribe(res => {
+    this._user.getAllUser().subscribe(res => {
       this.users = res;
       this.loading = false;
     }, (err) => {
       this.message.error("Erreur", err.error);
       this.loading = false;
     });
+  }
+
+  onSetUser(type: string, data:User = null) {
+    const ref = this.dialogService.open(ModalUtilisateurComponent, {
+      header: type == 'edit' ? `Modifié ${data?.prenom_administrateur} ${data?.nom_administrateur} ` : `Ajouter un utilisateur`,
+      width: '70%',
+      data
+    });
+
+    ref.onClose.subscribe((res: string) => {
+      console.log(res);
+
+      if (res == 'saved' || res == 'updated') {
+        this.message.success('Succes', "Utilisateur enregistrer avec succes");
+      } else if (res) {
+        this.message.error('Erreur', res);
+      }
+
+      this.getAllUser();
+    });
+  }
+
+  onDelete(acheteur: User) {
+    console.log(acheteur);
+
   }
 
 }

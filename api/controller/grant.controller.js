@@ -3,6 +3,25 @@ const database = new Database;
 
 class Granter {
 
+  createGroupUser(data) {
+    return new Promise((resolve, reject) => {
+      database.insert("groupe", data).then(res => resolve(res)).catch(err => reject(err));
+    })
+  }
+
+  updateGroupUser(id_groupe, nom_groupe) {
+    return new Promise((resolve, reject) => {
+      database.update("groupe", { nom_groupe }, `id_groupe = ${id_groupe}`)
+      .then(res => resolve(res)).catch(err => reject(err));
+    })
+  }
+
+  getAllGroupUser() {
+    return new Promise((resolve, reject) => {
+      database.select("groupe").then(res => resolve(res)).catch(err => reject(err));
+    })
+  }
+
   setGroupUser(id_groupe, id_menu_admin) {
     return new Promise((resolve, reject) => {
       database.select("groupe_user_grant_menu", "COUNT(*)", `id_groupe = ${id_groupe} AND id_menu_admin = ${id_menu_admin}`)

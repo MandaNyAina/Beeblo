@@ -40,8 +40,8 @@ route.post("/reset_password/acheteur/:id", token, (req, res) => {
 })
 
 route.post("/changeStatus/admin/:id", token.admin, (req, res) => {
-  login.chargeStatutAccount(req.params.id)
-  .then(res => fn.response_ok(res, rep)).catch(err => fn.response_ko(res, err));
+  login.changeStatutAccount(req.params.id)
+  .then(rep => fn.response_ok(res, rep)).catch(err => fn.response_ko(res, err));
 })
 
 route.post("/disable/acheteur/:id", token, (req, res) => {

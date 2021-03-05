@@ -236,6 +236,7 @@ CREATE VIEW view_admin AS
 SELECT
 admin.*,
 login.nom_utilisateur,
+status.id_status,
 status.designation_status,
 login.id_groupe,
 groupe.nom_groupe

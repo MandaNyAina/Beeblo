@@ -1,0 +1,24 @@
+<form [formGroup]="categorieForm" (ngSubmit)="saveCategorie()">
+<!--
+  <div *ngIf="data">
+    <label for="id_status">Activation du categorie</label> <br>
+    <p-inputSwitch [(ngModel)]="checked" formControlName="id_status" ></p-inputSwitch>
+  </div>
+-->
+  <div class="form-group">
+    <label for="nom_categorie">Nom</label>
+    <input aria-describedby="nom-help" class="form-control" formControlName="nom_categorie" type="text" id="nom_categorie">
+    <small
+        *ngIf="
+        categorieForm.controls['nom_categorie'].invalid &&
+        categorieForm.controls['nom_categorie'].touched
+        "
+        class="text-danger">
+        Nom obligatoire
+    </small>
+  </div>
+
+  <div class="p-text-center">
+    <app-submit [label]="'Enregistrer'" [position]="'center'"></app-submit>
+  </div>
+</form>

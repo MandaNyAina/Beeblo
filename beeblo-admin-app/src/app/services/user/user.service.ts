@@ -4,6 +4,7 @@ import { Menu } from '../../interface/menu';
 import { User } from '../../interface/user';
 import { HttpService } from '../common/http.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Groupe } from '../../interface/groupe';
 
 @Injectable({
   providedIn: 'root'
@@ -33,53 +34,67 @@ export class UserService {
 
   // Gestion utilisateur
 
-  public _add(data: User): Observable<User> {
+  public add(data: User): Observable<any> {
     return this._httpService._post(`admin/add`, data);
   }
 
-  public _getUserConnected(): User {
+  public getUserConnected(): User {
     return JSON.parse(localStorage.getItem("user_data"));
   }
 
-  public _getAllUser(): Observable<User[]> {
+  public getAllUser(): Observable<User[]> {
     return this._httpService._get("admin/listAll");
   }
 
-  public _getUserById(id_administrateur: number): Observable<User> {
+  public getUserById(id_administrateur: number): Observable<User> {
     return this._httpService._get(`admin/getById/${id_administrateur}`);
   }
 
-  public _updateUser(id_administrateur: number, data: User): Observable<User> {
+  public updateUser(id_administrateur: number, data: User): Observable<any> {
     return this._httpService._post(`admin/update/${id_administrateur}`, data);
   }
 
-  public  _changeStatutLogin(id_login: number): Observable<User> {
+  public changeStatutLogin(id_login: number): Observable<any> {
     return this._httpService._post(`login/changeStatus/admin/${id_login}`, []);
   }
 
-  public _resetPassword(id_login: number): Observable<User> {
+  public resetPassword(id_login: number): Observable<User> {
     return this._httpService._post(`login/reset_password/admin/${id_login}`, []);
+  }
+
+  // groupe utilisateur
+
+  public createGroupUser(data: Groupe): Observable<any> {
+    return this._httpService._post(`grant/createGroup`, data);
+  }
+
+  public updateGroupUser(id_groupe: number, data: Groupe): Observable<any> {
+    return this._httpService._post(`grant/updateGroupUser/${id_groupe}`, data);
+  }
+
+  public getAllGroupUser(): Observable<Groupe[]> {
+    return this._httpService._get(`grant/getAllGroupUser`);
   }
 
   // Doit utilisateur
 
-  public _getAllMenu(): Observable<any> {
+  public getAllMenu(): Observable<any> {
     return this._httpService._get(`grant/getAll`);
   }
 
-  public _buildMenu(id_groupe: number): Observable<Menu> {
+  public buildMenu(id_groupe: number): Observable<Menu> {
     return this._httpService._get(`grant/buildMenu/${id_groupe}`);
   }
 
-  public _getMenuByGroupe(id_groupe: number): Observable<any> {
+  public getMenuByGroupe(id_groupe: number): Observable<any> {
     return this._httpService._get(`grant/getMenuByGroupe/${id_groupe}`);
   }
 
-  public _hasAccess(data: Object): Observable<any> {
+  public haveAccess(data: Object): Observable<any> {
     return this._httpService._post(`grant/isAccess`, data);
   }
 
-  public _deleteAccess(): Observable<any> {
+  public deleteAccess(): Observable<any> {
     return this._httpService._delete(`grant/deleteAccess`);
   }
 

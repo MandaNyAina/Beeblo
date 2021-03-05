@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { Observable } from 'rxjs';
 import { Acheteur, TypeAcheteur } from '../../../interface/acheteur';
 import { AcheteurService } from '../../../services/acheteur/acheteur.service';
 import { MessagesService } from '../../../services/message/message.service';
@@ -51,26 +52,26 @@ export class ModalAcheteurComponent implements OnInit {
     })
   }
 
+  saveData(formData: Acheteur): Observable<string> {
+    return this.data ? this._acheteurSvc.update(this.data.id_acheteur, formData) :
+                       this._acheteurSvc.add(formData);
+  }
+
   saveAcheteur() {
     this.acheteurForm.markAllAsTouched();
     if (this.acheteurForm.valid) {
       const data: Acheteur = this.acheteurForm.value;
+
       if (this.data) {
-        delete data['mot_de_passe'];
         data.id_status = this.checked ? 2 : 1;
-        this._acheteurSvc.update(this.data['id_acheteur'], data).subscribe((res: string) => {
-          this.ref.close(res);
-        }, (err: HttpErrorResponse) => {
-          this.message.error('Erreur', `Erreur d'enregistrement d'acheteur : ${err.message}`);
-        })
-      } else {
-        delete data['id_status'];
-        this._acheteurSvc.add(data).subscribe((res: string) => {
-          this.ref.close(res);
-        }, (err: HttpErrorResponse) => {
-          this.message.error('Erreur', `Erreur d'enregistrement d'acheteur : ${err.message}`);
-        });
       }
+
+      this.saveData(data).subscribe((res: string) => {
+        this.ref.close(res);
+      }, (err: HttpErrorResponse) => {
+        this.message.error('Erreur', `Erreur d'enregistrement d'acheteur : ${err.message}`);
+      });
+
     }
   }
 
@@ -78,7 +79,8 @@ export class ModalAcheteurComponent implements OnInit {
     this._acheteurSvc.resetPassword(this.data.email_acheteur).subscribe((res: string) => {
       this.ref.close(res);
     }, (err: HttpErrorResponse) => {
-      this.message.error('Erreur', `Erreur de reinitialisation : ${err.message}`);
+      console.log(err);
+      this.message.error('Erreur', `Erreur de reinitialisation : ${err}`);
     })
   }
 
